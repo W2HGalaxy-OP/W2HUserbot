@@ -15,7 +15,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 logging.basicConfig(
@@ -278,7 +278,7 @@ async def _(event):
         nurl = f"https://del.dog/v/{r['key']}"
         await edit_or_reply(event, "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl)
         )
-    # This module is modded by @Kraken_The_BadAss #KeepCredit
+    # This module is modded by @David99q #KeepCredit
     else:
         await edit_or_reply(event, "**Making instant view...**")
         async with event.client.conversation(chat) as conv:

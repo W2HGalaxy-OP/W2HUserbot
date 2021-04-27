@@ -7,7 +7,7 @@ import asyncio
 import re
 from telethon import events, utils
 from telethon.tl import types
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 from userbot.plugins.sql_helper.filter_sql import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
 

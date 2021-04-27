@@ -4,7 +4,7 @@ from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights
 
 from userbot.plugins.sql_helper import antiflood_sql as sql
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 CHAT_FLOOD = sql.__load_flood_settings()

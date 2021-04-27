@@ -1,4 +1,4 @@
-# Ascii module by @Kraken_The_BadAss for @hellbot_official
+# Ascii module by @David99q for @W2H_Userbot
 # A over powerful bot
 # I know u will kang...
 # GTFO!! MOTHERFUCKER!!!!!!!!!!!
@@ -8,10 +8,10 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import ALIVE_NAME, CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
 USERID = bot.uid
 

@@ -13,7 +13,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
@@ -184,7 +184,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="reuploaded by [AuraXBot](https://t.me/AuraXSupport)",
+                    caption="reuploaded by [W2HBOT](https://t.me/W2HSupport)",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,

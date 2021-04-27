@@ -1,16 +1,16 @@
 import re
 
-from AuraXBot import bot
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
-from AuraXBot.cmdhelp import CmdHelp
-from AuraXBot.helpers.functions import deEmojify
+from W2HBOT import bot
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.cmdhelp import CmdHelp
+from W2HBOT.helpers.functions import deEmojify
 
 
 @bot.on(admin_cmd(pattern="anime(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="anime(?: |$)(.*)", allow_sudo=True))
 async def nope(aura):
-    AuraX = aura.pattern_match.group(1)
-    if not AuraX:
+    W2H = aura.pattern_match.group(1)
+    if not W2H:
         if aura.is_reply:
             (await aura.get_reply_message()).message
         else:
@@ -18,7 +18,7 @@ async def nope(aura):
             )
             return
 
-    troll = await bot.inline_query("animedb_bot", f"{(deEmojify(AuraX))}")
+    troll = await bot.inline_query("animedb_bot", f"{(deEmojify(W2H))}")
 
     await troll[0].click(
         aura.chat_id,

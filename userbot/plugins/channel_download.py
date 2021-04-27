@@ -8,7 +8,7 @@ import os
 import subprocess
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd
+from W2HBOT.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
 @borg.on(admin_cmd(pattern=r"getc"))

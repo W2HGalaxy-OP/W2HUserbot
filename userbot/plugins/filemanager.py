@@ -10,7 +10,7 @@ import time
 
 from telethon import events
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 if not os.path.isdir("./SAVED"):
@@ -65,10 +65,10 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sAuraX(
+    process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
-    OUTPUT = f"**Files in [AuraXBot](t.me/AuraXUserbot) DOWNLOADS Folder:**\n"
+    OUTPUT = f"**Files in [W2HBOT](t.me/W2H_Userbot) DOWNLOADS Folder:**\n"
     stdout, stderr = await process.communicate()
     if len(stdout) > Config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(stdout)) as out_file:
@@ -100,7 +100,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sAuraX(
+    process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     OUTPUT = f"**Files in root directory:**\n"
@@ -135,7 +135,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sAuraX(
+    process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     OUTPUT = f"**Files in SAVED directory:**\n"
@@ -174,7 +174,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sAuraX(
+    process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     OUTPUT = f"**Files in root directory:**\n"
@@ -213,7 +213,7 @@ async def _(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     time.time() + PROCESS_RUN_TIME
-    process = await asyncio.create_subprocess_sAuraX(
+    process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     OUTPUT = f"**Files in root directory:**\n"
@@ -269,11 +269,11 @@ async def handler(event):
 
 
 CmdHelp("filemanager").add_command(
-  'ls_local', None, 'Gives the list of downloaded medias in your AuraXBot server.'
+  'ls_local', None, 'Gives the list of downloaded medias in your W2HBOT server.'
 ).add_command(
-  'ls_root', None, 'Gives the list of all files in root directory of AuraXBot repo.'
+  'ls_root', None, 'Gives the list of all files in root directory of W2HBOT repo.'
 ).add_command(
-  'ls_saved', None, 'Gives the list of all files in Saved directory of your AuraXBot server'
+  'ls_saved', None, 'Gives the list of all files in Saved directory of your W2HBOT server'
 ).add_command(
   'rnsaved', 'saved file name', 'Renames the file in saved directory'
 ).add_command(

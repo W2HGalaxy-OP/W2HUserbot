@@ -8,7 +8,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 
@@ -99,7 +99,7 @@ async def deepfry(img: Image) -> Image:
         (randint(190, 255), randint(170, 240), randint(180, 250)),
     )
     img = img.copy().convert("RGB")
-    # Crush image to AuraX and back
+    # Crush image to W2H and back
     img = img.convert("RGB")
     width, height = img.width, img.height
     img = img.resize(
@@ -121,7 +121,7 @@ async def deepfry(img: Image) -> Image:
     overlay = ImageEnhance.Contrast(overlay).enhance(uniform(1.0, 2.0))
     overlay = ImageEnhance.Brightness(overlay).enhance(uniform(1.0, 2.0))
     overlay = ImageOps.colorize(overlay, colours[0], colours[1])
-    # Overlay red and yellow onto main image and sharpen the AuraX out of it
+    # Overlay red and yellow onto main image and sharpen the W2H out of it
     img = Image.blend(img, overlay, uniform(0.1, 0.4))
     img = ImageEnhance.Sharpness(img).enhance(randint(5, 300))
     return img

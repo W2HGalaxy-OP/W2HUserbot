@@ -1,7 +1,7 @@
-# Made By @Kraken_The_BadAss. Keep Credit if you are gonna copy paste it. LOL NOOBS....
-# Happy New Year plugin by Kraken_The_BadAss for Hellbot
+# Made By @David99q. Keep Credit if you are gonna copy paste it. LOL NOOBS....
+# Happy New Year plugin by David99q for Hellbot
 # Kangers keep credits...
-# Now in AuraXBot
+# Now in W2HBOT
 
 import random
 # credits to aura, john snow
@@ -11,11 +11,11 @@ import asyncio
 # credits to aura, john snow
 from userbot import CMD_HELP, ALIVE_NAME
 # credits to aura, john snow
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 # credits to aura, john snow
 from userbot.cmdhelp import CmdHelp
 # credits to aura, john snow
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 # credits to aura, john snow
 aura = bot.uid
 # credits to aura, john snow

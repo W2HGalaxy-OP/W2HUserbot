@@ -8,7 +8,7 @@ from telethon.tl.types import InputMessagesFilterDocument
 
 from userbot import bot
 from userbot.helpers.functions import deEmojify
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 # RegEx by https://t.me/c/1220993104/50065
@@ -82,7 +82,7 @@ async def sticklet(event):
         ((512 - width) / 2, (512 - height) / 2), sticktext, font=font, fill=(R, G, B)
     )
     image_stream = io.BytesIO()
-    image_stream.name = "AuraXBot.webp"
+    image_stream.name = "W2HBOT.webp"
     image.save(image_stream, "WebP")
     image_stream.seek(0)
     # finally, reply the sticker

@@ -14,10 +14,10 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
-#==================AuraXBot==================
+#==================W2HBOT==================
 
 @bot.on(admin_cmd(pattern="scan ?(.*)"))
 @bot.on(sudo_cmd(pattern="scan ?(.*)", allow_sudo=True))
@@ -35,7 +35,7 @@ async def _(event):
     if reply_message.sender.bot:
         await edit_or_reply(event, "Reply to actual users message.")
         return
-    AuraXevent = await edit_or_reply(event, " `Scanning This media..... wait👀`")
+    W2Hevent = await edit_or_reply(event, " `Scanning This media..... wait👀`")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -44,19 +44,19 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await AuraXevent.edit("`Please unblock `@DrWebBot `and try again`")
+            await W2Hevent.edit("`Please unblock `@DrWebBot `and try again`")
             return
         if response.text.startswith("Forward"):
-            await AuraXevent.edit(
+            await W2Hevent.edit(
                 "Can you kindly disable your forward privacy settings for good?"
             )
         else:
             if response.text.startswith("Select"):
-                await AuraXevent.edit(
+                await W2Hevent.edit(
                     "`Please go to` @DrWebBot `and select your language.`"
                 )
             else:
-                await AuraXevent.edit(
+                await W2Hevent.edit(
                     f"**Antivirus scan was completed. I got the final results.**\n {response.message.message}"
                 )
 
@@ -103,7 +103,7 @@ async def parseqr(qr_e):
 async def _(event):
     if event.fwd_from:
         return
-    AuraXevent = await edit_or_reply(event, "...")
+    W2Hevent = await edit_or_reply(event, "...")
     start = datetime.now()
     input_str = event.pattern_match.group(1)
     message = "SYNTAX: `.barcode <long text to include>`"
@@ -141,13 +141,13 @@ async def _(event):
         )
         os.remove(filename)
     except Exception as e:
-        await AuraXevent.edit(str(e))
+        await W2Hevent.edit(str(e))
         return
     end = datetime.now()
     ms = (end - start).seconds
-    await AuraXevent.edit("Created BarCode in {} seconds🤓".format(ms))
+    await W2Hevent.edit("Created BarCode in {} seconds🤓".format(ms))
     await asyncio.sleep(5)
-    await AuraXevent.delete()
+    await W2Hevent.delete()
 
 
 @bot.on(admin_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
@@ -316,16 +316,16 @@ async def _(event):
             return False
         else:
             im = Image.new(mode="RGB", size=(1280, 720), color=usercolor)
-            im.save("AuraX.png", "PNG")
+            im.save("W2H.png", "PNG")
             input_str = input_str.replace("#", "#COLOR_")
             await event.client.send_file(
                 event.chat_id,
-                "AuraX.png",
+                "W2H.png",
                 force_document=False,
                 caption=input_str,
                 reply_to=message_id,
             )
-            os.remove("AuraX.png")
+            os.remove("W2H.png")
             await event.delete()
     else:
         await edit_or_reply(
@@ -338,7 +338,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    AuraXevent = await edit_or_reply(event, "`processiong...........`")
+    W2Hevent = await edit_or_reply(event, "`processiong...........`")
     input_str = event.pattern_match.group(1)
     xkcd_id = None
     if input_str:
@@ -375,9 +375,9 @@ Month: {}
 Year: {}""".format(
             img, input_str, xkcd_link, safe_title, alt, day, month, year
         )
-        await AuraXevent.edit(output_str, link_preview=True)
+        await W2Hevent.edit(output_str, link_preview=True)
     else:
-        await AuraXevent.edit("xkcd n.{} not found!".format(xkcd_id))
+        await W2Hevent.edit("xkcd n.{} not found!".format(xkcd_id))
 
 
 CmdHelp("tools").add_command(
@@ -389,7 +389,7 @@ CmdHelp("tools").add_command(
 ).add_command(
   "currencies", None, "Shows you the some list of currencies"
 ).add_command(
-  "currency", "<amount> <from> <to>", "Currency converter for AuraXBot", ".currency 10 usd inr"
+  "currency", "<amount> <from> <to>", "Currency converter for W2HBOT", ".currency 10 usd inr"
 ).add_command(
   "cal", "<year ; month>", "Shows you the calendar of given month and year"
 ).add_command(

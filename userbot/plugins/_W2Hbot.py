@@ -1,13 +1,13 @@
-"""AuraXBot Help Command"""
+"""W2HBOT Help Command"""
 
 from userbot import *
 from userbot import CMD_HELP
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 
 
 @bot.on(admin_cmd(pattern="plinfo(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="plinfo(?: |$)(.*)", allow_sudo=True))
-async def AuraXBott(event):
+async def W2HBOTt(event):
     if event.fwd_from:
         return
     """ .plinfo cmd """

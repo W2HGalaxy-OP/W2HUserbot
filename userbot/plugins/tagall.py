@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 

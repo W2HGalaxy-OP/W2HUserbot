@@ -2,7 +2,7 @@ import string
 
 from telethon.tl.types import Channel
 
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import CMD_HELP
 from userbot.cmdhelp import CmdHelp
 from userbot.Config import Config
@@ -15,13 +15,13 @@ global groupsid
 groupsid = []
 
 
-async def all_groups_id(AuraX):
-    AuraXgroups = []
-    async for dialog in AuraX.client.iter_dialogs():
+async def all_groups_id(W2H):
+    W2Hgroups = []
+    async for dialog in W2H.client.iter_dialogs():
         entity = dialog.entity
         if isinstance(entity, Channel) and entity.megagroup:
-            AuraXgroups.append(entity.id)
-    return AuraXgroups
+            W2Hgroups.append(entity.id)
+    return W2Hgroups
 
 
 @bot.on(admin_cmd(pattern="frwd$"))

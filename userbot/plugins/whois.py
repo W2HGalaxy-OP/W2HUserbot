@@ -12,7 +12,7 @@ from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
 from .. import LOGS, TEMP_DOWNLOAD_DIRECTORY
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 # Copyright (C) 2019 The Raphielscape Company LLC.
@@ -31,7 +31,7 @@ from userbot.cmdhelp import CmdHelp
 async def who(event):
     if event.fwd_from:
         return
-    AuraX = await edit_or_reply(
+    W2H = await edit_or_reply(
         event, "`Sit tight while I steal some data from This guuyyy...`"
     )
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -57,9 +57,9 @@ async def who(event):
         )
         if not photo.startswith("http"):
             os.remove(photo)
-        await AuraX.delete()
+        await W2H.delete()
     except TypeError:
-        await AuraX.edit(caption, parse_mode="html")
+        await W2H.edit(caption, parse_mode="html")
 
 
 async def get_user(event):
@@ -127,7 +127,7 @@ async def fetch_info(replied_user, event):
     )
     username = "@{}".format(username) if username else ("This User has no Username")
     user_bio = "This User has no About" if not user_bio else user_bio
-    caption = "<b>USER INFO from AuraXBot's database :</b>\n\n"
+    caption = "<b>USER INFO from W2HBOT's database :</b>\n\n"
     caption += f"👤 First Name: {first_name} {last_name}\n"
     caption += f"🤵 Username: {username}\n"
     caption += f"🔖 ID: <code>{user_id}</code>\n"

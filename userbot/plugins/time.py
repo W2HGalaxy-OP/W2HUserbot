@@ -7,7 +7,7 @@ from datetime import datetime
 
 from PIL import Image, ImageDraw, ImageFont
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -20,7 +20,7 @@ async def _(event):
     if event.fwd_from:
         return
     current_time = datetime.now().strftime(
-        "⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \nAuraXBot TIMEZONE \n LOCATION: India🇮🇳 \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡"
+        "⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡ \nW2HBOT TIMEZONE \n LOCATION: India🇮🇳 \n  Time: %H:%M:%S \n  Date: %d.%m.%y \n⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡"
     )
     start = datetime.now()
     input_str = event.pattern_match.group(1)
@@ -44,7 +44,7 @@ async def _(event):
     await borg.send_file(  # pylint:disable=E0602
         event.chat_id,
         required_file_name,
-        caption="AuraXBot",
+        caption="W2HBOT",
         # Courtesy: @ManueI15
         reply_to=reply_msg_id,
     )

@@ -11,7 +11,7 @@ from telethon import functions
 from userbot.plugins.sql_helper import pmpermit_sql as pmpermit_sql
 from userbot import ALIVE_NAME
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 PREV_REPLY_MESSAGE = {}
 
 
@@ -31,12 +31,12 @@ async def _(event):
                 "__Let's make this smooth and let me know why you are here.__\n"
                 "**Choose one of the following reasons why you are here:**\n\n"
                 "`1`. To chat with my master\n"
-                "`2`. To give your girlfriend number.\n"
-                "`3`. To enquire something\n"
+                "`2`. To Chat about your girlfriend.\n"
+                "`3`. To fix your girlfriend meeting with me\n"
                 "`4`. To request something\n"
             )
             ONE = (
-                "__Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within 24 light years. He is a busy man, unlike you probably.__\n\n"
+                "__Okay. Your request has been registered. Do not spam my master's inbox else you chakka.You can expect a reply within 24 light years. He is a busy man, unlike you probably.__\n\n"
                 "**⚠️ You will be blocked and reported if you spam  ⚠️**\n\n"
                 "__Use__ `/start` __to go back to the main menu.__"
             )

@@ -8,7 +8,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="info ?(.*)", outgoing=True))
@@ -61,7 +61,7 @@ async def _(event):
 <b>🤖 BOT</b>: {}
 <b>👥 Groups in Common</b>: {}
 
-<b>⚡ <a href='https://t.me/AuraXUserbot'>From DataBase of AuraXBot</a> ⚡ </b>
+<b>⚡ <a href='https://t.me/W2H_Userbot'>From DataBase of W2HBOT</a> ⚡ </b>
 """.format(
         user_id,
         user_id,

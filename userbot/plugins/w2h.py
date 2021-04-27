@@ -1,8 +1,8 @@
 import time
 
 from telethon import version
-from userbot import ALIVE_NAME, StartTime, AuraXversion
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot import ALIVE_NAME, StartTime, W2Hversion
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 async def reply_id(event):
@@ -14,9 +14,9 @@ async def reply_id(event):
     return reply_to_id
 
 
-DEFAULTUSER = ALIVE_NAME or "AuraX User"
-AuraX_IMG = Config.ALIVE_PIC
-CUSTOM_ALIVE_TEXT = Config.ALIVE_MSG or "ʟɛɢɛռɖaʀʏ_ᴀғ_ɦɛʟʟɮօt"
+DEFAULTUSER = ALIVE_NAME or "W2H User"
+W2H_IMG = Config.ALIVE_PIC
+CUSTOM_ALIVE_TEXT = Config.ALIVE_MSG or "Legend's Choice W2HBot"
 
 USERID = bot.uid
 
@@ -54,33 +54,33 @@ def get_readable_time(seconds: int) -> str:
 uptime = get_readable_time((time.time() - StartTime))
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="aurax$"))
-@bot.on(sudo_cmd(pattern="aurax$", allow_sudo=True))
+@bot.on(admin_cmd(outgoing=True, pattern="w2h$"))
+@bot.on(sudo_cmd(pattern="w2h$", allow_sudo=True))
 async def amireallyalive(alive):
     if alive.fwd_from:
         return
     reply_to_id = await reply_id(alive)
 
-    if AuraX_IMG:
-        AuraX_caption = f"**{CUSTOM_ALIVE_TEXT}**\n"
-        AuraX_caption += f"≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈\n"
-        AuraX_caption += f"     __**BOT STATUS**__\n\n"
-        AuraX_caption += f"**★ Telethon version :** `{version.__version__}`\n"
-        AuraX_caption += f"**★ AuraXBot :**`{AuraXversion}`\n"
-        AuraX_caption += f"**★ Uptime :** `{uptime}\n`"
-        AuraX_caption += f"**★ Master:** {mention}\n"
+    if W2H_IMG:
+        W2H_caption = f"**{CUSTOM_ALIVE_TEXT}**\n"
+        W2H_caption += f"~~~~~~~~~~~~~~~~~~~~~~~\n"
+        W2H_caption += f"     __**BOT STATUS**__\n\n"
+        W2H_caption += f"**★ Telethon version :** `{version.__version__}`\n"
+        W2H_caption += f"**★ W2HBOT :**`{W2Hversion}`\n"
+        W2H_caption += f"**★ Uptime :** `{uptime}\n`"
+        W2H_caption += f"**★ Master:** {mention}\n"
         await alive.client.send_file(
-            alive.chat_id, AuraX_IMG, caption=AuraX_caption, reply_to=reply_to_id
+            alive.chat_id, W2H_IMG, caption=W2H_caption, reply_to=reply_to_id
         )
         await alive.delete()
     else:
         await edit_or_reply(
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-            f"≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ \n"
+            f"~~~~~~~~~~~~~~~~~~~~~~~ \n"
             f"      __**BOT STATUS**__\n\n"
             f"**★ Telethon Version :** `{version.__version__}`\n"
-            f"**★ AuraXBot:** `{AuraXversion}`\n"
+            f"**★ W2HBOT:** `{W2Hversion}`\n"
             f"**★ Uptime :** `{uptime}\n`"
             f"**★ Master:** {mention}\n",
         )

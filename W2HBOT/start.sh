@@ -1,5 +1,5 @@
 #!/bin/bash
-#   Copyright (C) 2021 AuraXNetwork
+#   Copyright (C) 2021 W2HGalaxy-OP
 #
 #   Poject VΛDΣЯ is free software: 
 #   you can redistribute it and/or modify it under the terms of the GNU General Public License 
@@ -16,15 +16,15 @@
 
 
 echo """
-┏━━━┓          ┏┓    ┏┓
-┃┏━┓┃          ┃┃   ┏┛┗┓
-┃┃ ┃┣┓┏┳━┳━━┳┓┏┫┗━┳━┻┓┏┛
-┃┗━┛┃┃┃┃┏┫┏┓┣╋╋┫┏┓┃┏┓┃┃
-┃┏━┓┃┗┛┃┃┃┏┓┣╋╋┫┗┛┃┗┛┃┗┓
-┗┛ ┗┻━━┻┛┗┛┗┻┛┗┻━━┻━━┻━┛
+╭╮╭╮╭┳━━━┳╮╱╭┳━━╮╭━━━┳━━━━╮
+┃┃┃┃┃┃╭━╮┃┃╱┃┃╭╮┃┃╭━╮┃╭╮╭╮┃
+┃┃┃┃┃┣╯╭╯┃╰━╯┃╰╯╰┫┃╱┃┣╯┃┃╰╯
+┃╰╯╰╯┣━╯╭┫╭━╮┃╭━╮┃┃╱┃┃╱┃┃
+╰╮╭╮╭┫┃╰━┫┃╱┃┃╰━╯┃╰━╯┃╱┃┃
+╱╰╯╰╯╰━━━┻╯╱╰┻━━━┻━━━╯╱╰╯
               
-Legendary AuraXBot!!
-@AuraXUserbot
+Legendary W2HBOT!!
+@W2H_Userbot
 """
 
 python3 -m userbot

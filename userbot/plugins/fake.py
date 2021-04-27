@@ -18,7 +18,7 @@ import asyncio
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd
+from W2HBOT.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
 @borg.on(admin_cmd(pattern="fake ?(.*)"))
@@ -56,7 +56,7 @@ async def gbun(event):
         # make meself invulnerable cuz why not xD
         if idd == 1100735944:
             await reply_message.reply(
-                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 99$ to my master__ [AuraXOwner](https://t.me/AuraXOwner) __to release your account__😏"
+                "`Wait a second, This is my master!`\n**How dare you threaten to ban my master nigger!**\n\n__Your account has been hacked! Pay 99$ to my master__ [David99q](https://t.me/David99q) __to release your account__😏"
             )
         else:
             jnl = (

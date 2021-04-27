@@ -6,7 +6,7 @@ import os
 import time
 from datetime import datetime
 
-from AuraXBot.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 

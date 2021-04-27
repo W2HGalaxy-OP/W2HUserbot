@@ -8,8 +8,8 @@ class Development(Config):
   API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
 
   # the name to display in your alive message.
-  # If not filled anything then default value is AuraX User.
-  ALIVE_NAME = "AuraX User"
+  # If not filled anything then default value is W2H User.
+  ALIVE_NAME = "W2H User"
 
   # create any PostgreSQL database.
   # I recommend to use elephantsql and paste that link here

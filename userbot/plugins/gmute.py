@@ -1,6 +1,6 @@
 from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 import asyncio
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 from telethon import events
 
@@ -18,7 +18,7 @@ async def blowjob(event):
         	
         return
     elif event.is_private:
-        await edit_or_reply(event, "`Son can't speak now🤐. Filled mouth with cum`💦")
+        await edit_or_reply(event, "`Tum bhut chud liye ab thoda aram kr lo 😂`")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
@@ -33,13 +33,13 @@ async def blowjob(event):
     chat_id = event.chat_id
     chat = await event.get_chat()
     if is_muted(userid, "gmute"):
-        return await edit_or_reply(event, "This retard cant speak. Was already gmutted earlier")
+        return await edit_or_reply(event, "This retard cant speak. Ye phle se chuda h 😂")
     try:
         mute(userid, "gmute")
     except Exception as e:
         await edit_or_reply(event, "Error occured!\nError is " + str(e))
     else:
-        await edit_or_reply(event, "Successfully Fucked this user's mouth.")
+        await edit_or_reply(event, "Successfully chod diya isa user ko 😏.")
 
 
 @bot.on(admin_cmd(pattern=r"ungmute ?(\d+)?"))
@@ -49,7 +49,7 @@ async def cumshot(event):
     if event.fwd_from:
         return
     elif event.is_private:
-        await edit_or_reply(event, "Today's sex done. Now son can speak✌️🚶")
+        await edit_or_reply(event, "Aur bhai kr liya aram Aajao Shuru kare Bakchodi 😎")
         await asyncio.sleep(3)
         private = True
     reply = await event.get_reply_message()
@@ -69,7 +69,7 @@ async def cumshot(event):
     except Exception as e:
         await edit_or_reply(event, "Error occured!\nError is " + str(e))
     else:
-        await edit_or_reply(event, "Ok! Today's sex is done now. Son can speak🔥🔥")
+        await edit_or_reply(event, "Aur bhai kr liya aram Aajao Shuru kare Bakchodi 😎")
         
 @command(incoming=True)
 async def watcher(event):

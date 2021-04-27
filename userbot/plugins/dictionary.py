@@ -7,7 +7,7 @@ import asyncurban
 from PyDictionary import PyDictionary
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd(pattern="ud (.*)"))
@@ -36,10 +36,10 @@ async def _(event):
         return
     word = event.pattern_match.group(1)
     dictionary = PyDictionary()
-    AuraX = dictionary.meaning(word)
+    W2H = dictionary.meaning(word)
     output = f"**Word :** __{word}__\n\n"
     try:
-        for a, b in AuraX.items():
+        for a, b in W2H.items():
             output += f"**{a}**\n"
             for i in b:
                 output += f"☞__{i}__\n"

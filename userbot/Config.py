@@ -21,7 +21,7 @@ if ENV:
         # This is required for the hash to torrent file functionality to work.
         HASH_TO_TORRENT_API = os.environ.get("HASH_TO_TORRENT_API", "https://example.com/torrent/{}");
         # This is required for the @telegraph functionality.
-        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "AuraXBot")
+        TELEGRAPH_SHORT_NAME = os.environ.get("TELEGRAPH_SHORT_NAME", "W2HBOT")
         # Get a Free API Key from OCR.Space
         OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
         # Send .get_id in any group with all your administration bots (added)
@@ -148,7 +148,7 @@ if ENV:
         LYDIA_API = os.environ.get("LYDIA_API",None)
         PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
         UPSTREAM_REPO = os.environ.get(
-            "UPSTREAM_REPO", "https://github.com/AuraXNetwork/AuraXBot"
+            "UPSTREAM_REPO", "https://github.com/W2HGalaxy-OP/W2HBOT"
         )
         STRING_SESSION = os.environ.get("STRING_SESSION", None)
         BOT_MODE = os.environ.get("BOT_MODE", "ON")
@@ -157,7 +157,7 @@ if ENV:
         FORCE_SUB = os.environ.get("FORCE_SUB", None)
         FORCE_CHANNEL_UN = os.environ.get("FORCE_CHANNEL_UN", None)
         FORCE_CHANNEL_ID = int(os.environ.get("FORCE_CHANNEL_ID", False))
-        EXTRA_AuraXBot = os.environ.get("EXTRA_AuraXBot", -1001221881562)
+        EXTRA_W2HBOT = os.environ.get("EXTRA_W2HBOT", -1001221881562)
         PM_DATA = os.environ.get("PM_DATA", "ENABLE")
 
 else:

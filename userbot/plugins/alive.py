@@ -1,5 +1,5 @@
 from userbot import *
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 from telethon import events, version
 from telethon.events import NewMessage
@@ -8,7 +8,7 @@ from telethon.tl.types import Channel, Chat, User
 
 #-------------------------------------------------------------------------------
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
 ludosudo = Config.SUDO_USERS
 
@@ -23,18 +23,18 @@ mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
 
 PM_IMG = "https://telegra.ph/file/19394b52001265d943584.mp4"
-pm_caption ="**AuraXBot Is Online**\n\n"
+pm_caption ="**W2HBOT Is Online**\n\n"
 
 pm_caption += f"**┏━━━━━━━━━━━━━┓**\n"
 pm_caption += f"**┣★ Master : {mention}**\n"
 pm_caption += f"**┣★ Telethon : `{version.__version__}`**\n"
-pm_caption += f"**┣★ AuraXBot : {AuraXversion}**\n"
+pm_caption += f"**┣★ W2HBOT : {W2Hversion}**\n"
 pm_caption += f"**┣★ Sudo       : `{sudou}`**\n"
-pm_caption += f"**┣★ Channel   : [Join Here](https://t.me/AuraXUserbot)**\n"
-pm_caption += f"**┣★ Creater    : [AuraX Here](https://t.me/AuraXOwner)**\n"
+pm_caption += f"**┣★ Channel   : [Join Here](https://t.me/W2H_Userbot)**\n"
+pm_caption += f"**┣★ Creater    : [W2H Here](https://t.me/David99q)**\n"
 pm_caption += f"**┗━━━━━━━━━━━━━┛**\n"
 
-pm_caption += "    [✨REPO✨](https://github.com/AuraXNetwork/AuraXBot) 🔹 [📜License📜](https://github.com/AuraXNetwork/AuraXBot/blob/master/LICENSE)"
+pm_caption += "    [✨REPO✨](https://github.com/W2HGalaxy-OP/W2HBOT) 🔹 [📜License📜](https://github.com/W2HGalaxy-OP/W2HBOT/blob/master/LICENSE)"
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="alive$"))
@@ -52,7 +52,7 @@ async def amireallyalive(alive):
 CmdHelp("alive").add_command(
   'alive', None, 'Check weather the bot is alive or not'
 ).add_command(
-  'aurax', None, 'Check weather the bot is alive or not. In your custom Alive Pic and Alive Msg'
+  'W2H', None, 'Check weather the bot is alive or not. In your custom Alive Pic and Alive Msg'
 ).add_info(
   'Zinda Hai Kya Bro?'
 ).add()

@@ -11,9 +11,9 @@ import os
 from telethon import functions, types
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
-from AuraXBot.Config import Config
+from W2HBOT.Config import Config
 
 SUDO_WALA = Config.SUDO_USERS
 
@@ -34,16 +34,16 @@ async def spammer(e):
 
 @bot.on(admin_cmd(pattern="bigspam"))
 @bot.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
-async def bigspam(AuraX):
-    if not AuraX.text[0].isalpha() and AuraX.text[0] not in ("/", "#", "@", "!"):
-        AuraX_msg = AuraX.text
-        AuraXBot_count = int(AuraX_msg[9:13])
-        AuraX_spam = str(AuraX.text[13:])
-        for i in range(1, AuraXBot_count):
-            await AuraX.respond(AuraX_spam)
-        await AuraX.delete()
+async def bigspam(W2H):
+    if not W2H.text[0].isalpha() and W2H.text[0] not in ("/", "#", "@", "!"):
+        W2H_msg = W2H.text
+        W2HBOT_count = int(W2H_msg[9:13])
+        W2H_spam = str(W2H.text[13:])
+        for i in range(1, W2HBOT_count):
+            await W2H.respond(W2H_spam)
+        await W2H.delete()
         if LOGGER:
-            await AuraX.client.send_message(
+            await W2H.client.send_message(
                 LOGGER_GROUP, "#BIGSPAM \n\n" "Bigspam was executed successfully"
             )
 
@@ -101,5 +101,5 @@ CmdHelp("spam").add_command(
 ).add_command(
   "dspam", "<delay> <spam count> <text>", "Sends the text 'X' number of times in 'Y' seconds of delay", ".dspam 5 100 Hello"
 ).add_command(
-  "bigspam", "<count> <text>", "Sends the text 'X' number of times. This what AuraXBot iz known for. The Best BigSpam Ever", ".bigspam 5000 Hello"
+  "bigspam", "<count> <text>", "Sends the text 'X' number of times. This what W2HBOT iz known for. The Best BigSpam Ever", ".bigspam 5000 Hello"
 ).add()

@@ -4,7 +4,7 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -25,7 +25,7 @@ async def _(event):
     if reply_message.sender.bot:
         await edit_or_reply(event, "Reply to actual users message.")
         return
-    AuraX = await edit_or_reply(event, "recognizeing this media")
+    W2H = await edit_or_reply(event, "recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -35,15 +35,15 @@ async def _(event):
             response = await response
         except YouBlockedUserError:
             await event.reply("unblock @Rekognition_Bot and try again")
-            await AuraX.delete()
+            await W2H.delete()
             return
         if response.text.startswith("See next message."):
             response = conv.wait_event(
                 events.NewMessage(incoming=True, from_users=461083923)
             )
             response = await response
-            AuraX = response.message.message
-            await edit_or_reply(event, AuraX)
+            W2H = response.message.message
+            await edit_or_reply(event, W2H)
 
         else:
             await edit_or_reply(event, "sorry, I couldnt find it")

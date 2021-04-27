@@ -1,4 +1,4 @@
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
 

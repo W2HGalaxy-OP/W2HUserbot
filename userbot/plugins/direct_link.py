@@ -13,7 +13,7 @@ from bs4 import BeautifulSoup
 from humanize import naturalsize
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
@@ -22,7 +22,7 @@ async def direct_link_generator(request):
     if request.fwd_from:
         return
     """ direct links generator """
-    AuraXevent = await edit_or_reply(request, "`Processing...`")
+    W2Hevent = await edit_or_reply(request, "`Processing...`")
     textx = await request.get_reply_message()
     message = request.pattern_match.group(1)
     if message:
@@ -30,13 +30,13 @@ async def direct_link_generator(request):
     elif textx:
         message = textx.text
     else:
-        await AuraXevent.edit("`Usage: .direct <url>`")
+        await W2Hevent.edit("`Usage: .direct <url>`")
         return
     reply = ""
     links = re.findall(r"\bhttps?://.*\.\S+", message)
     if not links:
         reply = "`No links found!`"
-        await AuraXevent.edit(reply)
+        await W2Hevent.edit(reply)
     for link in links:
         if "drive.google.com" in link:
             reply += gdrive(link)
@@ -60,7 +60,7 @@ async def direct_link_generator(request):
             reply += androidfilehost(link)
         else:
             reply += re.findall(r"\bhttps?://(.*?[^/]+)", link)[0] + "is not supported"
-    await AuraXevent.edit(reply)
+    await W2Hevent.edit(reply)
 
 
 def gdrive(url: str) -> str:

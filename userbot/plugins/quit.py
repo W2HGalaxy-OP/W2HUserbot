@@ -5,7 +5,7 @@ import time
 
 from telethon.tl.functions.channels import LeaveChannelRequest
 
-from AuraXBot.utils import admin_cmd
+from W2HBOT.utils import admin_cmd
 
 
 @borg.on(admin_cmd("kickme", outgoing=True))

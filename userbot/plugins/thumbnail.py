@@ -10,7 +10,7 @@ import subprocess
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
@@ -129,7 +129,7 @@ async def _(event):
         
 
 CmdHelp("thumbnail").add_command(
-  "sthumb", "<reply to media>", "Saves the thumbnail of replied media to AuraXBot download directory. To get the thumbnail type .upload ./DOWNLOADS/thumb_image.jpg"
+  "sthumb", "<reply to media>", "Saves the thumbnail of replied media to W2HBOT download directory. To get the thumbnail type .upload ./DOWNLOADS/thumb_image.jpg"
 ).add_command(
   "gthumb", None, "Gets the currently saved thumbnail from Downloads Directory"
 ).add_command(

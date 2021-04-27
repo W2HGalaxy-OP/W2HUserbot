@@ -3,7 +3,7 @@ import os
 import time
 import zipfile
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="compress ?(.*)", outgoing=True))
@@ -45,7 +45,7 @@ async def _(event):
             await borg.send_file(
                 event.chat_id,
                 directory_name + ".zip",
-                caption="Zipped By [AuraXBot](t.me/AuraXUserbot)",
+                caption="Zipped By [W2HBOT](t.me/W2H_Userbot)",
                 force_document=True,
                 allow_cache=False,
                 reply_to=event.message.id,

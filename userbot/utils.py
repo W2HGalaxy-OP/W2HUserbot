@@ -61,12 +61,12 @@ def load_module(shortname):
         sys.modules["uniborg.util"] = userbot.utils
         mod.Config = Config
         mod.borg = bot
-        mod.AuraXBot = bot
+        mod.W2HBOT = bot
         mod.edit_or_reply = edit_or_reply
-        mod.delete_AuraX = delete_AuraX
-        # support for AuraXBot originals
-        sys.modules["AuraXBot.utils"] = userbot.utils
-        sys.modules["AuraXBot"] = userbot
+        mod.delete_W2H = delete_W2H
+        # support for W2HBOT originals
+        sys.modules["W2HBOT.utils"] = userbot.utils
+        sys.modules["W2HBOT"] = userbot
         # support for paperplaneextended
         sys.modules["userbot.events"] = userbot.utils
         spec.loader.exec_module(mod)
@@ -115,12 +115,12 @@ def admin_cmd(pattern=None, command=None, **args):
                 CMD_LIST.update({file_test: [cmd]})
         else:
             if len(Config.COMMAND_HAND_LER) == 2:
-                AuraXreg = "^" + Config.COMMAND_HAND_LER
+                W2Hreg = "^" + Config.COMMAND_HAND_LER
                 reg = Config.COMMAND_HAND_LER[1]
             elif len(Config.COMMAND_HAND_LER) == 1:
-                AuraXreg = "^\\" + Config.COMMAND_HAND_LER
+                W2Hreg = "^\\" + Config.COMMAND_HAND_LER
                 reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(AuraXreg + pattern)
+            args["pattern"] = re.compile(W2Hreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -180,12 +180,12 @@ def sudo_cmd(pattern=None, command=None, **args):
                 SUDO_LIST.update({file_test: [cmd]})
         else:
             if len(Config.SUDO_COMMAND_HAND_LER) == 2:
-                AuraXreg = "^" + Config.SUDO_COMMAND_HAND_LER
+                W2Hreg = "^" + Config.SUDO_COMMAND_HAND_LER
                 reg = Config.SUDO_COMMAND_HAND_LER[1]
             elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
-                AuraXreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
+                W2Hreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
                 reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(AuraXreg + pattern)
+            args["pattern"] = re.compile(W2Hreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -284,13 +284,13 @@ async def edit_or_reply(
     await event.delete()
     os.remove(file_name)
 
-async def delete_AuraX(event, text, time=None, parse_mode=None, link_preview=None):
+async def delete_W2H(event, text, time=None, parse_mode=None, link_preview=None):
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
     time = time or 5
     if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
-        AuraXevent = (
+        W2Hevent = (
             await reply_to.reply(text, link_preview=link_preview, parse_mode=parse_mode)
             if reply_to
             else await event.reply(
@@ -298,11 +298,11 @@ async def delete_AuraX(event, text, time=None, parse_mode=None, link_preview=Non
             )
         )
     else:
-        AuraXevent = await event.edit(
+        W2Hevent = await event.edit(
             text, link_preview=link_preview, parse_mode=parse_mode
         )
     await asyncio.sleep(time)
-    return await AuraXevent.delete()
+    return await W2Hevent.delete()
 
 # from paperplaneextended
 on = bot.on

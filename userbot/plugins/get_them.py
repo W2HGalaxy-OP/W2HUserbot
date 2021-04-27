@@ -6,7 +6,7 @@ from telethon.tl.types import (
 )
 from telethon.utils import pack_bot_file_id
 
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd(pattern="get_admins ?(.*)"))

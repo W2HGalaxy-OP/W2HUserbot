@@ -15,7 +15,7 @@ from telethon.tl.types import (
 
 #from userbot import CMD_HELP
 from userbot.Config import Config
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
 KANGING_STR = [
@@ -31,7 +31,7 @@ KANGING_STR = [
     "Mr.Steal Your Sticker is stealing this sticker... ",
 ]
 
-AuraXBot = Config.CUSTOM_STICKER_PACK_NAME
+W2HBOT = Config.CUSTOM_STICKER_PACK_NAME
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="kang"))
@@ -99,11 +99,11 @@ async def kang(args):
                 # pack
                 emoji = splat[1]
 
-        packname = f"HB_{user.username}_AuraXBot_{pack}"
+        packname = f"HB_{user.username}_W2HBOT_{pack}"
         packnick = (
-            f"{AuraXBot} Vol.{pack}"
-            if AuraXBot
-            else f"@{user.username}'s AuraXBot Vol.{pack}"
+            f"{W2HBOT} Vol.{pack}"
+            if W2HBOT
+            else f"@{user.username}'s W2HBOT Vol.{pack}"
         )
         cmd = "/newpack"
         file = io.BytesIO()
@@ -137,9 +137,9 @@ async def kang(args):
                     pack += 1
                     packname = f"HB_{user.username}_by_{user.username}_{pack}"
                     packnick = (
-                        f"{AuraXBot} Vol.{pack}"
-                        if AuraXBot
-                        else f"@{user.username}'s AuraXBot Vol.{pack}"
+                        f"{W2HBOT} Vol.{pack}"
+                        if W2HBOT
+                        else f"@{user.username}'s W2HBOT Vol.{pack}"
                     )
                     await args.edit(
                         "`Switching to Pack "

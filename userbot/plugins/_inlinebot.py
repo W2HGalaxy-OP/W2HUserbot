@@ -25,16 +25,16 @@ from telethon.tl.functions.channels import JoinChannelRequest
 
 from userbot import *
 from userbot.cmdhelp import *
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 from userbot.Config import Config
 
-AuraX_row = Config.BUTTONS_IN_HELP
-AuraX_emoji = Config.EMOJI_IN_HELP
+W2H_row = Config.BUTTONS_IN_HELP
+W2H_emoji = Config.EMOJI_IN_HELP
 # thats how a lazy guy imports
-# AuraXBot
+# W2HBOT
 
 def button(page, modules):
-    Row = AuraX_row
+    Row = W2H_row
     Column = 3
 
     modules = sorted([modul for modul in modules if not modul.startswith("_")])
@@ -47,7 +47,7 @@ def button(page, modules):
     for pairs in pairs[page]:
         buttons.append(
             [
-                custom.Button.inline(f"{AuraX_emoji} " + pair, data=f"Information[{page}]({pair})")
+                custom.Button.inline(f"{W2H_emoji} " + pair, data=f"Information[{page}]({pair})")
                 for pair in pairs
             ]
         )
@@ -55,18 +55,18 @@ def button(page, modules):
     buttons.append(
         [
             custom.Button.inline(
-               f"⬅️ 𝐁𝐀𝐂𝐊 {AuraX_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
+               f"⬅️ 𝐁𝐀𝐂𝐊 {W2H_emoji}", data=f"page({(max_pages - 1) if page == 0 else (page - 1)})"
             ),
             custom.Button.inline(
-               f"•{AuraX_emoji} ❌ {AuraX_emoji}•", data="close"
+               f"•{W2H_emoji} ❌ {W2H_emoji}•", data="close"
             ),
             custom.Button.inline(
-               f"{AuraX_emoji} 𝐍𝐄𝐗𝐓 ➡️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
+               f"{W2H_emoji} 𝐍𝐄𝐗𝐓 ➡️", data=f"page({0 if page == (max_pages - 1) else page + 1})"
             ),
         ]
     )
     return [max_pages, buttons]
-    # Changing this line may give error in bot as i added some special cmds in AuraXBot channel to get this module work...
+    # Changing this line may give error in bot as i added some special cmds in W2HBOT channel to get this module work...
 
     modules = CMD_HELP
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
@@ -75,12 +75,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid and query == "@AuraXUserbot":
+        if event.query.user_id == bot.uid and query == "@W2H_Userbot":
             rev_text = query[::-1]
             veriler = button(0, sorted(CMD_HELP))
             result = await builder.article(
                 f"Hey! Only use .help please",
-                text=f"**Running AuraXBot**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
+                text=f"**Running W2HBOT**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
                 buttons=veriler[1],
                 link_preview=False,
             )
@@ -94,18 +94,18 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
         else:
             result = builder.article(
-                "@AuraXUserbot",
-                text="""**Hey! This is [AuraXBot.](https://t.me/AuraXUserbot) \nYou can know more about me from the links given below 👇**""",
+                "@W2H_Userbot",
+                text="""**Hey! This is [W2HBOT.](https://t.me/W2H_Userbot) \nYou can know more about me from the links given below 👇**""",
                 buttons=[
                     [
-                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/AuraXUserbot"),
+                        custom.Button.url("🔥 CHANNEL 🔥", "https://t.me/W2H_Userbot"),
                         custom.Button.url(
-                            "⚡ GROUP ⚡", "https://t.me/AuraXSupport"
+                            "⚡ GROUP ⚡", "https://t.me/W2HSupport"
                         ),
                     ],
                     [
                         custom.Button.url(
-                            "✨ REPO ✨", "https://github.com/AuraXNetwork/AuraXBot"),
+                            "✨ REPO ✨", "https://github.com/W2HGalaxy-OP/W2HBOT"),
                     ],
                 ],
                 link_preview=False,
@@ -116,14 +116,14 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     async def page(event):
         if not event.query.user_id == bot.uid:
             return await event.answer(
-                "HELLO THERE. PLEASE MAKE YOUR OWN AuraXBot AND USE © AuraXBot™ ",
+                "Mil Gyi Tasalli..? Kabse mere bot me ungli kr rhe h. Khudka bna lo na agr chaiye to pta nhi kaha se aajate h disturb krne. ©W2HBOT™ ",
                 cache_time=0,
                 alert=True,
             )
         page = int(event.data_match.group(1).decode("UTF-8"))
         veriler = button(page, CMD_HELP)
         await event.edit(
-            f"**Legenday AF** [AuraXBot](https://t.me/AuraXUserbot) __Working...__\n\n**Number of modules installed :** `{len(CMD_HELP)}`\n**page:** {page + 1}/{veriler[0]}",
+            f"**Legenday AF** [W2HBOT](https://t.me/W2H_Userbot) __Working...__\n\n**Number of modules installed :** `{len(CMD_HELP)}`\n**page:** {page + 1}/{veriler[0]}",
             buttons=veriler[1],
             link_preview=False,
         )
@@ -131,12 +131,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await delete_AuraX(event,
-              "⚜️AuraXBot Menu Provider Is now Closed⚜️\n\n         **[©AuraXBot](t.me/AuraXUserbot)**", 5, link_preview=False
+            await delete_W2H(event,
+              "⚜️W2HBOT Menu Provider Is now Closed⚜️\n\n         **[©W2HBOT](t.me/W2H_Userbot)**", 5, link_preview=False
             )
         else:
-            AuraX_alert = "Ho gya aapka? Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. ©AuraXBot"
-            await event.answer(AuraX_alert, cache_time=0, alert=True)
+            W2H_alert = "Mil Gyi Tasalli..? Kabse mere bot me ungli kr rhe h. Khudka bna lo na agr chaiye to pta nhi kaha se aajate h disturb krne. ©W2HBOT"
+            await event.answer(W2H_alert, cache_time=0, alert=True)
           
     @tgbot.on(
         callbackquery.CallbackQuery(data=compile(b"Information\[(\d*)\]\((.*)\)"))
@@ -144,7 +144,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     async def Information(event):
         if not event.query.user_id == bot.uid:
             return await event.answer(
-                "HELLO THERE. PLEASE MAKE YOUR OWN AuraXBot AND USE ©AuraXBot ",
+                "Mil Gyi Tasalli..? Kabse mere bot me ungli kr rhe h. Khudka bna lo na agr chaiye to pta nhi kaha se aajate h disturb krne. ©W2HBOT ",
                 cache_time=0,
                 alert=True,
             )
@@ -177,7 +177,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
     async def commands(event):
         if not event.query.user_id == bot.uid:
             return await event.answer(
-                "HELLO THERE. PLEASE MAKE YOUR OWN AuraXBot AND USE ©AuraXBot ",
+                "Mil Gyi Tasalli..? Kabse mere bot me ungli kr rhe h. Khudka bna lo na agr chaiye to pta nhi kaha se aajate h disturb krne. ©W2HBOT ",
                 cache_time=0,
                 alert=True,
             )

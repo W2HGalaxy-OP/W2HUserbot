@@ -2,10 +2,10 @@ import asyncio
 from collections import deque
 
 from userbot import *
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
 
 @bot.on(admin_cmd(pattern=r"boxs$", outgoing=True))
@@ -43,7 +43,7 @@ async def _(event):
     animation_ttl = range(12)
     event = await edit_or_reply(event, "`Deploying...`")
     animation_chars = [
-        "**Heroku Connecting To Latest [Github Build](AuraXNetwork/AuraXBot)**",
+        "**Heroku Connecting To Latest [Github Build](W2HGalaxy-OP/W2HBOT)**",
         f"**Build started by user** {DEFAULTUSER}",
         f"**Deploy** `535a74f0` **by user** **{DEFAULTUSER}**",
         "**Restarting Heroku Server...**",
@@ -52,8 +52,8 @@ async def _(event):
         "**Process exited with** `status 143`",
         "**Starting process with command** `python3 -m stdborg`",
         "**State changed from starting to up**",
-        "__INFO:AuraXBot:Logged in as 557667062__",
-        "__INFO:AuraXBot:Successfully loaded all plugins__",
+        "__INFO:W2HBOT:Logged in as 557667062__",
+        "__INFO:W2HBOT:Successfully loaded all plugins__",
         "**Build Succeeded**",
     ]
     for i in animation_ttl:

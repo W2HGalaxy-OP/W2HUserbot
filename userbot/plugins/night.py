@@ -8,7 +8,7 @@ from telethon import events
 from telethon.tl import functions, types
 
 from userbot import ALIVE_NAME
-from AuraXBot.utils import admin_cmd
+from W2HBOT.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
 global USER_night  # pylint:disable=E0602
@@ -19,7 +19,7 @@ night_time = None
 last_night_message = {}
 
 DEFAULTUSER = (
-    str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+    str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 )
 
 
@@ -40,7 +40,7 @@ async def set_not_night(event):
                 event.chat_id,
                 "Please set `PLUGIN_CHANNEL` "
                 + "for the proper functioning of night functionality "
-                + "report in [AuraXBot](t.me/AuraXSupport)\n\n `{}`".format(str(e)),
+                + "report in [W2HBOT](t.me/W2HSupport)\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
                 silent=True,
             )

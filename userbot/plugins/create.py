@@ -1,4 +1,4 @@
-# Made By @Kraken_The_BadAss
+# Made By @David99q
 # Keep Credits else gay....
 
 """Create Private Groups
@@ -8,7 +8,7 @@ from telethon.tl import functions
 from telethon.tl.types import MessageEntityMentionName
 
 from userbot import CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
@@ -18,7 +18,7 @@ async def _(event):
         return
     type_of_group = event.pattern_match.group(1)
     group_name = event.pattern_match.group(2)
-    event = await edit_or_reply(event, "Creating wait sar.....")
+    event = await edit_or_reply(event, "Creating wait sir.....")
     if type_of_group == "b":
         try:
             result = await event.client(
@@ -52,7 +52,7 @@ async def _(event):
             r = await event.client(
                 functions.channels.CreateChannelRequest(
                     title=group_name,
-                    about="Created By AuraXBot",
+                    about="Created By W2HBOT",
                     megagroup=type_of_group != "c",
                 )
             )

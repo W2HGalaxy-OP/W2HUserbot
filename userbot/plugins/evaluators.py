@@ -6,7 +6,7 @@ import os
 import sys
 import traceback
 
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import *
 from userbot.cmdhelp import CmdHelp
 
@@ -18,17 +18,17 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await edit_delete(event, "`What should i execute?..`")
-    AuraXevent = await edit_or_reply(event, "`Executing.....`")
-    process = await asyncio.create_subprocess_sAuraX(
+    W2Hevent = await edit_or_reply(event, "`Executing.....`")
+    process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
     result = str(stdout.decode().strip()) + str(stderr.decode().strip())
-    AuraXuser = await event.client.get_me()
-    if AuraXuser.username:
-        curruser = AuraXuser.username
+    W2Huser = await event.client.get_me()
+    if W2Huser.username:
+        curruser = W2Huser.username
     else:
-        curruser = "AuraXBot"
+        curruser = "W2HBOT"
     uid = os.geteuid()
     if uid == 0:
         cresult = f"`{curruser}:~#` `{cmd}`\n`{result}`"
@@ -55,7 +55,7 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await edit_delete(event, "`What should i run ?..`")
-    AuraXevent = await edit_or_reply(event, "`Running ...`")
+    W2Hevent = await edit_or_reply(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -80,7 +80,7 @@ async def _(event):
         evaluation = "Success"
     final_output = f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n`{evaluation}` \n"
     await edit_or_reply(
-        AuraXevent,
+        W2Hevent,
         text=final_output,
         aslink=True,
         linktext=f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n",
@@ -148,7 +148,7 @@ async def _(event):
 CmdHelp("evaluators").add_command(
   'eval', '<expr>', 'Execute python script'
 ).add_command(
-  'exec', '<command>', 'Execute a Terminal command on AuraXBot server and shows details'
+  'exec', '<command>', 'Execute a Terminal command on W2HBOT server and shows details'
 ).add_command(
   'bash', '<query>', 'Bash your codes on linux and gives the output in current chat'
 ).add()

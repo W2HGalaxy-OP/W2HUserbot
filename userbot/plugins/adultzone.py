@@ -1,5 +1,5 @@
 # credits to userge
-# ported to AuraXBot by @AuraXOwner
+# ported to W2HBOT by @David99q
 # will be adding more soon
 
 import asyncio
@@ -9,7 +9,7 @@ import urllib
 import requests
 
 from userbot import *
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd("boobs$"))

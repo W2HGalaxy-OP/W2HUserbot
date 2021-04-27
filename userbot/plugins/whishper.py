@@ -1,6 +1,6 @@
-# Made by @Kraken_The_BadAss for @AuraXUserbot
+# Made by @David99q for @W2H_Userbot
 
-from AuraXBot.utils import *
+from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
 

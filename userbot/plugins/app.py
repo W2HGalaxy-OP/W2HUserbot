@@ -1,4 +1,4 @@
-"""Fetch App Details from Playstore. @AuraXUserbot
+"""Fetch App Details from Playstore. @W2H_Userbot
 .app <app_name> to fetch app details.
 .appr <app_name>  to fetch app details with Xpl0iter request link.
 .mods <app_name> to get the premier app from telegram if available.."""
@@ -7,10 +7,10 @@ import bs4
 import requests
 
 from userbot import ALIVE_NAME, CMD_HELP
-from AuraXBot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "AuraX User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
 
 @bot.on(admin_cmd(pattern="app (.*)"))

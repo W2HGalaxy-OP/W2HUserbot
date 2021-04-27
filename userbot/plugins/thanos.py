@@ -1,7 +1,7 @@
 import asyncio
 
 from telethon import events
-from AuraXBot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 
 @bot.on(admin_cmd(pattern="thanos$", outgoing=True))
 @bot.on(sudo_cmd(pattern="thanos$", allow_sudo=True))
