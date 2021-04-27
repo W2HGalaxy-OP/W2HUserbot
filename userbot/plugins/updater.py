@@ -15,7 +15,7 @@ IS_SELECTED_DIFFERENT_BRANCH = (
     "please check out to an official branch, and re-start the updater."
 )
 OFFICIAL_UPSTREAM_REPO = Config.UPSTREAM_REPO
-BOT_IS_UP_TO_DATE = "**The W2HBOT** is up-to-date sur."
+BOT_IS_UP_TO_DATE = "**The W2HBOT** is up-to-date sir."
 NEW_BOT_UP_DATE_FOUND = (
     "new update found for {branch_name}\n"
     "changelog: \n\n{changelog}\n"
@@ -136,7 +136,7 @@ def generate_change_log(git_repo, diff_marker):
 async def deploy_start(tgbot, message, refspec, remote):
     await message.edit(RESTARTING_APP)
     await message.edit(
-        "Updated your W2HBOT successfully sur!!!\nNow type `.ping` after 5 mins to check if I'm on🚶😏"
+        "Updated your W2HBOT successfully sir!!!\nNow type `.ping` after 5 mins to check if I'm on Sir 😎"
     )
     await remote.push(refspec=refspec)
     await tgbot.disconnect()
