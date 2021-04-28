@@ -120,7 +120,7 @@ async def gban(userbot):
     except:
         pass
     return await W2HBOT.edit(
-        f"[{user.first_name}](tg://user?id={user.id}) [{David99q}](tg://user?id={papa}) Teri Kali Gand Chodne Wala Tera Baap.\n\n**Gban Successful This Nube 🔥\nAffected Chats😏 : {a} **"
+        f"[{user.first_name}](tg://user?id={user.id}) Teri Kali Gand Chodne Wala Tera [{David99q}](tg://user?id={papa}) Baap.\n\n**Gban Successful This Nube 🔥\nAffected Chats😏 : {a} **"
     )
 
 @bot.on(admin_cmd(pattern="ungban ?(.*)"))
