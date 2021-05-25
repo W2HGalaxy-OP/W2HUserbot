@@ -89,7 +89,7 @@ async def sticklet(event):
     await event.client.send_file(
         event.chat_id,
         image_stream,
-        caption="helbot's Sticklet",
+        caption="W2Hbot's Sticklet",
         reply_to=event.message.reply_to_msg_id,
     )
     # cleanup
