@@ -22,7 +22,7 @@ aura = bot.uid
 mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
 
-PM_IMG = "https://telegra.ph/file/d88acbd81510ccf8f4428.mp4"
+PM_IMG = "https://telegra.ph/file/fd0978ae951f06e2798ec.mp4"
 pm_caption ="**W2HBOT Is Online**\n\n"
 
 pm_caption += f"**┏━━━━━━━━━━━━━┓**\n"
