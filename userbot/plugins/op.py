@@ -7,13 +7,13 @@ from userbot import ALIVE_NAME
 from telethon.tl.types import ChannelParticipantsAdmins
 # 🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
+mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 from . import *
 # Thanks to LEGEND BRO.. 
 # animation Idea by @PYTHON_CODER_SRINIVAS (op coder)
 # Made by @PYTHON_CODER_SRINIVAS...and thanks to @koi_nhi_apna for the logos...
 # Kang with credits else gay...
 # alive.py for
-
 edit_time = 5
 """ =======================CONSTANTS====================== """
 file1="https://telegra.ph/file/2d41a6b1b3713579c63c2.jpg"
@@ -25,8 +25,8 @@ pm_caption += "💌💌 **𝐆𝐨𝐝,𝒚𝒐𝒖 𝒂𝒓𝒆 𝒂𝒍𝒎�
 pm_caption += "༆༄🎀🌹About Me \n\n"
 pm_caption += "💫💫**my assistant**💫💫 >>》 15.0.0\n"
 pm_caption += "😇😇**OP OWNER HERE**😇😇   >>》 [OWNER](https://t.me/w2h_ravan)\n"
-pm_caption += f"🔰🔰**OWNER HERE**🔰🔰  >>》 [OWNER](https://t.me/@david99q)\n"
-pm_caption += "❣❣ **ᴄʀᴇᴀᴛᴏʀ**❣❣ >>》 [CREATOR]({DEFAULTUSER})\n\n"
+pm_caption += f"🔰🔰**OWNER HERE**🔰🔰  >>》 [OWNER](https://t.me/david99q)\n"
+pm_caption += "❣❣ **ᴄʀᴇᴀᴛᴏʀ**❣❣ >>》 [CREATOR]({mention})\n\n"
 pm_caption += "🎊🎊 **W2H SUPPORT GROUP**🎊🎊  >>》 [GROUP](https://t.me/W2HSupport)\n\n"
 pm_caption += "[....▄███▄███▄\n....█████████\n.......▀██❣🌹💫😇💫🌹❣███▀\n...............▀█▀\n](https://t.me/Legend_Mr_Hacker)\n\n"
 @borg.on(admin_cmd(pattern=r"op"))
