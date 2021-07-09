@@ -1,13 +1,15 @@
 import asyncio
 import random
 from telethon import events
+op = bot.uid
 from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 from userbot import ALIVE_NAME
 from telethon.tl.types import ChannelParticipantsAdmins
 # 🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔🤔
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
-mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
+mention = f"[{DEFAULTUSER}](tg://user?id={op})"
+
 from . import *
 # Thanks to LEGEND BRO.. 
 # animation Idea by @PYTHON_CODER_SRINIVAS (op coder)
