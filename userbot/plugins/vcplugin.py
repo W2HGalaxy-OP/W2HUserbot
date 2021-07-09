@@ -26,15 +26,15 @@ def user_list(l, n):
 async def _(e):
     try:
         await e.client(stopvc(await get_call(e)))
-        await eor(e, "`Voice Chat Stopped...`")
+        await edit_or_reply(e, "`Voice Chat Stopped...`")
     except Exception as ex:
-        await eor(e, f"`{str(ex)}`")
+        await edit_or_reply(e, f"`{str(ex)}`")
 
 
 @bot.on(admin_cmd(pattern="playvc$",
 ))
 async def _(e):
-    zz = await eor(e, "`VC bot started...`")
+    zz = await edit_or_reply(e, "`VC bot started...`")
     er, out = await bash("python vcstarter.py & sleep 10 && npm start")
     LOGS.info(er)
     LOGS.info(out)
@@ -55,7 +55,7 @@ async def _(e):
     outgoing=True,
 ))
 async def _(e):
-    ok = await eor(e, "`Inviting Members to Voice Chat...`")
+    ok = await edit_or_reply(e, "`Inviting Members to Voice Chat...`")
     users = []
     z = 0
     async for x in e.client.iter_participants(e.chat_id):
@@ -78,16 +78,16 @@ async def _(e):
 async def _(e):
     try:
         await e.client(startvc(e.chat_id))
-        await eor(e, "`Voice Chat Started...`")
+        await edit_or_reply(e, "`Voice Chat Started...`")
     except Exception as ex:
-        await eor(e, f"`{str(ex)}`")
+        await edit_or_reply(e, f"`{str(ex)}`")
 
 
 @bot.on(admin_cmd(
     pattern="listvcaccess$",
 ))
 async def _(e):
-    xx = await eor(e, "`Getting Voice Chat Bot Users List...`")
+    xx = await edit_or_reply(e, "`Getting Voice Chat Bot Users List...`")
     mm = get_vcsudos()
     pp = f"**{len(mm)} Voice Chat Bot Approved Users**\n"
     if len(mm) > 0:
@@ -104,7 +104,7 @@ async def _(e):
     pattern="rmvaccess ?(.*)",
 ))
 async def _(e):
-    xx = await eor(e, "`Disapproving to access Voice Chat features...`")
+    xx = await edit_or_reply(e, "`Disapproving to access Voice Chat features...`")
     input = e.pattern_match.group(1)
     if e.reply_to_msg_id:
         userid = (await e.get_reply_message()).sender_id
@@ -138,7 +138,7 @@ async def _(e):
     pattern="vcaccess ?(.*)",
 ))
 async def _(e):
-    xx = await eor(e, "`Approving to access Voice Chat features...`")
+    xx = await edit_or_reply(e, "`Approving to access Voice Chat features...`")
     input = e.pattern_match.group(1)
     if e.reply_to_msg_id:
         userid = (await e.get_reply_message()).sender_id
