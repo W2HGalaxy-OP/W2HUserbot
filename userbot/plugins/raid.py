@@ -374,7 +374,7 @@ async def _(event):
         event = await edit_or_reply(event, "Raid is Stoping")
         queue = que.get(e)
         queue.pop(0)
-        await event.edit(f"LEGENDBOT IS STOPING RAID")
+        await event.edit(f"{ALIVE_NAME} IS STOPING RAID")
     else:
         user = event.pattern_match.group(1)
         event = await edit_or_reply(event, "Reply Raid De-activating....")
