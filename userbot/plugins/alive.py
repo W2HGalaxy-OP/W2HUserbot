@@ -23,15 +23,15 @@ mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
 
 PM_IMG = "https://telegra.ph/file/fd0978ae951f06e2798ec.mp4"
-pm_caption ="**W2HBOT Is Online**\n\n"
+pm_caption ="**ᴡ2ʜʙᴏᴛ Is ᴘʀᴇsᴇɴᴛɪɴɢ ʙᴇsᴛᴇsᴛ ʙᴏᴛ**\n\n"
 
 pm_caption += f"**┏━━━━━━━━━━━━━┓**\n"
-pm_caption += f"**┣★ Master : {mention}**\n"
-pm_caption += f"**┣★ Telethon : `{version.__version__}`**\n"
-pm_caption += f"**┣★ W2HBOT : {W2Hversion}**\n"
-pm_caption += f"**┣★ Sudo       : `{sudou}`**\n"
-pm_caption += f"**┣★ Channel   : [Join Here](https://t.me/W2H_Userbot)**\n"
-pm_caption += f"**┣★ Creater    : [W2H Here](https://t.me/David99q)**\n"
+pm_caption += f"**┣★ ᴍᴀsᴛᴇʀ : {mention}**\n"
+pm_caption += f"**┣★ ᴛᴇʟᴇᴛʜᴏɴ : `{version.__version__}`**\n"
+pm_caption += f"**┣★ ᴡ2ʜʙᴏᴛ : {W2Hversion}**\n"
+pm_caption += f"**┣★ sᴜᴅᴏ       : `{sudou}`**\n"
+pm_caption += f"**┣★ ᴄʜᴀɴɴᴇʟ   : [Join Here](https://t.me/W2H_Userbot)**\n"
+pm_caption += f"**┣★ ᴄʀᴇᴀᴛᴏʀ    : [W2H Here](https://t.me/David99q)**\n"
 pm_caption += f"**┗━━━━━━━━━━━━━┛**\n"
 
 pm_caption += "    [✨REPO✨](https://github.com/W2HGalaxy-OP/W2HBOT) 🔹 [📜License📜](https://github.com/W2HGalaxy-OP/W2HBOT/blob/master/LICENSE)"
