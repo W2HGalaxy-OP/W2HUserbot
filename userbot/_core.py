@@ -11,7 +11,7 @@ from userbot import bot as W2HBOT
 
 DELETE_TIMEOUT = 5
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
-W2H_logo = "./W2H/W2HBOT_logo.jpg"
+W2H_logo = "./W2HBOT/W2Hbot_logo.jpg"
 aura = W2HBOT.uid
 W2H = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
