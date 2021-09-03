@@ -70,6 +70,7 @@ async def legend_is_on():
     except Exception as e:
         print(str(e))
 
+bot.loop.create_task(legend_is_on())
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
