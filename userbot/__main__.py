@@ -61,7 +61,7 @@ IF YOU FACE ANY ISSUE THEN ASK AT CHAT GROUP.""")
 
 async def legend_is_on():
     try:
-        if Config.PRIVATE_GROUP_BOT_API_ID != 0:
+        if Config.PM_LOGGR_BOT_API_ID != 0:
             await bot.send_file(
                 Config.PRIVATE_GROUP_BOT_API_ID,
                 W2H_PIC,
