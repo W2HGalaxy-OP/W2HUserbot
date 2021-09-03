@@ -3,6 +3,7 @@ from sys import argv
 import sys
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 import os
+from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from telethon import TelegramClient
 from var import Var
 from userbot.Config import Config
@@ -69,6 +70,27 @@ async def legend_is_on():
             )
     except Exception as e:
         print(str(e))
+# Join LegndBot Channel after deploying 🤐😅
+    try:
+        await bot(JoinChannelRequest("@w2h_userbot"))
+    except BaseException:
+        pass
+
+    try:
+        await bot(JoinChannelRequest("@its_legendbot"))
+    except BaseException:
+        pass
+
+
+    try:
+        await bot(JoinChannelRequest("@Ravan102030"))
+    except BaseException:
+         pass
+
+    try:
+        await bot(JoinChannelRequest("@W2hSupport"))
+    except BaseException:
+         pass
 
 bot.loop.create_task(legend_is_on())
 
