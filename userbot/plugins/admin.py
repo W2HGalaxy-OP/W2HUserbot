@@ -137,7 +137,7 @@ async def promote(promt):
         add_admins=False,
         invite_users=True,
         change_info=False,
-        ban_users=True,
+        ban_users=False,
         delete_messages=True,
         pin_messages=True,
     )
@@ -149,7 +149,7 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await W2Hevent.edit("My Legend master {w2h_mention} has promoted You In this Group....!! Ab party de🥳🥳")
+        await W2Hevent.edit("My Legend master has promoted You In this Group....!! Ab party de🥳🥳")
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
