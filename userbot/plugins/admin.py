@@ -34,7 +34,7 @@ from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
-DEFAULTUSER = ALIVE_NAME else "W2H User"
+from . import *
 
 # =================== CONSTANT ===================
 
@@ -149,7 +149,7 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await W2Hevent.edit("My Legend master {DEFAULTUSER} has promoted You In this Group....!! Ab maje le.......🥳🥳")
+        await W2Hevent.edit("My Legend master {w2h_mention} has promoted You In this Group....!! Ab maje le.......🥳🥳")
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
