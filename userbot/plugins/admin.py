@@ -34,7 +34,7 @@ from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
+DEFAULTUSER = ALIVE_NAME else "W2H User"
 
 # =================== CONSTANT ===================
 
