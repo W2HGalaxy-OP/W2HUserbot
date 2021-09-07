@@ -34,6 +34,8 @@ from userbot.plugins.sql_helper.mute_sql import is_muted, mute, unmute
 from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
 
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
+
 # =================== CONSTANT ===================
 
 PP_TOO_SMOL = "`The image is too small`"
@@ -147,7 +149,7 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await W2Hevent.edit("Promoted Successfully! Mje le bhnchoo...power ke 😂")
+        await W2Hevent.edit("My Legend master alive name has promoted You In this Group....!! Ab maje le.......🥳🥳")
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
