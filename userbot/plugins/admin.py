@@ -144,12 +144,12 @@ async def promote(promt):
     W2Hevent = await edit_or_reply(promt, "Promoting...")
     user, rank = await get_user_from_event(promt)
     if not rank:
-        rank = "Bisi"
+        rank = "w2h"
     if not user:
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await W2Hevent.edit("My Legend master {w2h_mention} has promoted You In this Group....!! Ab maje le.......🥳🥳")
+        await W2Hevent.edit("My Legend master {w2h_mention} has promoted You In this Group....!! Ab party de🥳🥳")
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
