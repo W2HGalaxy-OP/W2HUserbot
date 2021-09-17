@@ -16,6 +16,7 @@ cfscrape
 coffeehouse
 chromedriver_autoinstaller
 cowpy
+covid
 cryptg
 colorama>=0.4.3
 deep_translator
