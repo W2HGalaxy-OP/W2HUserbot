@@ -2,9 +2,10 @@ import asyncio
 from collections import deque
 
 from userbot import CMD_HELP
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
+from .import *
 
 @bot.on(admin_cmd(pattern="think$", outgoing=True))
 @bot.on(sudo_cmd(pattern="think$", allow_sudo=True))
@@ -140,11 +141,6 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
-
-
-import asyncio
-
-from W2HBOT.utils import admin_cmd
 
 
 @bot.on(admin_cmd(pattern=f"lovestory", outgoing=True))
@@ -411,7 +407,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    animation_interval = 0.3
+    animation_interval = 0.5
     animation_ttl = range(54)
     event = await edit_or_reply(event, "🖤")
     animation_chars = [
