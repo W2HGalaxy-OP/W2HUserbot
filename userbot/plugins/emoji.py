@@ -6,7 +6,7 @@ Available Commands:
 .emoji -_-"""
 import asyncio
 
-from LEGENDBOT.utils import admin_cmd
+from W2HBOT.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd(pattern="emoji (.*)"))

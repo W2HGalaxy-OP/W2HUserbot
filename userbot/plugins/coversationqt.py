@@ -4,7 +4,7 @@ from userbot.cmdhelp import CmdHelp
 import asyncio
 import random
 
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from . import *
 @bot.on(admin_cmd(pattern=r"qt"))

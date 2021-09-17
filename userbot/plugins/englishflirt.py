@@ -5,7 +5,7 @@ CmdHelp("englishflirt").add_command(
 import asyncio
 import random
 
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @bot.on(admin_cmd(pattern=r"rflirt$", outgoing=True))

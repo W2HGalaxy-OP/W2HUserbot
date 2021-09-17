@@ -58,7 +58,7 @@ async def lg1(W2Hevent):
     draw.text(
         (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
     )
-    file_name = "LEGENDBOT.png"
+    file_name = "W2HBOT.png"
     img.save(file_name, "png")
     await bot.send_file(
         W2Hevent.chat_id,

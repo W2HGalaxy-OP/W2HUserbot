@@ -1,7 +1,7 @@
 import random
 
 from userbot.cmdhelp import CmdHelp
-from LEGENDBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 RUNSREACTS = [
     "`Aur Bata Bsdk Kar Liya Tunee Party De Chal!`",

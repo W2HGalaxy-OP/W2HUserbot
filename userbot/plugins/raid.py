@@ -347,7 +347,7 @@ async def _(event):
         await event.edit(f"STARTING RAID BY {ALIVE_NAME}")
     else:
         user = event.pattern_match.group(1)
-        event = await edit_or_reply(event, "STARTING RAID BY LEGENDBOT")
+        event = await edit_or_reply(event, "STARTING RAID BY W2HBOT")
         a = await event.client.get_entity(user)
         e = a.id
         c = a.first_name
