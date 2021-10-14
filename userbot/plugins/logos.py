@@ -18,7 +18,7 @@ PICS_STR = []
 @bot.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
 async def lg1(W2Hevent):
     event = await edit_or_reply(W2Hevent, "`Processing.....`")
-    fnt = await get_font_file(event.client, "@LEGEND_MR_FRONTS")
+    fnt = await get_font_file(event.client, "@LegendFonts")
     if W2Hevent.reply_to_msg_id:
         rply = await W2Hevent.get_reply_message()
         logo_ = await rply.download_media()
