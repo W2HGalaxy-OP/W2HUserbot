@@ -1,4 +1,3 @@
-# credits to @mrconfused 
 
 import asyncio
 import datetime
@@ -73,6 +72,27 @@ def load_module(shortname):
         # for imports
         sys.modules["userbot.plugins." + shortname] = mod
         LOGS.info("Successfully imported " + shortname)
+
+def start_assistant(shortname):
+    if shortname.startswith("__"):
+        pass
+    elif shortname.endswith("_"):
+        path = Path(f"userbot/plugins/assistant/{shortname}.py")
+        name = "userbot.plugins.assistant.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        print("Starting Your Assistant Bot.")
+        print("Assistant Sucessfully imported " + shortname)
+    else:
+        path = Path(f"userbot/plugins/assistant/{shortname}.py")
+        name = "userbot.plugins.assistant.{}".format(shortname)
+        spec = importlib.util.spec_from_file_location(name, path)
+        mod = importlib.util.module_from_spec(spec)
+        mod.tgbot = bot.tgbot
+        spec.loader.exec_module(mod)
+        sys.modules["userbot.plugins.assistant" + shortname] = mod
+        print("[🤴Assistant🤴 ] ~ HAS ~ 💞Installed💞 ~" + shortname)  
 
 
 def remove_plugin(shortname):
