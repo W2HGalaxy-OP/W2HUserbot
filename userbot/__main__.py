@@ -7,7 +7,7 @@ from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRe
 from telethon import TelegramClient
 from var import Var
 from userbot.Config import Config
-from userbot.utils import load_module
+from userbot.utils import load_module, start_assistant 
 from userbot import LOAD_PLUG, LOGS, W2Hversion
 from pathlib import Path
 import asyncio
@@ -42,17 +42,36 @@ else:
         bot.start()
 
 
-import glob
-path = 'userbot/plugins/*.py'
-files = glob.glob(path)
-for name in files:
+async def module():
+  import glob
+  path = 'userbot/plugins/*.py'
+  files = glob.glob(path)
+  for name in files:
     with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        load_module(shortname.replace(".py", ""))
+      path1 = Path(f.name)
+      shortname = path1.stem
+      load_module(shortname.replace(".py", ""))
+
+assistant = os.environ.get("ASSISTANT", None)
+async def assistants():
+    if assistant == "ON":
+        import glob
+        path = 'userbot/plugins/assistant/*.py'
+        files = glob.glob(path)
+        for name in files:
+            with open(name) as f:
+                path1 = Path(f.name)
+                shortname = path1.stem
+                try:
+                    start_assistant(shortname.replace(".py", ""))   
+                except Exception as e:
+                    print(e)
+    else:
+        print("⚠️Assistant Not Loaded⚠️")
 
 import userbot._core
-
+bot.loop.run_until_complete(module())
+bot.loop.run_until_complete(assistants())
 print(f"""W2HBOT IS ON!!! W2HBOT VERSION :- {W2Hversion}
 JOIN OFFICIAL CHAT GROUP AND UPDATES CHANNEL
 OFFICIAL GROUP :- @W2HSupport
