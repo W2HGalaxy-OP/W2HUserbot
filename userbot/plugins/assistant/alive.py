@@ -3,18 +3,19 @@ from . import *
 from userbot import *
 from userbot import bot
 
-PM_IMG = "https://telegra.ph/file/c26fc61e904476083baa7.jpg"
-pm_caption = f"⚜『Lêɠêɳ̃dẞø†』Is Ôñĺîne⚜ \n\n"
-pm_caption += f"Ôwñêř ~ 『{legend_mention}』\n"
+PM_IMG = "https://telegra.ph/file/b89e26622fab4b5b1dfeb.jpg"
+
+
+pm_caption = f"⚜『W2Hẞø†』Is Ôñĺîne⚜ \n\n"
+pm_caption += f"Ôwñêř ~ 『{ALIVE_NAME}』\n"
 pm_caption += f"**╭───────────**\n"
 pm_caption += f"┣Ťêlethon ~ `1.15.0` \n"
-pm_caption += f"┣『Lêɠêɳ̃dẞø†』~ `{LEGENDversion}` \n"
-pm_caption += f"┣Çhâññel ~ [Channel](https://t.me/Its_LegendBot)\n"
-pm_caption += f"┣**License** ~ [License v3.0](github.com/The-LegendBot/LEGENBOT/blob/master/LICENSE)\n"
-pm_caption += f"┣Copyright ~ By [『Lêɠêɳ̃dẞø†』 ](https://t.me/Legend_Userbot)\n"
-pm_caption += f"┣Assistant ~ By [『Lêɠêɳ̃dẞøy』 ](https://t.me/Its_LegendBoy)\n"
+pm_caption += f"┣『W2Hẞø†』~ `{LEGENDversion}` \n"
+pm_caption += f"┣Çhâññel ~ [Channel](https://t.me/W2H_userbot)\n"
+pm_caption += f"┣Copyright ~ By [『W2Hẞø†』 ](https://t.me/W2HSupport)\n"
+pm_caption += f"┣Assistant ~ By [『W2Hẞøy』 ](https://t.me/RAVAN102030)\n"
 pm_caption += f"╰────────────\n"
-pm_caption += f"       »»» [『Lêɠêɳ̃dẞø†』](https://t.me/Legend_Userbot) «««"
+pm_caption += f"       »»» [W2Hẞø†](https://t.me/W2HSUPPORT) «««"
 
 
 @tgbot.on(events.NewMessage(pattern="^/alive"))
