@@ -5,7 +5,7 @@ from pathlib import Path
 from telethon import events
 from telethon import functions, types
 from telethon.tl.types import InputMessagesFilterDocument
-from W2HBOT.utils import *
+from userbot.utils import *
 from userbot import *
 from userbot import bot as W2HBOT
 
