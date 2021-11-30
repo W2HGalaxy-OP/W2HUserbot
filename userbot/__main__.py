@@ -96,11 +96,6 @@ async def legend_is_on():
         pass
 
     try:
-        await bot(JoinChannelRequest("@Ravan102030"))
-    except BaseException:
-         pass
-
-    try:
         await bot(JoinChannelRequest("@W2hSupport"))
     except BaseException:
          pass
