@@ -179,39 +179,23 @@ async def dyno_usage(dyno):
 
 @borg.on(admin_cmd(pattern="logs$", outgoing=True))
 async def _(dyno):
-    if dyno.fwd_from:
-        return
+    if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
+        return await eor(
+            dyno,
+            f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {my_group} for help.",
+            link_preview=False,
+        )
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         app = Heroku.app(HEROKU_APP_NAME)
-        thumb = W2H_logo
-    except:
-        return await dyno.reply(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku\n\n[Visit Support Group For Help](https://t.me/W2HSupport)"
+    except BaseException:
+        return await event.reply(
+            f"Make Sure Your Heroku AppName & API Key are filled correct. Visit @w2hsupport for help.",
+            link_preview=False,
         )
-    W2H_data = app.get_log()
-    W2H_key = (
-        requests.post("https://nekobin.com/api/documents", json={"content": W2H_data})
-        .json()
-        .get("result")
-        .get("key")
-    )
-    W2H_url = f"⚡ Pasted this logs.txt to [NekoBin](https://nekobin.com/{W2H_key}) && [RAW PAGE](https://nekobin.com/raw/{W2H_key}) ⚡"
-    await dyno.edit("Getting Logs....")
-    with open("logs.txt", "w") as log:
-        log.write(app.get_log())
-    await dyno.edit("Got the logs wait a sec")
-    await dyno.client.send_file(
-        dyno.chat_id,
-        "logs.txt",
-        reply_to=dyno.id,
-        thumb=thumb,
-        caption=W2H_url,
-    )
-
-    await asyncio.sleep(5)
-    await dyno.delete()
-    return os.remove("logs.txt")
+    # event = await eor(dyno, "Downloading Logs...")
+    LEGEND_data = app.get_log()
+    await eor(event, LEGEND_data)
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
