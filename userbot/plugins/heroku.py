@@ -195,7 +195,7 @@ async def _(dyno):
         )
     # event = await eor(dyno, "Downloading Logs...")
     LEGEND_data = app.get_log()
-    await eor(event, LEGEND_data)
+    await edit_or_reply(event, LEGEND_data)
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
