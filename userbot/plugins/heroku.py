@@ -178,7 +178,7 @@ async def dyno_usage(dyno):
 
 
 @borg.on(admin_cmd(pattern="logs$", outgoing=True))
-async def _(dyno):
+async def _(event):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
         return await eor(
             dyno,
