@@ -71,7 +71,7 @@ sqlalchemy
 sqlalchemy==1.3.23
 telegraph
 twitter_scraper
-telethon
+telethon==1.24.0
 html-telegraph-poster
 urbandict>=0.5
 validators
