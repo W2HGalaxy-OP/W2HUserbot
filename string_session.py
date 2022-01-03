@@ -1,62 +1,69 @@
+import os
+from time import sleep  
+
+
+os.system("pip install -U telethon")
+os.system("pip install --upgrade telethon")
+
+import telethon 
+from telethon.errors.rpcerrorlist import ApiIdInvalidError, PhoneNumberInvalidError
 from telethon.sessions import StringSession
 from telethon.sync import TelegramClient
-import random
-from colorama import Fore, Style, Back
 
+a = """
+© W2H-USERBOT ©
 
-aura = """
-╔╗──╔═══╦═══╦═══╦═╗─╔╦═══╦═══╦═══╦╗──╔╗
-║║──║╔══╣╔═╗║╔══╣║╚╗║╠╗╔╗║╔═╗║╔═╗║╚╗╔╝║  
-║║──║╚══╣║─╚╣╚══╣╔╗╚╝║║║║║║─║║╚═╝╠╗╚╝╔╝  
-║║─╔╣╔══╣║╔═╣╔══╣║╚╗║║║║║║╚═╝║╔╗╔╝╚╗╔╝   
-║╚═╝║╚══╣╚╩═║╚══╣║─║║╠╝╚╝║╔═╗║║║╚╗─║║   
-╚═══╩═══╩═══╩═══╩╝─╚═╩═══╩╝─╚╩╝╚═╝─╚╝   
+░██╗░░░░░░░██╗██████╗░██╗░░██╗
+░██║░░██╗░░██║╚════██╗██║░░██║
+░╚██╗████╗██╔╝░░███╔═╝███████║
+░░████╔═████║░██╔══╝░░██╔══██║
+░░╚██╔╝░╚██╔╝░███████╗██║░░██║
+░░░╚═╝░░░╚═╝░░╚══════╝╚═╝░░╚═╝
+•Fastest Bot•
+~ W2H USERBOT
+
 """
-logo = """
-╭╮╭╮╭┳━━━┳╮╱╭┳━━╮╭━━━┳━━━━╮
-┃┃┃┃┃┃╭━╮┃┃╱┃┃╭╮┃┃╭━╮┃╭╮╭╮┃
-┃┃┃┃┃┣╯╭╯┃╰━╯┃╰╯╰┫┃╱┃┣╯┃┃╰╯
-┃╰╯╰╯┣━╯╭┫╭━╮┃╭━╮┃┃╱┃┃╱┃┃
-╰╮╭╮╭┫┃╰━┫┃╱┃┃╰━╯┃╰━╯┃╱┃┃
-╱╰╯╰╯╰━━━┻╯╱╰┻━━━┻━━━╯╱╰╯
-"""
-baap_bolte = """
-#Legendary W2HBOT          
-Made With Love By Team W2HBOT
-"""
-                                                                                                            
-print("")
-print(Style.BRIGHT + Fore.MAGENTA + aura)
-print(Style.RESET_ALL)
-print(Style.BRIGHT + Fore.BLUE + logo)
-print(Style.RESET_ALL)
-print(Style.BRIGHT + Fore.CYAN + Back.BLUE + baap_bolte)
-print(Style.RESET_ALL)
-print("""Welcome To W2HBOT String Generator By @David99q""")
-print("""Kindly Enter Your Details To Continue ! """)
+x = "Get your API_ID, API_HASH get from my.telegram.org\n\n"
 
-API_KEY = input("API_KEY: ")
-API_HASH = input("API_HASH: ")
+def spinner():
+    print("Checking Setup Telethon...")
+    for _ in range(3):
+        for frame in r"-\|/-\|/":
+            print("\b", frame, sep="", end="", flush=True)
+            sleep(0.1)
+        
+os.system("clear")
+ 
+print(a)
+print(x)
 
-while True:
-    try:
-        with TelegramClient(StringSession(), API_KEY, API_HASH) as client:
-            print("String Sent To Your Saved Message, Store It To A Safe Place!! ")
-            print("")
-            session = client.session.save()
-            client.send_message(
+try:
+    API_ID = int(input("Please enter your API ID: \n"))
+    API_HASH = input("Please enter your API HASH: \n")
+
+except ValueError:
+    print('Wrong combnation of API_ID, HASH')
+    exit(0)
+try:
+        with TelegramClient(StringSession(), API_ID, API_HASH) as barsha:
+            print("Generating a user session for W2H USERBOT...")
+            bby = barsha.send_message(
                 "me",
-                f"Here is your TELEGRAM STRING SESSION\n(Tap to copy it)👇 \n\n `{session}` \n\n And Visit @W2H_Userbot For Any Help !",
+                f"W2H USERBOT✨:\n\n`{barsha.session.save()}`\n\n**Do not share this anywhere!**",
             )
-
+            bby.reply("The Above is the your STRING_SESSION🤗 FOR your W2H USERBOT\n\n__Thanks For Using W2H❤️ \n\n•Join Support Group ~ @W2HSupport \n•Join Updates Channel ~ @W2H_USERBOT")
             print(
-                "Thanks for Choosing W2HBOT Have A Good Time....Note That When You Terminate the Old Session ComeBack And Genrate A New String Session Old One Wont Work"
+                "Your SESSION has been generated. Check your telegram saved messages!"
             )
-    except:
-        print("")
+            exit(0)
+except ApiIdInvalidError:
         print(
-            "Wrong phone number \n make sure its with correct country code. Example : +919811099999 ! Kindly Retry"
+            "Your API ID/API HASH combination is invalid. Kindly recheck.\nQuitting..."
         )
-        print("")
-        continue
-    break
+        exit(0)
+except ValueError:
+        print("API HASH must not be empty!\nQuitting...")
+        exit(0)
+except PhoneNumberInvalidError:
+        print("The phone number is invalid!\nQuitting...")
+        exit(0)
