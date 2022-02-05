@@ -17,13 +17,13 @@ PICS_STR = []
 @bot.on(admin_cmd(pattern=r"logo ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
 async def lg1(W2Hevent):
-    event = await edit_or_reply(W2Hevent, "`Wait kro ban raha hai.....`")
-    fnt = await get_font_file(event.client, "@W2h_ravan")
+    event = await edit_or_reply(W2Hevent, "`Wait kro ban raha hai logo.....`")
+    fnt = await get_font_file(event.client, "@W2h_fonts")
     if W2Hevent.reply_to_msg_id:
         rply = await W2Hevent.get_reply_message()
         logo_ = await rply.download_media()
     else:
-        async for i in bot.iter_messages("@w2h_ravan", filter=InputMessagesFilterPhotos):
+        async for i in bot.iter_messages("@w2h_logos", filter=InputMessagesFilterPhotos):
     	    PICS_STR.append(i)
         pic = random.choice(PICS_STR)
         logo_ = await pic.download_media()
