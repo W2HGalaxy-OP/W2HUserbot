@@ -17,7 +17,7 @@ PICS_STR = []
 @bot.on(admin_cmd(pattern=r"logo ?(.*)"))
 @bot.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
 async def lg1(W2Hevent):
-    event = await edit_or_reply(W2Hevent, "`Wait kro ban raha hai logo.....`")
+    event = await edit_or_reply(W2Hevent, "`Wait kro ban raha hai tumhara logo.....`")
     fnt = await get_font_file(event.client, "@W2h_fonts")
     if W2Hevent.reply_to_msg_id:
         rply = await W2Hevent.get_reply_message()
