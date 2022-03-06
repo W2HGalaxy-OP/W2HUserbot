@@ -1,4 +1,4 @@
-
+from telethon import version
 import asyncio
 import html
 import os
@@ -25,6 +25,7 @@ from W2HBOT.Config import Config
 from userbot.Config import Config
 W2H_row = Config.BUTTONS_IN_HELP
 W2H_emoji = Config.EMOJI_IN_HELP
+from . import ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
 aura = bot.uid
@@ -40,7 +41,7 @@ alive_txt = """
 **•{}•Owner :** {}
 **•{}•W2HBOT :** {}
 **•{}•Telethon :** {}
-**┣★ ᴄʜᴀɴɴᴇʟ   : [Join Here](https://t.me/W2H_Userbot)**
+**┣★ ᴄʜᴀɴɴᴇʟ :** [Join Here](https://t.me/W2H_Userbot)
 **•{}•Sudo      :** {}
 """
 ludosudo = Config.SUDO_USERS
