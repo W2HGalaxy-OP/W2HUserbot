@@ -113,7 +113,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         elif event.query.user_id == bot.uid and query == "alive":
             leg_end = alive_txt.format(
                 alive_emoji,
-                alive_name,
+                DEFAULTUSER,
                 alive_emoji,
                 W2Hversion,
                 alive_emoji,
