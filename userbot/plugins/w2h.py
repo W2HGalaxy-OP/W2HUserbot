@@ -61,7 +61,7 @@ def get_readable_time(seconds: int) -> str:
 uptime = get_readable_time((time.time() - StartTime))
 
 
-@bot.on(admin_cmd(pattern="help ?(.*)", outgoing=True))
+@bot.on(admin_cmd(pattern="w2h ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="w2h$", allow_sudo=True))
 async def yardim(event):
     if event.fwd_from:
