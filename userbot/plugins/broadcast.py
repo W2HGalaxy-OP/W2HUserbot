@@ -6,7 +6,9 @@ from telethon.tl.types import ChatAdminRights
 
 from . import *
 from userbot import bot
-from userbot.utils import admin_cmd
+from userbot.utils import admin_cmd, edit_or_reply
+
+eor = edit_or_reply
 
 @bot.on(admin_cmd(pattern="gcast(?:\s|$)([\s\S]*)")
 async def gcast(event):
@@ -19,7 +21,7 @@ async def gcast(event):
         tol = event.text[9:]
         file = None
     if tol == "":
-        return await eod(event, "I need something to Gcast.")
+        return await eor(event, "I need something to Gcast.")
     hol = await eor(event, "Gcasting message...")
     sed = 0
     lol = 0
