@@ -74,7 +74,7 @@ async def yardim(event):
             event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
         )
         await event.delete()
-     else:
+    else:
         await edit_or_reply(
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
