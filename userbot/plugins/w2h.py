@@ -1,6 +1,6 @@
+import asyncio
 import time
-import time
-
+import requests
 from telethon import version
 from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
@@ -61,16 +61,20 @@ def get_readable_time(seconds: int) -> str:
 uptime = get_readable_time((time.time() - StartTime))
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="w2h$ ?(.*)"))
+@bot.on(admin_cmd(pattern="help ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="w2h$", allow_sudo=True))
-async def amireallyalive(alive): 
-    try:
-        legend = await alive.client.inline_query(Config.TG_BOT_USER_NAME_BF_HER, "alive")
-        await legend[0].click(event.chat_id)
+async def yardim(event):
+    if event.fwd_from:
+        return
+    tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
+    input_str = event.pattern_match.group(1)
+    if tgbotusername is not None or W2H_input == "text":
+        results = await event.client.inline_query(tgbotusername, "alive")
+        await results[0].click(
+            event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
+        )
         await event.delete()
-    except Exception as e:
-        await edit_or_reply(alive, e)
-    """else:
+     else:
         await edit_or_reply(
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
@@ -81,4 +85,3 @@ async def amireallyalive(alive):
             f"**★ Uptime :** `{uptime}\n`"
             f"**★ Master:** {mention}\n",
         )
-"""
