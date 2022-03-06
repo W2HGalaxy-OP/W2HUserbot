@@ -7,7 +7,7 @@ from telethon.sessions import StringSession
 
 from userbot.Config import Config
 from userbot.helpers import functions as simpdef
-from var import Var
+from sample_config import Var
 
 StartTime = time.time()
 W2Hversion = "2.3.0"
