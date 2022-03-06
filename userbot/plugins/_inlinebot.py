@@ -53,7 +53,7 @@ else:
 
 ALV_PIC = "https://telegra.ph/file/fd0978ae951f06e2798ec.mp4"
 
-
+W2Hversion = "2.0"
 
 def button(page, modules):
     Row = W2H_row
