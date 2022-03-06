@@ -51,7 +51,7 @@ else:
     sudou = "False"
 
 
-ALV_PIC = "https://telegra.ph/file/fd0978ae951f06e2798ec.mp4"
+ALV_PIC = "https://telegra.ph/file/4cd888a3491e7ff759bbb.jpg"
 
 W2Hversion = "2.0"
 
@@ -123,24 +123,24 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             )
             alv_btn = [
                 [
-                    Button.url(
-                        f"Owner", f"https://tg.me/W2h_ravan"
-                    )
+                    custom.Button.url(
+                        f"Owner", f"https://t.me/W2h_ravan"
+                    ),
                 ],
                 [
-                    Button.url(
+                    custom.Button.url(
                         f"{DEFAULTUSER}", f"tg://openmessage?user_id={aura}"
-                    )
+                    ),
                 ],
                 [
-                    Button.url(
-                        f"Support", f"https://tg.me/W2h_support"
-                    )
+                    custom.Button.url(
+                        f"Support", f"https://t.me/W2h_support"
+                    ),
                 ],
                 [
-                    Button.url(
-                        f"Chatting", f"https://tg.me/ravan102030"
-                    )
+                    custom.Button.url(
+                        f"Chatting", f"https://t.me/ravan102030"
+                    ),
                 ],
             ]
             if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
