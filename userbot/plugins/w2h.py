@@ -20,7 +20,6 @@ async def reply_id(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     return reply_to_id
-BOT_USERNAME = os.environ.get("
 
 DEFAULTUSER = ALIVE_NAME or "W2H User"
 W2H_IMG = Config.ALIVE_PIC
