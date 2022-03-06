@@ -1,7 +1,7 @@
 import asyncio
 import time
 import requests
-from telethon import version
+from telethon import version, events
 from telethon.errors import ChatSendInlineForbiddenError as noin
 from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 from telethon import version
@@ -67,14 +67,12 @@ async def yardim(event):
     if event.fwd_from:
         return
     tgbotusername = Config.TG_BOT_USER_NAME_BF_HER
-    input_str = event.pattern_match.group(1)
-    if tgbotusername is not None or W2H_input == "text":
-        results = await event.client.inline_query(tgbotusername, "alive")
-        await results[0].click(
-            event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-        )
-        await event.delete()
-    else:
+    results = await event.client.inline_query(tgbotusername, "alive")
+    await results[0].click(
+        event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
+    )
+    await event.delete()
+"""    else:
         await edit_or_reply(
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
@@ -85,3 +83,4 @@ async def yardim(event):
             f"**★ Uptime :** `{uptime}\n`"
             f"**★ Master:** {mention}\n",
         )
+"""
