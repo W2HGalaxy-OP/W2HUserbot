@@ -51,7 +51,7 @@ else:
     sudou = "False"
 
 
-ALV_PIC = "https://telegra.ph/file/4cd888a3491e7ff759bbb.jpg"
+ALV_PIC = os.environ.get("ALIVE_PIC", None) or "https://telegra.ph/file/4cd888a3491e7ff759bbb.jpg"
 
 W2Hversion = "2.0"
 
@@ -104,12 +104,28 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         if event.query.user_id == bot.uid and query == "@W2H_Userbot":
             rev_text = query[::-1]
             veriler = button(0, sorted(CMD_HELP))
-            result = await builder.article(
-                f"Hey! Only use .help please",
-                text=f"**Running W2HBOT**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
-                buttons=veriler[1],
-                link_preview=False,
-            )
+            if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
+                result = builder.photo(
+                    ALV_PIC,
+                    text=f"**Running W2HBOT**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
+                    buttons=veriler[1],
+                    link_preview=False,
+                )
+            elif ALV_PIC:
+                result = builder.document(
+                    ALV_PIC,
+                    text=f"**Running W2HBOT**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
+                    title="W2H Help menu",
+                    buttons=veriler[1],
+                    link_preview=False,
+                )
+            else:
+                result = builder.article(
+                    text=f"**Running W2HBOT**\n\n__Number of plugins installed__ :`{len(CMD_HELP)}`\n**page:** 1/{veriler[0]}",
+                    title="W2H Help",
+                    buttons=veriler[1],
+                    link_preview=False,
+                )
         elif event.query.user_id == bot.uid and query == "alive":
             leg_end = alive_txt.format(
                 alive_emoji,
