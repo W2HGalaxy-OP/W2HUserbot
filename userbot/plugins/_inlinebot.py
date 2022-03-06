@@ -1,20 +1,17 @@
-#    Copyright (C) @AupRemE_AnanD 2021-2022
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
-#
-#    This Inline Helper Code is solely owned by @SupRemE_AnanD
-#    You Should Not Copy This Code Without Proper Permission.
 
+import asyncio
+import html
+import os
+import re
+from math import ceil
+from re import compile
+
+from telethon import Button, custom, events, functions
+from telethon.errors.rpcerrorlist import UserNotParticipantError
+from telethon.events import InlineQuery, callbackquery
+from telethon.sync import custom
+from telethon.tl.functions.channels import GetParticipantRequest
+from telethon.tl.functions.users import GetFullUserRequest
 from math import ceil
 from re import compile
 
@@ -28,8 +25,33 @@ from userbot.Config import Config
 
 W2H_row = Config.BUTTONS_IN_HELP
 W2H_emoji = Config.EMOJI_IN_HELP
-# thats how a lazy guy imports
-# W2HBOT
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
+
+aura = bot.uid
+
+mention = f"[{DEFAULTUSER}](tg://user?id={aura})
+
+
+alive_txt = """
+ᴡ2ʜʙᴏᴛ Is ᴘʀᴇsᴇɴᴛɪɴɢ ʙᴇsᴛᴇsᴛ ʙᴏᴛ
+  ≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈
+  🔥Bø† Status🔥
+**•{}•Owner :** {}
+**•{}•W2HBOT :** {}
+**•{}•Telethon :** {}
+**┣★ ᴄʜᴀɴɴᴇʟ   : [Join Here](https://t.me/W2H_Userbot)**
+**•{}•Sudo      :** {}
+"""
+ludosudo = Config.SUDO_USERS
+
+if ludosudo:
+    sudou = "True"
+else:
+    sudou = "False"
+
+
+ALV_PIC = "https://telegra.ph/file/fd0978ae951f06e2798ec.mp4"
+
 
 
 def button(page, modules):
@@ -87,6 +109,61 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 buttons=veriler[1],
                 link_preview=False,
             )
+        elif event.query.user_id == bot.uid and query == "alive":
+            leg_end = alive_txt.format(
+                alive_emoji,
+                alive_name,
+                alive_emoji,
+                W2Hversion,
+                alive_emoji,
+                version.__version__,
+                alive_emoji,
+                sudou,
+            )
+            alv_btn = [
+                [
+                    Button.url(
+                        f"Owner", f"https://tg.me/W2h_ravan"
+                    )
+                ],
+                [
+                    Button.url(
+                        f"{DEFAULTUSER}", f"tg://openmessage?user_id={aura}"
+                    )
+                ],
+                [
+                    Button.url(
+                        f"Support", f"https://tg.me/W2h_support"
+                    )
+                ],
+                [
+                    Button.url(
+                        f"Chatting", f"https://tg.me/ravan102030"
+                    )
+                ],
+            ]
+            if ALV_PIC and ALV_PIC.endswith((".jpg", ".png")):
+                result = builder.photo(
+                    ALV_PIC,
+                    text=leg_end,
+                    buttons=alv_btn,
+                    link_preview=False,
+                )
+            elif ALV_PIC:
+                result = builder.document(
+                    ALV_PIC,
+                    text=leg_end,
+                    title="W2H Alive",
+                    buttons=alv_btn,
+                    link_preview=False,
+                )
+            else:
+                result = builder.article(
+                    text=leg_end,
+                    title="W2H Alive",
+                    buttons=alv_btn,
+                    link_preview=False,
+                )
         elif query.startswith("http"):
             part = query.split(" ")
             result = builder.article(
