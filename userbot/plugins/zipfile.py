@@ -3,7 +3,7 @@ import os
 import time
 import zipfile
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @bot.on(admin_cmd(pattern="compress ?(.*)", outgoing=True))
@@ -79,6 +79,6 @@ async def _(event):
             directory_name
         )
 
-        await edit_or_reply(event, 
-            "Local file compressed to `{}`".format(directory_name + ".zip")
+        await edit_or_reply(
+            event, "Local file compressed to `{}`".format(directory_name + ".zip")
         )

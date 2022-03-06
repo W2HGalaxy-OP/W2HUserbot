@@ -1,14 +1,15 @@
 """Get Administrators of any Chat*
 Syntax: .userlist"""
-from telethon import events
 from telethon.errors.rpcerrorlist import MessageTooLongError
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern=r"userlist ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"userlist ?(.*)", allow_sudo=True))
 async def get_users(show):
-    """ For .userslist command, list all of the users of the chat. """
+    """For .userslist command, list all of the users of the chat."""
     if not show.text[0].isalpha() and show.text[0] not in ("/", "#", "@", "!"):
         if not show.is_group:
             await edit_or_reply(show, "Are you sure this is a group?")
@@ -41,8 +42,8 @@ async def get_users(show):
         try:
             await edit_or_reply(show, mentions)
         except MessageTooLongError:
-            await edit_or_reply(show, 
-                "Damn, this is a huge group. Uploading users lists as file."
+            await edit_or_reply(
+                show, "Damn, this is a huge group. Uploading users lists as file."
             )
             file = open("userslist.txt", "w+")
             file.write(mentions)
@@ -55,6 +56,7 @@ async def get_users(show):
             )
             remove("userslist.txt")
 
+
 CmdHelp("userlist").add_command(
-  "userlist", None, "Gets the list of all the users in the chat"
+    "userlist", None, "Gets the list of all the users in the chat"
 ).add()

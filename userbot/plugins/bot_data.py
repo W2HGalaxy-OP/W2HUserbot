@@ -1,11 +1,10 @@
 """Available Commands:
 .mf"""
 
-import asyncio
 
 from telethon import functions
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -28,8 +27,7 @@ async def _(event):
     logger.info(result)  # pylint:disable=E0602
     await event.edit("""Telethon UserBot powered by @W2H_Userbot""")
 
-CmdHelp("bot").add_command(
-  "dc", None, "Gets the DataCenter Number"
-).add_command(
-  "config", None, "😒"
+
+CmdHelp("bot").add_command("dc", None, "Gets the DataCenter Number").add_command(
+    "config", None, "😒"
 ).add()

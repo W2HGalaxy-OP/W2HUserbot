@@ -6,9 +6,12 @@ from telethon.tl.functions.phone import DiscardGroupCallRequest as stopvc
 from telethon.tl.functions.phone import GetGroupCallRequest as getvc
 from telethon.tl.functions.phone import InviteToGroupCallRequest as invitetovc
 
-from . import *
 from userbot.cmdhelp import CmdHelp
-from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from userbot.utils import admin_cmd, edit_or_reply
+
+from . import *
+
+
 async def get_call(event):
     mm = await event.client(getchat(event.chat_id))
     xx = await event.client(getvc(mm.full_chat.call))
@@ -20,9 +23,12 @@ def user_list(l, n):
         yield l[i : i + n]
 
 
-@bot.on(admin_cmd(pattern="stopvc$",
-    outgoing=True,
-))
+@bot.on(
+    admin_cmd(
+        pattern="stopvc$",
+        outgoing=True,
+    )
+)
 async def _(e):
     try:
         await e.client(stopvc(await get_call(e)))
@@ -31,8 +37,11 @@ async def _(e):
         await edit_or_reply(e, f"`{str(ex)}`")
 
 
-@bot.on(admin_cmd(pattern="playvc$",
-))
+@bot.on(
+    admin_cmd(
+        pattern="playvc$",
+    )
+)
 async def _(e):
     zz = await edit_or_reply(e, "`VC bot started...`")
     er, out = await bash("python vcstarter.py & sleep 10 && npm start")
@@ -50,10 +59,12 @@ async def _(e):
         await zz.edit(msg)
 
 
-@bot.on(admin_cmd(
-    pattern="vcinvite$",
-    outgoing=True,
-))
+@bot.on(
+    admin_cmd(
+        pattern="vcinvite$",
+        outgoing=True,
+    )
+)
 async def _(e):
     ok = await edit_or_reply(e, "`Inviting Members to Voice Chat...`")
     users = []
@@ -71,10 +82,12 @@ async def _(e):
     await ok.edit(f"`Invited {z} users`")
 
 
-@bot.on(admin_cmd(
-    pattern="startvc$",
-    outgoing=True,
-))
+@bot.on(
+    admin_cmd(
+        pattern="startvc$",
+        outgoing=True,
+    )
+)
 async def _(e):
     try:
         await e.client(startvc(e.chat_id))
@@ -83,9 +96,11 @@ async def _(e):
         await edit_or_reply(e, f"`{str(ex)}`")
 
 
-@bot.on(admin_cmd(
-    pattern="listvcaccess$",
-))
+@bot.on(
+    admin_cmd(
+        pattern="listvcaccess$",
+    )
+)
 async def _(e):
     xx = await edit_or_reply(e, "`Getting Voice Chat Bot Users List...`")
     mm = get_vcsudos()
@@ -100,9 +115,11 @@ async def _(e):
     await xx.edit(pp)
 
 
-@bot.on(admin_cmd(
-    pattern="rmvaccess ?(.*)",
-))
+@bot.on(
+    admin_cmd(
+        pattern="rmvaccess ?(.*)",
+    )
+)
 async def _(e):
     xx = await edit_or_reply(e, "`Disapproving to access Voice Chat features...`")
     input = e.pattern_match.group(1)
@@ -134,9 +151,11 @@ async def _(e):
         return await eod(xx, f"`{str(ex)}`", time=5)
 
 
-@bot.on(admin_cmd(
-    pattern="vcaccess ?(.*)",
-))
+@bot.on(
+    admin_cmd(
+        pattern="vcaccess ?(.*)",
+    )
+)
 async def _(e):
     xx = await edit_or_reply(e, "`Approving to access Voice Chat features...`")
     input = e.pattern_match.group(1)
@@ -166,16 +185,16 @@ async def _(e):
         )
     except Exception as ex:
         return await eod(xx, f"`{str(ex)}`", time=5)
+
+
 CmdHelp("vcplayer").add_command(
-    'vcaccess', None, 'Reply to user and access vc'
+    "vcaccess", None, "Reply to user and access vc"
+).add_command("rmvaccess", None, "Reply to useer to denied to access vc").add_command(
+    "stopvc", None, "To stop Vc"
 ).add_command(
-    'rmvaccess', None, 'Reply to useer to denied to access vc'
+    "startvc", None, "To start Vc"
 ).add_command(
-    'stopvc', None, 'To stop Vc'
+    "listvcaccess", None, "List of vc access"
 ).add_command(
-    'startvc', None, 'To start Vc'
-).add_command(
-    'listvcaccess', None, 'List of vc access'
-).add_command(
-    'vcinvite', None, 'Invite in vc'
+    "vcinvite", None, "Invite in vc"
 ).add()

@@ -5,11 +5,12 @@ import os
 import time
 from datetime import datetime
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, progress
-from userbot import CMD_HELP
+from W2HBOT.utils import admin_cmd, progress, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 FF_MPEG_DOWN_LOAD_MEDIA_PATH = "./downloads/W2HBOT.media.ffmpeg"
+
 
 async def reply_id(event):
     reply_to_id = None
@@ -18,6 +19,7 @@ async def reply_id(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     return reply_to_id
+
 
 def media_type(message):
     if message and message.photo:
@@ -39,7 +41,7 @@ def media_type(message):
     else:
         media = None
     return media
-    
+
 
 @bot.on(admin_cmd(pattern="ffmpegsave$"))
 @bot.on(sudo_cmd(pattern="ffmpegsave$", allow_sudo=True))
@@ -297,14 +299,23 @@ async def cult_small_video(
         return out_put_file_name
     return None
 
+
 CmdHelp("ff_mpeg").add_command(
-  'ffmpegsave', '<reply to a media>', 'Saves the media file in bot to trim mutliple times'
+    "ffmpegsave",
+    "<reply to a media>",
+    "Saves the media file in bot to trim mutliple times",
 ).add_command(
-  'vtrim <time>', None, 'Sends you the screenshot of the video at the given specific time'
+    "vtrim <time>",
+    None,
+    "Sends you the screenshot of the video at the given specific time",
 ).add_command(
-  'vtrim starttime endtime', None, 'Trims the saved media with specific given time interval and outputs as video'
+    "vtrim starttime endtime",
+    None,
+    "Trims the saved media with specific given time interval and outputs as video",
 ).add_command(
-  'atrim <starttime> <endtime>', None, 'Trims the saved media with specific given time interval and output as audio'
+    "atrim <starttime> <endtime>",
+    None,
+    "Trims the saved media with specific given time interval and output as audio",
 ).add_command(
-  'ffmpegclear', None, 'Deletes the saved media. So you can save new one🚶'
+    "ffmpegclear", None, "Deletes the saved media. So you can save new one🚶"
 ).add()

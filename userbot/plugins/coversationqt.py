@@ -1,12 +1,13 @@
-from userbot.cmdhelp import CmdHelp
-
-
 import asyncio
 import random
 
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd
+
+from userbot.cmdhelp import CmdHelp
 
 from . import *
+
+
 @bot.on(admin_cmd(pattern=r"qt"))
 async def _(event):
 
@@ -319,7 +320,4 @@ async def _(event):
         )
 
 
-
-CmdHelp("coverqt").add_command(
-'qt', None, 'its start asking question'
-).add()
+CmdHelp("coverqt").add_command("qt", None, "its start asking question").add()

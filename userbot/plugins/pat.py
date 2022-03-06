@@ -10,8 +10,8 @@ from random import choice
 from urllib import parse
 
 import requests
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 BASE_URL = "https://headp.at/pats/{}"
@@ -41,6 +41,4 @@ async def lastfm(event):
     remove(PAT_IMAGE)
 
 
-CmdHelp("pat").add_command(
-  "pat", "<reply>", "Gives the replied user a pat"
-).add()
+CmdHelp("pat").add_command("pat", "<reply>", "Gives the replied user a pat").add()

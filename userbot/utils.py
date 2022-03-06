@@ -1,4 +1,3 @@
-
 import asyncio
 import datetime
 import importlib
@@ -17,11 +16,10 @@ from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 
-from var import Var
-
 from userbot import CMD_LIST, LOAD_PLUG, LOGS, SUDO_LIST, bot
-from userbot.helpers.exceptions import CancelProcess
 from userbot.Config import Config
+from userbot.helpers.exceptions import CancelProcess
+from var import Var
 
 ENV = bool(os.environ.get("ENV", False))
 if ENV:
@@ -29,7 +27,6 @@ if ENV:
 else:
     if os.path.exists("config.py"):
         from config import Development as Config
-
 
 
 def load_module(shortname):
@@ -73,6 +70,7 @@ def load_module(shortname):
         sys.modules["userbot.plugins." + shortname] = mod
         LOGS.info("Successfully imported " + shortname)
 
+
 def start_assistant(shortname):
     if shortname.startswith("__"):
         pass
@@ -92,7 +90,7 @@ def start_assistant(shortname):
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
         sys.modules["userbot.plugins.assistant" + shortname] = mod
-        print("[🤴Assistant🤴 ] ~ HAS ~ 💞Installed💞 ~" + shortname)  
+        print("[🤴Assistant🤴 ] ~ HAS ~ 💞Installed💞 ~" + shortname)
 
 
 def remove_plugin(shortname):
@@ -111,7 +109,6 @@ def remove_plugin(shortname):
                     del bot._event_builders[i]
     except BaseException:
         raise ValueError
-
 
 
 def admin_cmd(pattern=None, command=None, **args):
@@ -237,6 +234,7 @@ def sudo_cmd(pattern=None, command=None, **args):
     # check if the plugin should listen for outgoing 'messages'
     return events.NewMessage(**args)
 
+
 # https://t.me/c/1220993104/623253
 # https://docs.telethon.dev/en/latest/misc/changelog.html#breaking-changes
 async def edit_or_reply(
@@ -304,6 +302,7 @@ async def edit_or_reply(
     await event.delete()
     os.remove(file_name)
 
+
 async def delete_W2H(event, text, time=None, parse_mode=None, link_preview=None):
     parse_mode = parse_mode or "md"
     link_preview = link_preview or False
@@ -323,6 +322,7 @@ async def delete_W2H(event, text, time=None, parse_mode=None, link_preview=None)
         )
     await asyncio.sleep(time)
     return await W2Hevent.delete()
+
 
 # from paperplaneextended
 on = bot.on
@@ -347,10 +347,7 @@ def errors_handler(func):
         except BaseException:
 
             date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-            new = {
-                'error': str(sys.exc_info()[1]),
-                'date': datetime.datetime.now()
-            }
+            new = {"error": str(sys.exc_info()[1]), "date": datetime.datetime.now()}
 
             text = "**USERBOT CRASH REPORT**\n\n"
 
@@ -377,17 +374,15 @@ def errors_handler(func):
             ftext += str(sys.exc_info()[1])
             ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
 
-            command = "git log --pretty=format:\"%an: %s\" -5"
+            command = 'git log --pretty=format:"%an: %s" -5'
 
             ftext += "\n\n\nLast 5 commits:\n"
 
             process = await asyncio.create_subprocess_shell(
-                command,
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE)
+                command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+            )
             stdout, stderr = await process.communicate()
-            result = str(stdout.decode().strip()) \
-                + str(stderr.decode().strip())
+            result = str(stdout.decode().strip()) + str(stderr.decode().strip())
 
             ftext += result
 
@@ -431,7 +426,7 @@ def humanbytes(size):
     if not size:
         return ""
     # 2 ** 10 = 1024
-    power = 2 ** 10
+    power = 2**10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -442,12 +437,12 @@ def humanbytes(size):
 
 def human_to_bytes(size: str) -> int:
     units = {
-        "M": 2 ** 20,
-        "MB": 2 ** 20,
-        "G": 2 ** 30,
-        "GB": 2 ** 30,
-        "T": 2 ** 40,
-        "TB": 2 ** 40,
+        "M": 2**20,
+        "MB": 2**20,
+        "G": 2**30,
+        "GB": 2**30,
+        "T": 2**40,
+        "TB": 2**40,
     }
 
     size = size.upper()

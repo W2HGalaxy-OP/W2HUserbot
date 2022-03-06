@@ -6,8 +6,8 @@
 
 
 from justwatch import JustWatch
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -125,6 +125,9 @@ async def _(event):
     )
     await event.delete()
 
+
 CmdHelp("watch").add_command(
-  "watch", "<movie/series name>", "Searches all the possible platform where given movie/series can be watched."
+    "watch",
+    "<movie/series name>",
+    "Searches all the possible platform where given movie/series can be watched.",
 ).add()

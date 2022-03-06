@@ -1,14 +1,15 @@
 import os
-import requests
-import PIL.ImageOps
-from PIL import Image, ImageDraw, ImageFont
 
-from W2HBOT import CmdHelp
+import requests
+from PIL import Image
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.Config import Config
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT import CmdHelp
 
 TEMP_DIR = os.environ.get("TEMP_DIR", "./temp/")
-   
+
+
 async def reply_id(event):
     reply_to_id = None
     if event.sender_id in Config.SUDO_USERS:
@@ -16,7 +17,7 @@ async def reply_id(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     return reply_to_id
-    
+
 
 def convert_toimage(image, filename=None):
     filename = filename or os.path.join("./temp/", "temp.jpg")
@@ -44,7 +45,7 @@ async def remove_background(event):
     if Config.REM_BG_API_KEY is None:
         return await edit_or_reply(
             event,
-            "You have to set `REM_BG_API_KEY` in Config vars with API token from remove.bg to use this module"
+            "You have to set `REM_BG_API_KEY` in Config vars with API token from remove.bg to use this module",
         )
     cmd = event.pattern_match.group(1)
     input_str = event.pattern_match.group(2)
@@ -69,7 +70,7 @@ async def remove_background(event):
     else:
         await edit_or_reply(
             event,
-            "`Reply to any image or sticker with rmbg/srmbg to get background less png file or webp format or provide image link along with command`"
+            "`Reply to any image or sticker with rmbg/srmbg to get background less png file or webp format or provide image link along with command`",
         )
         return
     contentType = response.headers.get("content-type")
@@ -129,8 +130,13 @@ def ReTrieveURL(input_url):
         stream=True,
     )
 
+
 CmdHelp("removebg").add_command(
-  "rmbg", "<reply to image/stcr> or <link>", "`Removes Background of replied image or sticker and sends output as a file. Need` REM_BG_API_KEY `to be set in Heroku Config Vars."
+    "rmbg",
+    "<reply to image/stcr> or <link>",
+    "`Removes Background of replied image or sticker and sends output as a file. Need` REM_BG_API_KEY `to be set in Heroku Config Vars.",
 ).add_command(
-  "srmbg", "<reply to img/stcr> or <link>", "Same as .rmbg but sends output as a sticker. Need REM_BG_API_KEY to be set in Heroku Config Vars."
+    "srmbg",
+    "<reply to img/stcr> or <link>",
+    "Same as .rmbg but sends output as a sticker. Need REM_BG_API_KEY to be set in Heroku Config Vars.",
 ).add()

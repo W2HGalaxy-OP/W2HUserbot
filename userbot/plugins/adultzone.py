@@ -7,10 +7,11 @@ import os
 import urllib
 
 import requests
+from W2HBOT.utils import *
 
 from userbot import *
-from W2HBOT.utils import *
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd("boobs$"))
 @bot.on(sudo_cmd(pattern="boobs$", allow_sudo=True))
@@ -49,8 +50,7 @@ async def butts(event):
     await event.delete()
     await a.delete()
 
-CmdHelp("adultzone").add_command(
-  'boobs', None, 'Sends a random boobs pic'
-).add_command(
-  'butts', None, 'Sends a random Butt pic'
+
+CmdHelp("adultzone").add_command("boobs", None, "Sends a random boobs pic").add_command(
+    "butts", None, "Sends a random Butt pic"
 ).add()

@@ -1,11 +1,9 @@
-
 import asyncio
 
-from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
-CmdHelp("єg∂миg").add_command(
-   'egm', None, 'Use in Gm Time'
-).add()
+from userbot.utils import admin_cmd
+
+CmdHelp("єg∂миg").add_command("egm", None, "Use in Gm Time").add()
 
 
 @borg.on(admin_cmd(pattern="egm ?(.*)"))

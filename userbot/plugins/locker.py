@@ -1,17 +1,17 @@
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.types import ChatBannedRights
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from userbot import ALIVE_NAME, CMD_HELP
-from userbot.events import errors_handler, register
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from userbot import ALIVE_NAME
 from userbot.cmdhelp import CmdHelp
-
+from userbot.events import errors_handler
 
 DEFAULTUSER = (
     str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
 )
 
 aura = bot.uid
+
 
 @bot.on(admin_cmd(pattern=r"lock ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"lock ?(.*)", allow_sudo=True))
@@ -96,9 +96,14 @@ async def locks(event):
         await event.client(
             EditChatDefaultBannedRightsRequest(peer=peer_id, banned_rights=lock_rights)
         )
-        await edit_or_reply(event, f"[{DEFAULTUSER}](tg://user?id={aura}) Locked `{what}` \n__Cause its Rest Time Nimba!!__")
+        await edit_or_reply(
+            event,
+            f"[{DEFAULTUSER}](tg://user?id={aura}) Locked `{what}` \n__Cause its Rest Time Nimba!!__",
+        )
     except BaseException as e:
-        await edit_or_reply(event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
+        await edit_or_reply(
+            event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}"
+        )
         return
 
 
@@ -187,10 +192,16 @@ async def rem_locks(event):
                 peer=peer_id, banned_rights=unlock_rights
             )
         )
-        await edit_or_reply(event, f"[{DEFAULTUSER}](tg://user?id={aura}) Unlocked `{what}` \n__Now Start Chit Chat !!__")
+        await edit_or_reply(
+            event,
+            f"[{DEFAULTUSER}](tg://user?id={aura}) Unlocked `{what}` \n__Now Start Chit Chat !!__",
+        )
     except BaseException as e:
-        await edit_or_reply(event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}")
+        await edit_or_reply(
+            event, f"`Do I have proper rights for that ??`\n**Error:** {str(e)}"
+        )
         return
+
 
 @bot.on(admin_cmd(pattern="ltype$"))
 @bot.on(sudo_cmd(pattern="ltype$", allow_sudo=True))
@@ -198,13 +209,19 @@ async def _(event):
     if event.fwd_from:
         return
     event = await edit_or_reply(event, "Lock Types")
-    await event.edit("**Following are the lock types :** \n\n• all\n• msg\n• media\n• sticker\n• gif\n• game\n• inline\n• poll\n• invite\n• pin\n• info\n")
+    await event.edit(
+        "**Following are the lock types :** \n\n• all\n• msg\n• media\n• sticker\n• gif\n• game\n• inline\n• poll\n• invite\n• pin\n• info\n"
+    )
 
 
 CmdHelp("locker").add_command(
-  "lock", "<lock type>", "Locks the mentioned lock type in current chat. You can Get all lock type by using '.ltype'."
+    "lock",
+    "<lock type>",
+    "Locks the mentioned lock type in current chat. You can Get all lock type by using '.ltype'.",
 ).add_command(
-  "unlock", "<lock type>", "Unlocks the mentioned lock type in current chat. You can Get all lock types by using '.ltype'."
+    "unlock",
+    "<lock type>",
+    "Unlocks the mentioned lock type in current chat. You can Get all lock types by using '.ltype'.",
 ).add_command(
-  "ltype", None, "Use this to get the list of lock types..."
+    "ltype", None, "Use this to get the list of lock types..."
 ).add()

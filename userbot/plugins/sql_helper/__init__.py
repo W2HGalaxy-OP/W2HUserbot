@@ -4,9 +4,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
 
+from userbot.Config import Config
+
 # the secret configuration specific things
 from var import Var
-from userbot.Config import Config
 
 
 def start() -> scoped_session:

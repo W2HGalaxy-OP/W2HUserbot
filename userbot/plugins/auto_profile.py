@@ -4,9 +4,9 @@ import time
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
-
-from userbot import ALIVE_NAME, BIO_MSG, CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from userbot import ALIVE_NAME, BIO_MSG
 from userbot.cmdhelp import CmdHelp
 
 DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "Legendary W2HBOT"
@@ -104,9 +104,15 @@ async def mine(event):
 
 
 CmdHelp("auto_profile").add_command(
-  'autobio', None, 'Changes your bio with time. Need to set BIO_MSG in heroku vars(optional)'
+    "autobio",
+    None,
+    "Changes your bio with time. Need to set BIO_MSG in heroku vars(optional)",
 ).add_command(
-  'autoname', None, 'Changes your name with time according to your ALIVE_NAME in heroku var'
+    "autoname",
+    None,
+    "Changes your name with time according to your ALIVE_NAME in heroku var",
 ).add_command(
-  'reserved', None, 'Gives the list of usernames reserved by you. In short gives the list of public groups or channels that you are owner in.'
+    "reserved",
+    None,
+    "Gives the list of usernames reserved by you. In short gives the list of public groups or channels that you are owner in.",
 ).add()

@@ -8,16 +8,15 @@ import base64
 import requests
 from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from userbot import CMD_HELP
+from userbot.cmdhelp import CmdHelp
 from userbot.plugins.sql_helper.echo_sql import (
     addecho,
     get_all_echos,
     is_echo,
     remove_echo,
 )
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
 
 
 @bot.on(admin_cmd(pattern="echo$"))
@@ -115,9 +114,9 @@ async def samereply(W2H):
 
 
 CmdHelp("echo").add_command(
-  'echo', 'Reply to a user', 'Replays every message from whom you enabled echo'
+    "echo", "Reply to a user", "Replays every message from whom you enabled echo"
 ).add_command(
-  'rmecho', 'reply to a user', 'Stop replayings targeted user message'
+    "rmecho", "reply to a user", "Stop replayings targeted user message"
 ).add_command(
-  'listecho', None, 'Shows the list of users for whom you enabled echo'
+    "listecho", None, "Shows the list of users for whom you enabled echo"
 ).add()

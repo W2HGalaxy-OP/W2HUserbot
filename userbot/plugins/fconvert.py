@@ -9,11 +9,10 @@ from telethon import functions, types
 from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import SendMediaRequest
-
 from W2HBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
-from userbot import CMD_HELP
-from userbot.helpers.functions import unzip
+
 from userbot.cmdhelp import CmdHelp
+from userbot.helpers.functions import unzip
 
 if not os.path.isdir("./temp"):
     os.makedirs("./temp")
@@ -320,17 +319,25 @@ async def _(event):
 
 
 CmdHelp("fconvert").add_command(
-  'stoi', '<reply to a sticker', 'Converts the replied sticker into an image'
+    "stoi", "<reply to a sticker", "Converts the replied sticker into an image"
 ).add_command(
-  'itos', '<reply to a image>', 'Converts the replied image to sticker'
+    "itos", "<reply to a image>", "Converts the replied image to sticker"
 ).add_command(
-  'ftoi', '<reply to a image file', 'Converts the replied file image to normal image'
+    "ftoi", "<reply to a image file", "Converts the replied file image to normal image"
 ).add_command(
-  'gif', '<reply to a animated sticker', 'Converts the replied animated sticker into gif'
+    "gif",
+    "<reply to a animated sticker",
+    "Converts the replied animated sticker into gif",
 ).add_command(
-  'ttf', '<reply to text>', 'Converts the given text message to required file(given file name)'
+    "ttf",
+    "<reply to text>",
+    "Converts the given text message to required file(given file name)",
 ).add_command(
-  'nfc voice', '<reply to media to extract voice>', 'Converts the replied media file to voice'
+    "nfc voice",
+    "<reply to media to extract voice>",
+    "Converts the replied media file to voice",
 ).add_command(
-  'nfc mp3', '<reply to media to extract mp3>', 'Converts the replied media file to mp3'
+    "nfc mp3",
+    "<reply to media to extract mp3>",
+    "Converts the replied media file to mp3",
 ).add()

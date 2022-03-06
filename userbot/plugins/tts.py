@@ -9,8 +9,8 @@ import subprocess
 from datetime import datetime
 
 from gtts import gTTS
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -74,12 +74,17 @@ async def _(event):
             voice_note=True,
         )
         os.remove(required_file_name)
-        await edit_or_reply(event, "Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms))
+        await edit_or_reply(
+            event, "Processed {} ({}) in {} seconds!".format(text[0:97], lan, ms)
+        )
         await asyncio.sleep(5)
         await event.delete()
     except Exception as e:
         await edit_or_reply(event, str(e))
 
+
 CmdHelp("tts").add_command(
-  "tts", "<reply to text>/<text>", "Google Text To Speech Module. Alternetive for Voice module. Use .voice if this doesn't work"
+    "tts",
+    "<reply to text>/<text>",
+    "Google Text To Speech Module. Alternetive for Voice module. Use .voice if this doesn't work",
 ).add()

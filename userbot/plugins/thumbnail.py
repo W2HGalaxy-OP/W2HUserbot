@@ -10,7 +10,8 @@ import subprocess
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
@@ -71,8 +72,10 @@ async def _(event):
         img.save(thumb_image_path, "JPEG")
         # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
         os.remove(downloaded_file_name)
-        await edit_or_reply(event, "Custom video / file thumbnail saved. "
-            + "This image will be used in the upload, till `.cthumb`."
+        await edit_or_reply(
+            event,
+            "Custom video / file thumbnail saved. "
+            + "This image will be used in the upload, till `.cthumb`.",
         )
     else:
         await edit_or_reply(event, "Reply to a photo to save custom thumbnail")
@@ -126,12 +129,14 @@ async def _(event):
         await edit_or_reply(event, caption_str)
     else:
         await edit_or_reply(event, "Reply `.gthumb` as a reply to a media")
-        
+
 
 CmdHelp("thumbnail").add_command(
-  "sthumb", "<reply to media>", "Saves the thumbnail of replied media to W2HBOT download directory. To get the thumbnail type .upload ./DOWNLOADS/thumb_image.jpg"
+    "sthumb",
+    "<reply to media>",
+    "Saves the thumbnail of replied media to W2HBOT download directory. To get the thumbnail type .upload ./DOWNLOADS/thumb_image.jpg",
 ).add_command(
-  "gthumb", None, "Gets the currently saved thumbnail from Downloads Directory"
+    "gthumb", None, "Gets the currently saved thumbnail from Downloads Directory"
 ).add_command(
-  "cthumb", None, "Clears the currently saved thumbnail from Download directory"
+    "cthumb", None, "Clears the currently saved thumbnail from Download directory"
 ).add()

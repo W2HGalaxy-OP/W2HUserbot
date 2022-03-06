@@ -1,12 +1,10 @@
-from userbot import *
+from telethon import version
 from W2HBOT.utils import *
-from userbot.cmdhelp import CmdHelp
-from telethon import events, version
-from telethon.events import NewMessage
-from telethon.tl.custom import Dialog
-from telethon.tl.types import Channel, Chat, User
 
-#-------------------------------------------------------------------------------
+from userbot import *
+from userbot.cmdhelp import CmdHelp
+
+# -------------------------------------------------------------------------------
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
@@ -23,7 +21,7 @@ mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
 
 PM_IMG = "https://telegra.ph/file/fd0978ae951f06e2798ec.mp4"
-pm_caption ="**ᴡ2ʜʙᴏᴛ Is ᴘʀᴇsᴇɴᴛɪɴɢ ʙᴇsᴛᴇsᴛ ʙᴏᴛ**\n\n"
+pm_caption = "**ᴡ2ʜʙᴏᴛ Is ᴘʀᴇsᴇɴᴛɪɴɢ ʙᴇsᴛᴇsᴛ ʙᴏᴛ**\n\n"
 
 pm_caption += f"**┏━━━━━━━━━━━━━┓**\n"
 pm_caption += f"**┣★ ᴍᴀsᴛᴇʀ : {mention}**\n"
@@ -50,9 +48,11 @@ async def amireallyalive(alive):
 
 
 CmdHelp("alive").add_command(
-  'alive', None, 'Check weather the bot is alive or not'
+    "alive", None, "Check weather the bot is alive or not"
 ).add_command(
-  'W2H', None, 'Check weather the bot is alive or not. In your custom Alive Pic and Alive Msg'
+    "W2H",
+    None,
+    "Check weather the bot is alive or not. In your custom Alive Pic and Alive Msg",
 ).add_info(
-  'Zinda Hai Kya Bro?'
+    "Zinda Hai Kya Bro?"
 ).add()

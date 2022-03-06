@@ -1,14 +1,14 @@
 from telethon import events
 from telethon.utils import pack_bot_file_id
+from W2HBOT.utils import *
 
+from userbot.cmdhelp import CmdHelp
 from userbot.plugins.sql_helper.welcome_sql import (
     add_welcome_setting,
     get_current_welcome_settings,
     rm_welcome_setting,
     update_previous_welcome,
 )
-from W2HBOT.utils import *
-from userbot.cmdhelp import CmdHelp
 
 
 @bot.on(events.ChatAction())  # pylint:disable=E0602
@@ -81,37 +81,40 @@ async def _(event):
         await edit_or_reply(event, "Welcome note saved. ")
 
 
-@bot.on(admin_cmd(pattern="clearwelcome", outgoing=True)) # pylint:disable=E0602
+@bot.on(admin_cmd(pattern="clearwelcome", outgoing=True))  # pylint:disable=E0602
 @bot.on(sudo_cmd(pattern="clearwelcome", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     cws = get_current_welcome_settings(event.chat_id)
     rm_welcome_setting(event.chat_id)
-    await edit_or_reply(event, 
+    await edit_or_reply(
+        event,
         "Welcome note cleared. "
-        + "The previous welcome message was `{}`.".format(cws.custom_welcome_message)
+        + "The previous welcome message was `{}`.".format(cws.custom_welcome_message),
     )
 
 
-@bot.on(admin_cmd(pattern="listwelcome", outgoing=True)) # pylint:disable=E0602
+@bot.on(admin_cmd(pattern="listwelcome", outgoing=True))  # pylint:disable=E0602
 @bot.on(sudo_cmd(pattern="listwelcome", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     cws = get_current_welcome_settings(event.chat_id)
     if hasattr(cws, "custom_welcome_message"):
-        await edit_or_reply(event, 
+        await edit_or_reply(
+            event,
             "Welcome note found. "
-            + "Your welcome message is\n\n`{}`.".format(cws.custom_welcome_message)
+            + "Your welcome message is\n\n`{}`.".format(cws.custom_welcome_message),
         )
     else:
         await edit_or_reply(event, "No Welcome Message found")
 
+
 CmdHelp("welcome").add_command(
-  "listwelcome", None, "Gets the saved welcome message of W2HBOT"
+    "listwelcome", None, "Gets the saved welcome message of W2HBOT"
 ).add_command(
-  "clearwelcome", None, "Clears/Deletes the welcome message (if any)"
+    "clearwelcome", None, "Clears/Deletes the welcome message (if any)"
 ).add_command(
-  "savewelcome", "<reply to msg>", "Saves the replied msg as welcome note from you."
+    "savewelcome", "<reply to msg>", "Saves the replied msg as welcome note from you."
 ).add()

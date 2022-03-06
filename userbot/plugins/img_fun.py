@@ -1,16 +1,16 @@
 import asyncio
 import os
-import random
 import shlex
-from typing import Optional, Tuple
-from PIL import Image, ImageDraw, ImageFont
-import PIL.ImageOps
+from typing import Tuple
 
+import PIL.ImageOps
+from PIL import Image
 from W2HBOT.utils import admin_cmd, sudo_cmd
-from userbot import CmdHelp, CMD_HELP, LOGS, bot as W2HBOT
+
+from userbot import LOGS, CmdHelp
+from userbot import bot as W2HBOT
 from userbot.helpers.functions import (
     convert_toimage,
-    convert_tosticker,
     flip_image,
     grayscale,
     invert_colors,
@@ -18,6 +18,7 @@ from userbot.helpers.functions import (
     solarize,
     take_screen_shot,
 )
+
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
     args = shlex.split(cmd)
@@ -31,7 +32,8 @@ async def runcmd(cmd: str) -> Tuple[str, str, int, int]:
         process.returncode,
         process.pid,
     )
-    
+
+
 async def add_frame(imagefile, endname, x, color):
     image = Image.open(imagefile)
     inverted_image = PIL.ImageOps.expand(image, border=x, fill=color)
@@ -83,9 +85,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith(".webp"):
-        await W2H.edit(
-            "`Analyzing this media 🧐 inverting colors...`"
-        )
+        await W2H.edit("`Analyzing this media 🧐 inverting colors...`")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         os.rename(W2Hsticker, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -94,9 +94,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith((".mp4", ".mov")):
-        await W2H.edit(
-            "Analyzing this media 🧐 inverting colors of this video!"
-        )
+        await W2H.edit("Analyzing this media 🧐 inverting colors of this video!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(W2Hsticker, 0, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -105,9 +103,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     else:
-        await W2H.edit(
-            "Analyzing this media 🧐 inverting colors of this image!"
-        )
+        await W2H.edit("Analyzing this media 🧐 inverting colors of this image!")
         meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -153,9 +149,7 @@ async def memes(W2H):
 
     aura = None
     if W2Hsticker.endswith(".tgs"):
-        await W2H.edit(
-            "Analyzing this media 🧐 solarizeing this animated sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 solarizeing this animated sticker!")
         W2Hfile = os.path.join("./temp/", "meme.png")
         W2Hcmd = (
             f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
@@ -167,9 +161,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith(".webp"):
-        await W2H.edit(
-            "Analyzing this media 🧐 solarizeing this sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 solarizeing this sticker!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         os.rename(W2Hsticker, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -178,9 +170,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith((".mp4", ".mov")):
-        await W2H.edit(
-            "Analyzing this media 🧐 solarizeing this video!"
-        )
+        await W2H.edit("Analyzing this media 🧐 solarizeing this video!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(W2Hsticker, 0, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -189,9 +179,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     else:
-        await W2H.edit(
-            "Analyzing this media 🧐 solarizeing this image!"
-        )
+        await W2H.edit("Analyzing this media 🧐 solarizeing this image!")
         meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -321,9 +309,7 @@ async def memes(W2H):
 
     aura = None
     if W2Hsticker.endswith(".tgs"):
-        await W2H.edit(
-            "Analyzing this media 🧐 fliping this animated sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 fliping this animated sticker!")
         W2Hfile = os.path.join("./temp/", "meme.png")
         W2Hcmd = (
             f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
@@ -335,9 +321,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith(".webp"):
-        await W2H.edit(
-            "Analyzing this media 🧐 fliping this sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 fliping this sticker!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         os.rename(W2Hsticker, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -346,9 +330,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith((".mp4", ".mov")):
-        await W2H.edit(
-            "Analyzing this media 🧐 fliping this video!"
-        )
+        await W2H.edit("Analyzing this media 🧐 fliping this video!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(W2Hsticker, 0, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -357,9 +339,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     else:
-        await W2H.edit(
-            "Analyzing this media 🧐 fliping this image!"
-        )
+        await W2H.edit("Analyzing this media 🧐 fliping this image!")
         meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -430,9 +410,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith((".mp4", ".mov")):
-        await W2H.edit(
-            "Analyzing this media 🧐 changing to black-and-white this video!"
-        )
+        await W2H.edit("Analyzing this media 🧐 changing to black-and-white this video!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(W2Hsticker, 0, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -441,9 +419,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     else:
-        await W2H.edit(
-            "Analyzing this media 🧐 changing to black-and-white this image!"
-        )
+        await W2H.edit("Analyzing this media 🧐 changing to black-and-white this image!")
         meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -491,9 +467,7 @@ async def memes(W2H):
 
     aura = None
     if W2Hsticker.endswith(".tgs"):
-        await W2H.edit(
-            "Analyzing this media 🧐 zooming this animated sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 zooming this animated sticker!")
         W2Hfile = os.path.join("./temp/", "meme.png")
         W2Hcmd = (
             f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
@@ -505,9 +479,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith(".webp"):
-        await W2H.edit(
-            "Analyzing this media 🧐 zooming this sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 zooming this sticker!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         os.rename(W2Hsticker, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -516,9 +488,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith((".mp4", ".mov")):
-        await W2H.edit(
-            "Analyzing this media 🧐 zooming this video!"
-        )
+        await W2H.edit("Analyzing this media 🧐 zooming this video!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(W2Hsticker, 0, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -526,9 +496,7 @@ async def memes(W2H):
             return
         meme_file = W2Hfile
     else:
-        await W2H.edit(
-            "Analyzing this media 🧐 zooming this image!"
-        )
+        await W2H.edit("Analyzing this media 🧐 zooming this image!")
         meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -589,9 +557,7 @@ async def memes(W2H):
 
     aura = None
     if W2Hsticker.endswith(".tgs"):
-        await W2H.edit(
-            "Analyzing this media 🧐 framing this animated sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 framing this animated sticker!")
         W2Hfile = os.path.join("./temp/", "meme.png")
         W2Hcmd = (
             f"lottie_convert.py --frame 0 -if lottie -of png {W2Hsticker} {W2Hfile}"
@@ -603,9 +569,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith(".webp"):
-        await W2H.edit(
-            "Analyzing this media 🧐 framing this sticker!"
-        )
+        await W2H.edit("Analyzing this media 🧐 framing this sticker!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         os.rename(W2Hsticker, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -614,9 +578,7 @@ async def memes(W2H):
         meme_file = W2Hfile
         aura = True
     elif W2Hsticker.endswith((".mp4", ".mov")):
-        await W2H.edit(
-            "Analyzing this media 🧐 framing this video!"
-        )
+        await W2H.edit("Analyzing this media 🧐 framing this video!")
         W2Hfile = os.path.join("./temp/", "memes.jpg")
         await take_screen_shot(W2Hsticker, 0, W2Hfile)
         if not os.path.lexists(W2Hfile):
@@ -624,9 +586,7 @@ async def memes(W2H):
             return
         meme_file = W2Hfile
     else:
-        await W2H.edit(
-            "Analyzing this media 🧐 framing this image!"
-        )
+        await W2H.edit("Analyzing this media 🧐 framing this image!")
         meme_file = W2Hsticker
     try:
         san = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
@@ -654,17 +614,19 @@ async def memes(W2H):
 
 
 CmdHelp("img_fun").add_command(
-  "frame", "<reply to img>", "Makes a frame for your media file."
+    "frame", "<reply to img>", "Makes a frame for your media file."
 ).add_command(
-  "zoom", "<reply to img> <range>", "Zooms in the replied media file"
+    "zoom", "<reply to img> <range>", "Zooms in the replied media file"
 ).add_command(
-  "gray", "<reply to img>", "Makes your media file to black and white"
+    "gray", "<reply to img>", "Makes your media file to black and white"
 ).add_command(
-  "flip", "<reply to img>", "Shows you the upside down image of the given media file"
+    "flip", "<reply to img>", "Shows you the upside down image of the given media file"
 ).add_command(
-  "mirror", "<reply to img>", "Shows you the reflection of the replied image or sticker"
+    "mirror",
+    "<reply to img>",
+    "Shows you the reflection of the replied image or sticker",
 ).add_command(
-  "solarize", "<reply to img>", "Let the sun Burn your replied image/sticker"
+    "solarize", "<reply to img>", "Let the sun Burn your replied image/sticker"
 ).add_command(
-  "invert", "<reply to img>", "Inverts the color of replied media file"
+    "invert", "<reply to img>", "Inverts the color of replied media file"
 ).add()

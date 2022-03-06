@@ -2,9 +2,8 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 from telethon.tl.functions.messages import SaveDraftRequest
-
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -30,5 +29,7 @@ async def _(event):
 
 
 CmdHelp("chain").add_command(
-  'chain', 'Reply to a message', 'Reply this command to any msg so that it finds chain length of that msg'
+    "chain",
+    "Reply to a message",
+    "Reply this command to any msg so that it finds chain length of that msg",
 ).add()

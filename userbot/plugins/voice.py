@@ -8,9 +8,8 @@ import subprocess
 from datetime import datetime
 
 from gtts import gTTS
+from W2HBOT.utils import admin_cmd, sudo_cmd
 
-from userbot import CMD_HELP
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -82,5 +81,5 @@ async def _(event):
 
 
 CmdHelp("voice").add_command(
-  "voice", "<lang code> - <reply/text>", "Google Text To Speech Module."
+    "voice", "<lang code> - <reply/text>", "Google Text To Speech Module."
 ).add()

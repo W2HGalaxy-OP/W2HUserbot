@@ -16,8 +16,8 @@ import re
 import aiohttp
 from bs4 import BeautifulSoup
 from telethon.utils import get_inner_text
+from W2HBOT.utils import admin_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 logger.info(Config.OPEN_LOAD_LOGIN)
@@ -158,6 +158,7 @@ async def get_direct_ip_specific_link(link: str):
         dl_url = {"err": "Unsupported URL"}
     return dl_url
 
+
 CmdHelp("rapidleech").add_command(
-  "rl", "<reply to link>", "Generates IP specific link from supported sites."
+    "rl", "<reply to link>", "Generates IP specific link from supported sites."
 ).add()

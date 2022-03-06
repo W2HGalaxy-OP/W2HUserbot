@@ -6,7 +6,8 @@ import os
 import time
 from datetime import datetime
 
-from W2HBOT.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -18,7 +19,9 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     reply_message = await event.get_reply_message()
     if reply_message is None:
-        await edit_or_reply(event, "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot"
+        await edit_or_reply(
+            event,
+            "reply to a media to use the `nfc` operation.\nInspired by @FileConverterBot",
         )
         return
     await edit_or_reply(event, "trying to download media file, to my local")
@@ -37,8 +40,8 @@ async def _(event):
     else:
         end = datetime.now()
         ms = (end - start).seconds
-        await edit_or_reply(event, 
-            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+        await edit_or_reply(
+            event, "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
         )
         new_required_file_name = ""
         new_required_file_caption = ""
@@ -117,6 +120,7 @@ async def _(event):
             os.remove(new_required_file_name)
             await edit_or_reply(event, f"converted in {ms_two} seconds")
 
+
 CmdHelp("mp3converter").add_command(
-  "tomp3", "<reply to a media>", "Converts the given media to mp3 format"
+    "tomp3", "<reply to a media>", "Converts the given media to mp3 format"
 ).add()

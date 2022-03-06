@@ -5,13 +5,12 @@
 import datetime
 import string
 
-from telethon import events
 from telethon.tl.tlobject import TLObject
 from telethon.tl.types import MessageEntityPre
 from telethon.utils import add_surrogate
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
+from userbot.cmdhelp import CmdHelp
 
 PRINTABLE_SET = set(bytes(string.printable, "ascii"))
 STR_LEN_MAX = 256
@@ -102,6 +101,9 @@ async def _(event):
     yaml_text = yaml_format(msg)
     await edit_or_reply(event, yaml_text, parse_mode=parse_pre)
 
+
 CmdHelp("new").add_command(
-  "new", None, "Pretty formats the given object as a YAML string which is returned.(based on TLObject.pretty_format)"
+    "new",
+    None,
+    "Pretty formats the given object as a YAML string which is returned.(based on TLObject.pretty_format)",
 ).add()

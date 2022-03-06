@@ -1,6 +1,7 @@
 import asyncio
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -98,21 +99,22 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
         await event.edit(animation_chars[i % 10])
-        
+
+
 @bot.on(admin_cmd(pattern="istar$", outgoing=True))
 @bot.on(sudo_cmd(pattern="istar$", allow_sudo=True))
 async def ammastar(W2Hstar):
-  
+
     if W2Hstar.fwd_from:
-      
+
         return
-      
+
     animation_interval = 2
-    
+
     animation_ttl = range(0, 11)
-    
+
     await edit_or_reply(W2Hstar, "I am A Star")
-    
+
     animation_chars = [
         "I Party like a rockstar",
         "I Look like a movie star",
@@ -120,21 +122,22 @@ async def ammastar(W2Hstar):
         "I Fuck like a pornstar",
         "Baby I'm a superstar",
     ]
-    
+
     for i in animation_ttl:
-      
+
         await asyncio.sleep(animation_interval)
-        
+
         await W2Hstar.edit(animation_chars[i % 11])
-    
-        
+
+
 @bot.on(admin_cmd(pattern=r"lmoon", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"lmoon", allow_sudo=True))
 async def test(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, 
-        "🌕🌕🌕🌕🌕🌕🌕🌕\n🌕🌕🌖🌔🌖🌔🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌖🌓🌗🌔🌕🌕\n🌕🌕🌗🌑🌑🌓🌕🌕\n🌕🌕🌗👀🌑🌓🌕🌕\n🌕🌕🌘👄🌑🌓🌕🌕\n🌕🌕🌗🌑🌑🌒🌕🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌕🌘🌑🌑🌑🌑🌒🌕\n🌖🌑🌑🌑🌑🌑🌑🌔\n🌕🤜🏻🌑🌑🌑🌑🤛🏻🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌘🌑🌑🌑🌑🌑🌑🌒\n🌕🌕🌕🌕🌕🌕🌕🌕"
+    await edit_or_reply(
+        event,
+        "🌕🌕🌕🌕🌕🌕🌕🌕\n🌕🌕🌖🌔🌖🌔🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌗🌔🌖🌓🌕🌕\n🌕🌕🌖🌓🌗🌔🌕🌕\n🌕🌕🌗🌑🌑🌓🌕🌕\n🌕🌕🌗👀🌑🌓🌕🌕\n🌕🌕🌘👄🌑🌓🌕🌕\n🌕🌕🌗🌑🌑🌒🌕🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌕🌘🌑🌑🌑🌑🌒🌕\n🌖🌑🌑🌑🌑🌑🌑🌔\n🌕🤜🏻🌑🌑🌑🌑🤛🏻🌕\n🌕🌖🌑🌑🌑🌑🌔🌕\n🌘🌑🌑🌑🌑🌑🌑🌒\n🌕🌕🌕🌕🌕🌕🌕🌕",
     )
 
 
@@ -143,7 +146,8 @@ async def test(event):
 async def test(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, 
+    await edit_or_reply(
+        event,
         """☁☁🌞      ☁           ☁
        ☁  ✈         ☁    🚁    ☁    ☁        ☁          ☁     ☁   ☁
 
@@ -152,7 +156,7 @@ async def test(event):
            🌳/  🚘 l  🏃 \🌴 👬                       👬  🌴/            l  🚔    \🌲
       🌲/   🚖     l               \
    🌳/🚶           |   🚍         \ 🌴🚴🚴
-🌴/                    |                     \🌲"""
+🌴/                    |                     \🌲""",
     )
 
 
@@ -161,7 +165,9 @@ async def test(event):
 async def hi(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "🌺✨✨🌺✨🌺🌺🌺\n🌺✨✨🌺✨✨🌺✨\n🌺🌺🌺🌺✨✨🌺✨\n🌺✨✨🌺✨✨🌺✨\n🌺✨✨🌺✨🌺🌺🌺\n☁☁☁☁☁☁☁☁")
+    await edit_or_reply(
+        event, "🌺✨✨🌺✨🌺🌺🌺\n🌺✨✨🌺✨✨🌺✨\n🌺🌺🌺🌺✨✨🌺✨\n🌺✨✨🌺✨✨🌺✨\n🌺✨✨🌺✨🌺🌺🌺\n☁☁☁☁☁☁☁☁"
+    )
 
 
 @bot.on(admin_cmd(pattern=r"cheer", outgoing=True))
@@ -169,8 +175,9 @@ async def hi(event):
 async def cheer(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, 
-        "💐💐😉😊💐💐\n☕ Cheer Up  🍵\n🍂 ✨ )) ✨  🍂\n🍂┃ (( * ┣┓ 🍂\n🍂┃*💗 ┣┛ 🍂 \n🍂┗━━┛  🍂🎂 For YOU  🍰\n💐💐😌😚💐💐"
+    await edit_or_reply(
+        event,
+        "💐💐😉😊💐💐\n☕ Cheer Up  🍵\n🍂 ✨ )) ✨  🍂\n🍂┃ (( * ┣┓ 🍂\n🍂┃*💗 ┣┛ 🍂 \n🍂┗━━┛  🍂🎂 For YOU  🍰\n💐💐😌😚💐💐",
     )
 
 
@@ -179,7 +186,10 @@ async def cheer(event):
 async def getwell(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "🌹🌹🌹🌹🌹🌹🌹🌹 \n🌹😷😢😓😷😢💨🌹\n🌹💝💉🍵💊💐💝🌹\n🌹 GetBetter Soon! 🌹\n🌹🌹🌹🌹🌹🌹🌹🌹")
+    await edit_or_reply(
+        event, "🌹🌹🌹🌹🌹🌹🌹🌹 \n🌹😷😢😓😷😢💨🌹\n🌹💝💉🍵💊💐💝🌹\n🌹 GetBetter Soon! 🌹\n🌹🌹🌹🌹🌹🌹🌹🌹"
+    )
+
 
 @bot.on(admin_cmd(pattern="switch$", outgoing=True))
 @bot.on(sudo_cmd(pattern="switch$", allow_sudo=True))
@@ -193,24 +203,24 @@ async def _(event):
 
     animation_ttl = range(0, 11)
 
-  #  input_str = event.pattern_match.group(1)
+    #  input_str = event.pattern_match.group(1)
 
-  #  if input_str == "switch":
+    #  if input_str == "switch":
 
     await edit_or_reply(event, "Switch")
 
     animation_chars = [
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n[👉](https://t.me/David99q)⬜⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬛[👉](https://t.me/David99q)⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜[👆](https://t.me/David99q)⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜[👆](https://t.me/David99q)⬜⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬛[👉](https://t.me/David99q)⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬛⬛[👉](https://t.me/David99q)⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜🔲\n⬜⬛⬛⬛[👉](https://t.me/David99q)⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜[👆](https://t.me/David99q)⬜🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬛[👉](https://t.me/David99q)🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
-         "⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛🔳\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n[👉](https://t.me/David99q)⬜⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬛[👉](https://t.me/David99q)⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬜⬜⬜⬜⬜⬜\n⬜[👆](https://t.me/David99q)⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜[👆](https://t.me/David99q)⬜⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬛[👉](https://t.me/David99q)⬜⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜[🔲](https://github.com/W2HGalaxy-OP/W2HBOT)\n⬜⬛⬛[👉](https://t.me/David99q)⬜⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜🔲\n⬜⬛⬛⬛[👉](https://t.me/David99q)⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜[👆](https://t.me/David99q)⬜🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬜⬜⬜\n⬜⬜⬜⬜⬛[👉](https://t.me/David99q)🔲\n⬜⬛⬛⬛⬛⬜⬜\n⬜⬛⬜⬜⬜⬜⬜\n⬛⬛⬜⬜⬜⬜⬜",
+        "⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛🔳\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛\n⬛⬛⬛⬛⬛⬛⬛",
     ]
 
     for i in animation_ttl:
@@ -225,10 +235,11 @@ async def _(event):
 async def sprinkle(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, 
-        "✨.•*¨*.¸.•*¨*.¸¸.•*¨*• ƸӜƷ\n🌸🌺🌸🌺🌸🌺🌸🌺\n Sprinkled with love❤\n🌷🌻🌷🌻🌷🌻🌷🌻\n ¨*.¸.•*¨*. ¸.•*¨*.¸¸.•*¨`*•.✨\n🌹🍀🌹🍀🌹🍀🌹🍀"
+    await edit_or_reply(
+        event,
+        "✨.•*¨*.¸.•*¨*.¸¸.•*¨*• ƸӜƷ\n🌸🌺🌸🌺🌸🌺🌸🌺\n Sprinkled with love❤\n🌷🌻🌷🌻🌷🌻🌷🌻\n ¨*.¸.•*¨*. ¸.•*¨*.¸¸.•*¨`*•.✨\n🌹🍀🌹🍀🌹🍀🌹🍀",
     )
-    
+
 
 @bot.on(admin_cmd(pattern=r"f", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"f", allow_sudo=True))
@@ -253,43 +264,38 @@ async def payf(event):
     await edit_or_reply(event, pay)
 
 
-
-CmdHelp("animations4").add_command(
-  "phub", None, "Animated PORNHUB Typing"
+CmdHelp("animations4").add_command("phub", None, "Animated PORNHUB Typing").add_command(
+    "amore", None, "Animated AMORE Typing"
+).add_command("sexy", None, "Animated SEXY Typing").add_command(
+    "unoob", None, "Animated text calling them noob🚶"
 ).add_command(
-  "amore", None, "Animated AMORE Typing"
+    "menoob", None, "Animated text claiming you noob"
 ).add_command(
-  "sexy", None, "Animated SEXY Typing"
+    "uproo", None, "Animated text claiming you to be proooo"
 ).add_command(
-  "unoob", None, "Animated text calling them noob🚶"
+    "mepro", None, "Animated text calling them proo Af!!"
 ).add_command(
-  "menoob", None, "Animated text claiming you noob"
+    "sprinkle", None, "Use and see"
 ).add_command(
-  "uproo", None, "Animated text claiming you to be proooo"
+    "getwell", None, "Use and see"
 ).add_command(
-  "mepro", None, "Animated text calling them proo Af!!"
+    "cheer", None, "Use and see"
 ).add_command(
-  "sprinkle", None, "Use and see"
+    "hii", None, "Use and see"
 ).add_command(
-  "getwell", None, "Use and see"
+    "city", None, "Use and see"
 ).add_command(
-  "cheer", None, "Use and see"
+    "lmoon", None, "Use and see"
 ).add_command(
-  "hii", None, "Use and see"
+    "istar", None, "I am a Superstar⚡✨"
 ).add_command(
-  "city", None, "Use and see"
+    "switch", None, "Click on the switch to reveal the price✨"
 ).add_command(
-  "lmoon", None, "Use and see"
+    "thanos", None, "A poem on Thanos... Maybe🤐"
 ).add_command(
-  "istar", None, "I am a Superstar⚡✨"
+    "tp", None, "Use and see"
 ).add_command(
-  "switch", None, "Click on the switch to reveal the price✨"
+    "f", "<text>", "Prints the given text in 'F' format"
 ).add_command(
-  "thanos", None, "A poem on Thanos... Maybe🤐"
-).add_command(
-  "tp", None, "Use and see"
-).add_command(
-  "f", "<text>", "Prints the given text in 'F' format"
-).add_command(
-  "wahack", None, "Whatsapp Hack animation"
+    "wahack", None, "Whatsapp Hack animation"
 ).add()

@@ -10,9 +10,11 @@ from subprocess import run as runapp
 
 import pybase64
 
-#from userbot import CMD_HELP
-from W2HBOT.utils import errors_handler, admin_cmd, sudo_cmd, edit_or_reply
+# from userbot import CMD_HELP
+from W2HBOT.utils import admin_cmd, errors_handler, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="hash (.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="hash (.*)", allow_sudo=True))
@@ -84,9 +86,11 @@ async def endecrypt(query):
 
 
 CmdHelp("hash").add_command(
-  "hash", "<query>", "Finds the md5, sha1, sha256, sha512 of the string when written into a txt file"
+    "hash",
+    "<query>",
+    "Finds the md5, sha1, sha256, sha512 of the string when written into a txt file",
 ).add_command(
-  "hbase en", "<query>", "Finds the base64 encoding of the given string"
+    "hbase en", "<query>", "Finds the base64 encoding of the given string"
 ).add_command(
-  "hbase de", "<query>", "Finds the base64 decoding of the given string"
+    "hbase de", "<query>", "Finds the base64 decoding of the given string"
 ).add()

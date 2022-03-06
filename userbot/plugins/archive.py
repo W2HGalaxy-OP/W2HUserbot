@@ -16,11 +16,10 @@ import patoolib
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
-
-from userbot import CMD_HELP
-from userbot.Config import Config
 from W2HBOT.utils import admin_cmd, progress
+
 from userbot.cmdhelp import CmdHelp
+from userbot.Config import Config
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
@@ -560,19 +559,17 @@ def get_lst_of_files(input_directory, output_lst):
 
 
 CmdHelp("archive").add_command(
-  'zip', 'Reply to file/media', 'It will zip the file/media'
+    "zip", "Reply to file/media", "It will zip the file/media"
+).add_command("rar", "Reply to file/media", "It will rar the file/media").add_command(
+    "7z", "Reply to file/media", "It will 7z the file/media"
 ).add_command(
-  'rar', 'Reply to file/media', 'It will rar the file/media'
+    "tar", "Reply to file/media", "It will tar the file/media"
 ).add_command(
-  '7z', 'Reply to file/media', 'It will 7z the file/media'
+    "unzip", "Reply to zip file", "It will unzip the zip file"
 ).add_command(
-  'tar', 'Reply to file/media', 'It will tar the file/media'
+    "unrar", "Reply to rar file", "It will unrar the rar file"
 ).add_command(
-  'unzip', 'Reply to zip file', 'It will unzip the zip file'
+    "untar", "Reply to tar file", "It will untar the tar file"
 ).add_command(
-  'unrar', 'Reply to rar file', 'It will unrar the rar file'
-).add_command(
-  'untar', 'Reply to tar file', 'It will untar the tar file'
-).add_command(
-  'compress', 'Reply to file/media', 'It will compress the replied media/file'
+    "compress", "Reply to file/media", "It will compress the replied media/file"
 ).add()

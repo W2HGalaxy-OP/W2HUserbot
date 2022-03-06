@@ -1,10 +1,9 @@
 import asyncio
 import random
+
 from . import *
-NUMBER = ["0", "1"] 
 
-
-
+NUMBER = ["0", "1"]
 
 
 RAID = [
@@ -327,6 +326,7 @@ async def _(event):
             reply_to=event.message.id,
         )
 
+
 @bot.on(admin_cmd(pattern="replyraid(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="replyraid(?: |$)(.*)", allow_sudo=True))
 async def _(event):
@@ -385,8 +385,8 @@ async def _(event):
         queue = que.get(e)
         queue.pop(0)
         await event.edit(f"STOPPING RAID BY {ALIVE_NAME}")
+
+
 CmdHelp("raid").add_command(
-'replyraid', None, 'Reply to him or her to start raid'
-).add_command(
-'dreplyraid', None, 'Reply To her Ya him To stop raid'
-).add()
+    "replyraid", None, "Reply to him or her to start raid"
+).add_command("dreplyraid", None, "Reply To her Ya him To stop raid").add()

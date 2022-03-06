@@ -11,10 +11,10 @@ from random import choice
 import requests
 from bs4 import BeautifulSoup
 from humanize import naturalsize
-
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
 @bot.on(sudo_cmd(allow_sudo=True, pattern=r"direct(?: |$)([\s\S]*)"))
@@ -64,7 +64,7 @@ async def direct_link_generator(request):
 
 
 def gdrive(url: str) -> str:
-    """ GDrive direct links generator """
+    """GDrive direct links generator"""
     drive = "https://drive.google.com"
     try:
         link = re.findall(r"\bhttps?://drive\.google\.com\S+", url)[0]
@@ -205,7 +205,7 @@ def cm_ru(url: str) -> str:
 
 
 def mediafire(url: str) -> str:
-    """ MediaFire direct links generator """
+    """MediaFire direct links generator"""
     try:
         link = re.findall(r"\bhttps?://.*mediafire\.com\S+", url)[0]
     except IndexError:
@@ -222,7 +222,7 @@ def mediafire(url: str) -> str:
 
 
 def sourceforge(url: str) -> str:
-    """ SourceForge direct links generator """
+    """SourceForge direct links generator"""
     try:
         link = re.findall(r"\bhttps?://.*sourceforge\.net\S+", url)[0]
     except IndexError:
@@ -247,7 +247,7 @@ def sourceforge(url: str) -> str:
 
 
 def osdn(url: str) -> str:
-    """ OSDN direct links generator """
+    """OSDN direct links generator"""
     osdn_link = "https://osdn.net"
     try:
         link = re.findall(r"\bhttps?://.*osdn\.net\S+", url)[0]
@@ -268,7 +268,7 @@ def osdn(url: str) -> str:
 
 
 def github(url: str) -> str:
-    """ GitHub direct links generator """
+    """GitHub direct links generator"""
     try:
         link = re.findall(r"\bhttps?://.*github\.com.*releases\S+", url)[0]
     except IndexError:
@@ -287,7 +287,7 @@ def github(url: str) -> str:
 
 
 def androidfilehost(url: str) -> str:
-    """ AFH direct links generator """
+    """AFH direct links generator"""
     try:
         link = re.findall(r"\bhttps?://.*androidfilehost.*fid.*\S+", url)[0]
     except IndexError:
@@ -350,5 +350,7 @@ def useragent():
 
 
 CmdHelp("direct_links").add_command(
-  'direct', 'link', 'Reply to a link or paste a URL to generate a direct download link.\nList of supported URLs:-\n• Google Drive\n•Cloud mail\n• Yandex.Disk\n• AFH\n• Zippy Share\n• Media fire\n• SourceForge\n• OSDN\n• Github'
+    "direct",
+    "link",
+    "Reply to a link or paste a URL to generate a direct download link.\nList of supported URLs:-\n• Google Drive\n•Cloud mail\n• Yandex.Disk\n• AFH\n• Zippy Share\n• Media fire\n• SourceForge\n• OSDN\n• Github",
 ).add()

@@ -96,17 +96,14 @@ async def homer(homer):
 @borg.on(admin_cmd(pattern=r"pig"))
 async def pig(pig):
     await pig.edit(P)
-    
-CmdHelp("animal").add_command(
-'pig', None, 'pig face'
+
+
+CmdHelp("animal").add_command("pig", None, "pig face").add_command(
+    "homer", None, "Homer Face"
+).add_command("elephant", None, "Elephant Face").add_command(
+    "fox", None, "Fox Face•"
 ).add_command(
-'homer', None, 'Homer Face'
+    "dog", None, "Dog Face"
 ).add_command(
-'elephant', None, 'Elephant Face'
-).add_command(
-'fox', None, 'Fox Face•'
-).add_command(
-'dog', None, 'Dog Face'
-).add_command(
-'spong', None, 'Spong Face'
+    "spong", None, "Spong Face"
 ).add()

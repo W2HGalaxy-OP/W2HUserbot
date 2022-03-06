@@ -1,25 +1,24 @@
-from userbot import bot
-from sys import argv
-import sys
-from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
 import os
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
-from telethon import TelegramClient
-from var import Var
-from userbot.Config import Config
-from userbot.utils import load_module, start_assistant 
-from userbot import LOAD_PLUG, LOGS, W2Hversion
 from pathlib import Path
-import asyncio
+from sys import argv
+
 import telethon.utils
+from telethon import TelegramClient
+from telethon.tl.functions.channels import JoinChannelRequest
+
+from userbot import W2Hversion, bot
+from userbot.Config import Config
+from userbot.utils import load_module, start_assistant
+from var import Var
+
 os.system("pip install -U telethon")
 W2H_PIC = "https://telegra.ph/file/2fa3aee964d06061b3f5e.jpg"
 
+
 async def add_bot(bot_token):
     await bot.start(bot_token)
-    bot.me = await bot.get_me() 
+    bot.me = await bot.get_me()
     bot.uid = telethon.utils.get_peer_id(bot.me)
-
 
 
 if len(argv) not in (1, 3, 4):
@@ -30,9 +29,7 @@ else:
         print("Initiating Inline Bot")
         # ForTheGreatrerGood of beautification
         bot.tgbot = TelegramClient(
-            "TG_BOT_TOKEN",
-            api_id=Var.APP_ID,
-            api_hash=Var.API_HASH
+            "TG_BOT_TOKEN", api_id=Var.APP_ID, api_hash=Var.API_HASH
         ).start(bot_token=Var.TG_BOT_TOKEN_BF_HER)
         print("Initialisation finished with no errors")
         print("Starting Smoothest W2HBOT")
@@ -43,41 +40,49 @@ else:
 
 
 async def module():
-  import glob
-  path = 'userbot/plugins/*.py'
-  files = glob.glob(path)
-  for name in files:
-    with open(name) as f:
-      path1 = Path(f.name)
-      shortname = path1.stem
-      load_module(shortname.replace(".py", ""))
+    import glob
+
+    path = "userbot/plugins/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as f:
+            path1 = Path(f.name)
+            shortname = path1.stem
+            load_module(shortname.replace(".py", ""))
+
 
 assistant = os.environ.get("ASSISTANT", None)
+
+
 async def assistants():
     if assistant == "ON":
         import glob
-        path = 'userbot/plugins/assistant/*.py'
+
+        path = "userbot/plugins/assistant/*.py"
         files = glob.glob(path)
         for name in files:
             with open(name) as f:
                 path1 = Path(f.name)
                 shortname = path1.stem
                 try:
-                    start_assistant(shortname.replace(".py", ""))   
+                    start_assistant(shortname.replace(".py", ""))
                 except Exception as e:
                     print(e)
     else:
         print("⚠️Assistant Not Loaded⚠️")
 
-import userbot._core
+
 bot.loop.run_until_complete(module())
 bot.loop.run_until_complete(assistants())
-print(f"""W2HBOT IS ON!!! W2HBOT VERSION :- {W2Hversion}
+print(
+    f"""W2HBOT IS ON!!! W2HBOT VERSION :- {W2Hversion}
 JOIN OFFICIAL CHAT GROUP AND UPDATES CHANNEL
 OFFICIAL GROUP :- @W2HSupport
 OFFICIAL CHANNEL :- @W2H_Userbot
 DO .alive OR .ping CHECK IF I'M ON!
-IF YOU FACE ANY ISSUE THEN ASK AT CHAT GROUP.""")
+IF YOU FACE ANY ISSUE THEN ASK AT CHAT GROUP."""
+)
+
 
 async def legend_is_on():
     try:
@@ -89,7 +94,7 @@ async def legend_is_on():
             )
     except Exception as e:
         print(str(e))
-# Join LegndBot Channel after deploying 🤐😅
+    # Join LegndBot Channel after deploying 🤐😅
     try:
         await bot(JoinChannelRequest("@w2h_userbot"))
     except BaseException:
@@ -98,7 +103,8 @@ async def legend_is_on():
     try:
         await bot(JoinChannelRequest("@W2hSupport"))
     except BaseException:
-         pass
+        pass
+
 
 bot.loop.create_task(legend_is_on())
 

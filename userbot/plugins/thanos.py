@@ -1,7 +1,7 @@
 import asyncio
 
-from telethon import events
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 
 @bot.on(admin_cmd(pattern="thanos$", outgoing=True))
 @bot.on(sudo_cmd(pattern="thanos$", allow_sudo=True))
@@ -10,8 +10,8 @@ async def _(event):
         return
     animation_interval = 0.3
     animation_ttl = range(0, 16)
-  #  input_str = event.pattern_match.group(1)
- #   if input_str == "thanos":
+    #  input_str = event.pattern_match.group(1)
+    #   if input_str == "thanos":
     await edit_or_reply(event, "Thanos")
     animation_chars = [
         "JINGLE BELLS",

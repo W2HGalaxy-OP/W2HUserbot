@@ -3,9 +3,9 @@ import os
 import sys
 
 import git
+from W2HBOT.utils import admin_cmd
 
 from userbot.Config import Config
-from W2HBOT.utils import admin_cmd
 
 # -- Constants -- #
 IS_SELECTED_DIFFERENT_BRANCH = (
@@ -141,5 +141,3 @@ async def deploy_start(tgbot, message, refspec, remote):
     await remote.push(refspec=refspec)
     await tgbot.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
-  
-  

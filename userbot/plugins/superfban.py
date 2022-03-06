@@ -8,10 +8,9 @@ from telethon.errors import ChatAdminRequiredError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.users import GetFullUserRequest
 
-from userbot import CMD_HELP
 from userbot.cmdhelp import CmdHelp
 
-from ..utils import admin_cmd , sudo_cmd
+from ..utils import admin_cmd, sudo_cmd
 from . import ALIVE_NAME
 
 naam = str(ALIVE_NAME)
@@ -345,11 +344,7 @@ async def _(event):
             await event.edit("Something went wrong.")
             return
     except:
-        if (
-            FBAN == "@W2H_Owner"
-            or FBAN == "@W2H_Queen"
-            or FBAN == "@W2H_CoOwnerr"
-        ):
+        if FBAN == "@W2H_Owner" or FBAN == "@W2H_Queen" or FBAN == "@W2H_CoOwnerr":
             await event.edit("Something went wrong.")
             return
     if FBAN_GROUP_ID:
@@ -508,14 +503,19 @@ async def _(event):
 
 
 CmdHelp("SuperFban").add_command(
-  'superfban', '<user-id> or reply to a user' , 'Ban the selected user in all the federations'
+    "superfban",
+    "<user-id> or reply to a user",
+    "Ban the selected user in all the federations",
 ).add_command(
-  'superunfban', '<User-id> or reply to a user', 'Unban the selected user from all the federations'
+    "superunfban",
+    "<User-id> or reply to a user",
+    "Unban the selected user from all the federations",
 ).add_command(
-  'roseinfo', '<User-id> or reply to a user', 'Gives info about the user'
+    "roseinfo", "<User-id> or reply to a user", "Gives info about the user"
 ).add_command(
-  'myfeds', None, 'gives the list of your admin feds'
+    "myfeds", None, "gives the list of your admin feds"
 ).add_command(
-  'fstat', '<User-id> or reply to a user', 'gives federation stats of the selected user'
-).add()    
-
+    "fstat",
+    "<User-id> or reply to a user",
+    "gives federation stats of the selected user",
+).add()

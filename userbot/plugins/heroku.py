@@ -4,12 +4,11 @@ import os
 
 import heroku3
 import requests
-
-from userbot import CMD_HELP
-from userbot.Config import Config
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
 import urllib3
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from userbot.cmdhelp import CmdHelp
+from userbot.Config import Config
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # =====================================
@@ -213,13 +212,17 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
 
 CmdHelp("heroku").add_command(
-  "usage", None, "Check your heroku dyno hours status."
+    "usage", None, "Check your heroku dyno hours status."
 ).add_command(
-  "set var", "<NEW VAR> <value>", "Add new variable or update existing value/variable\nAfter setting a variable the bot will restart. So be calm for a minute😃"
+    "set var",
+    "<NEW VAR> <value>",
+    "Add new variable or update existing value/variable\nAfter setting a variable the bot will restart. So be calm for a minute😃",
 ).add_command(
-  "get var", "<VAR NAME", "Gets the variable and its value (if any) from heroku."
+    "get var", "<VAR NAME", "Gets the variable and its value (if any) from heroku."
 ).add_command(
-  "del var", "<VAR NAME", "Deletes the variable from heroku. Bot will restart after deleting the variable. so be calm for a minute 😃"
+    "del var",
+    "<VAR NAME",
+    "Deletes the variable from heroku. Bot will restart after deleting the variable. so be calm for a minute 😃",
 ).add_command(
-  "logs", None, "Gets the app log of 100 lines of your bot directly from heroku."
+    "logs", None, "Gets the app log of 100 lines of your bot directly from heroku."
 ).add()

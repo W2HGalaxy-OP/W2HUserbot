@@ -2,15 +2,19 @@ from userbot import bot as w2hgalaxy
 from userbot.utils import admin_cmd as choot
 
 x = True
+
+
 @w2hgalaxy.on(choot(pattern="bsdk"))
 async def yashraid(event):
     while x != False:
-       
+
         await event.delete()
         kek = event.chat_id
         await w2hgalaxy.send_message(kek, "TERI MA KI CHOOXT MAARUU BSDKEE")
         await w2hgalaxy.send_message(kek, "TERI BHN KA BHOSXDA FAAD DIA MADARCHOD")
-        await w2hgalaxy.send_message(kek, "TERI BHN KI GANXD ME DYNAMTE LAGA KE UDA DIA")
+        await w2hgalaxy.send_message(
+            kek, "TERI BHN KI GANXD ME DYNAMTE LAGA KE UDA DIA"
+        )
         await w2hgalaxy.send_message(kek, "W2H OP HAI HM BAAP BOLTE HMKO")
         await w2hgalaxy.send_message(kek, "TERI MAA KO CHOODUU")
         await w2hgalaxy.send_message(kek, "MAADARCHODD")
@@ -32,7 +36,9 @@ async def yashraid(event):
         await w2hgalaxy.send_message(kek, "MADERRRRCHODDO")
         await w2hgalaxy.send_message(kek, "TUM SABB KAA")
         await w2hgalaxy.send_message(kek, " BAAAP HAII")
-        await w2hgalaxy.send_message(kek, "W2H HAI HM HMKO KAHTE H OP AUR BETE TUM W2H KE LAND KI TOPI")
+        await w2hgalaxy.send_message(
+            kek, "W2H HAI HM HMKO KAHTE H OP AUR BETE TUM W2H KE LAND KI TOPI"
+        )
         await w2hgalaxy.send_message(kek, "😂")
         await w2hgalaxy.send_message(kek, "TERI GAMD TOD DI JAYEGI MADDRCHOD")
         await w2hgalaxy.send_message(kek, "KII MAA")
@@ -66,7 +72,10 @@ async def yashraid(event):
         await w2hgalaxy.send_message(kek, "TERA BAAP")
         await w2hgalaxy.send_message(kek, "BETHA HAI")
         await w2hgalaxy.send_message(kek, "GHODEE PEE")
-        await w2hgalaxy.send_message(kek, "TERI GANND TOD DI JAYEGI MADDRCHOD TUMHARA BAAP HU ME W2H WALE GANND FAAD KE RAKH DENGE TERI MADARCHOOD")
+        await w2hgalaxy.send_message(
+            kek,
+            "TERI GANND TOD DI JAYEGI MADDRCHOD TUMHARA BAAP HU ME W2H WALE GANND FAAD KE RAKH DENGE TERI MADARCHOOD",
+        )
         await w2hgalaxy.send_message(kek, "TUMHARII")
         await w2hgalaxy.send_message(kek, "MAA")
         await w2hgalaxy.send_message(kek, "MEREEE")
@@ -95,7 +104,9 @@ async def yashraid(event):
         await w2hgalaxy.send_message(kek, "KAA SARIYAA")
         await w2hgalaxy.send_message(kek, "DAAL DIYAA")
         await w2hgalaxy.send_message(kek, "KALAP GYII")
-        await w2hgalaxy.send_message(kek, "TERI BHN KE GORE BOOBS AAHAAH AAH AAHA AAAHA AAHA AAAHH")
+        await w2hgalaxy.send_message(
+            kek, "TERI BHN KE GORE BOOBS AAHAAH AAH AAHA AAAHA AAHA AAAHH"
+        )
         await w2hgalaxy.send_message(kek, "TERI MA KI CHOOXT FAD DI MENE BHOOSSDIKE ")
         await w2hgalaxy.send_message(kek, "TERE BAAP")
         await w2hgalaxy.send_message(kek, "RHEGE HUM")
@@ -113,8 +124,12 @@ async def yashraid(event):
         await w2hgalaxy.send_message(kek, "MAIN HI HUINN YASH")
         await w2hgalaxy.send_message(kek, "MERAA NAJAYAZ🤣")
         await w2hgalaxy.send_message(kek, "BETA HAI TUU")
-        await w2hgalaxy.send_message(kek, "TERI MAA KI CHUUTTT AHHHH GZB BHSODDA BNA DIYAA")
-        await w2hgalaxy.send_message(kek, "HUMSE BAKCHODI NA KRRR TELE PR RHNE LAYAK NHI BACHEGA")
+        await w2hgalaxy.send_message(
+            kek, "TERI MAA KI CHUUTTT AHHHH GZB BHSODDA BNA DIYAA"
+        )
+        await w2hgalaxy.send_message(
+            kek, "HUMSE BAKCHODI NA KRRR TELE PR RHNE LAYAK NHI BACHEGA"
+        )
         await w2hgalaxy.send_message(kek, "MAAADDRRCHHHOOODD")
         await w2hgalaxy.send_message(kek, "LOOWDEE KEE BAAL")
         await w2hgalaxy.send_message(kek, "LAAWDDDEEE KEE BAAL")
@@ -125,15 +140,24 @@ async def yashraid(event):
         await w2hgalaxy.send_message(kek, "BSSDDKKEE BAAP SE PANGE LENGE")
         await w2hgalaxy.send_message(kek, "YEEE LODDUUU KE BAAL")
         await w2hgalaxy.send_message(kek, "JHHAAATTT BHAR KI AAUUKAAT NHI H")
-        await w2hgalaxy.send_message(kek, "AAYYYY HHHHH BAAAAPPP SSSEEE BHIIIDDHNEE MADARCHHHHOODDD")
-        await w2hgalaxy.send_message(kek, "BBHHOOSSDDDIIKEEEE APNIII MAA KO DWAI LAA KRRRR DEE")
-        await w2hgalaxy.send_message(kek, "MAADDRRRCCCHHHOOODDDD TERIIII MAA KIII CCCHHHUUUTTT SSSEEE KHUUNNN NIKALLLL DIYAA HH BBEETTIICCHHOODD")
+        await w2hgalaxy.send_message(
+            kek, "AAYYYY HHHHH BAAAAPPP SSSEEE BHIIIDDHNEE MADARCHHHHOODDD"
+        )
+        await w2hgalaxy.send_message(
+            kek, "BBHHOOSSDDDIIKEEEE APNIII MAA KO DWAI LAA KRRRR DEE"
+        )
+        await w2hgalaxy.send_message(
+            kek,
+            "MAADDRRRCCCHHHOOODDDD TERIIII MAA KIII CCCHHHUUUTTT SSSEEE KHUUNNN NIKALLLL DIYAA HH BBEETTIICCHHOODD",
+        )
         await w2hgalaxy.send_message(kek, "CHAKKKAAA HHH TUUUU MAAADDRRCHHHOODDDD")
         await w2hgalaxy.send_message(kek, "JJHHHAAATEEE JITNI")
         await w2hgalaxy.send_message(kek, "BHIIIII BAAADDIII HOO")
         await w2hgalaxy.send_message(kek, "RHHHTTAAAA LUNNNNNDD KEEE NICHEE HI HHHH")
         await w2hgalaxy.send_message(kek, "BETICCCHHOOODD")
-        await w2hgalaxy.send_message(kek, "BHHHHOOOSSSDDIIIIKKEEEE TEEERRIIII AAUUKKAAAT MERA MUUUTT")
+        await w2hgalaxy.send_message(
+            kek, "BHHHHOOOSSSDDIIIIKKEEEE TEEERRIIII AAUUKKAAAT MERA MUUUTT"
+        )
         await w2hgalaxy.send_message(kek, "PIINEEE KI HHHH USSEEE PIII OR KKKHUUSSHHH")
         await w2hgalaxy.send_message(kek, "RAHHHH BETIIICHHOOODDD CHIINARRR")
         await w2hgalaxy.send_message(kek, "AAJJJ KEEE BAAD W2H SE PANGA")
@@ -147,6 +171,7 @@ async def yashraid(event):
         await w2hgalaxy.send_message(kek, "CHHHOOOODDDD DENGE")
         await w2hgalaxy.send_message(kek, "TUMMM JESEE KITNOOO")
         await w2hgalaxy.send_message(kek, "KOOO CHOOOOOOODDDDD KRRR CHOD DIYAA GANDUUU")
-        await w2hgalaxy.send_message(kek, "TELEGRAM ME RAHNA HAI TO W2H KO PAPA BOLNA PAREGA WARNA TUMHARII BHN XUDEGI AISE HI ROJ")
-        
-        
+        await w2hgalaxy.send_message(
+            kek,
+            "TELEGRAM ME RAHNA HAI TO W2H KO PAPA BOLNA PAREGA WARNA TUMHARII BHN XUDEGI AISE HI ROJ",
+        )

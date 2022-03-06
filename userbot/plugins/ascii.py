@@ -6,9 +6,9 @@
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
-from userbot import ALIVE_NAME, CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from userbot import ALIVE_NAME
 from userbot.cmdhelp import CmdHelp
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
@@ -96,8 +96,7 @@ async def _(event):
             caption=f"**Image Type :** LINE Art \n**Uploaded By :** {mention}",
         )
 
+
 CmdHelp("ascii").add_command(
-  'ascii', 'reply to any image file', 'Makes an image ascii style, try out your own'
-).add_command(
-  'line', 'reply to any image file', 'Makes an image in line style'
-).add()
+    "ascii", "reply to any image file", "Makes an image ascii style, try out your own"
+).add_command("line", "reply to any image file", "Makes an image in line style").add()

@@ -3,10 +3,11 @@ import asyncio
 import random
 
 from telethon.tl.types import ChannelParticipantsAdmins
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import LOGS
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="join$", outgoing=True))
 @bot.on(sudo_cmd(pattern="join$", allow_sudo=True))
@@ -40,7 +41,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-  
+
 
 @bot.on(admin_cmd(pattern="climb$", outgoing=True))
 @bot.on(sudo_cmd(pattern="climb$", allow_sudo=True))
@@ -57,7 +58,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-  
+
 
 @bot.on(admin_cmd(pattern="aag$", outgoing=True))
 @bot.on(sudo_cmd(pattern="aag$", allow_sudo=True))
@@ -74,7 +75,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-    
+
 
 @bot.on(admin_cmd(pattern="push$", outgoing=True))
 @bot.on(sudo_cmd(pattern="push$", allow_sudo=True))
@@ -91,7 +92,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-    
+
 
 @bot.on(admin_cmd(pattern="work$", outgoing=True))
 @bot.on(sudo_cmd(pattern="work$", allow_sudo=True))
@@ -108,7 +109,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-    
+
 
 @bot.on(admin_cmd(pattern="suckit$", outgoing=True))
 @bot.on(sudo_cmd(pattern="suckit$", allow_sudo=True))
@@ -125,7 +126,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-   
+
 
 @bot.on(admin_cmd(pattern="ohh$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ohh$", allow_sudo=True))
@@ -142,7 +143,7 @@ async def _(event):
         await reply_message.reply(mentions)
     else:
         await edit_or_reply(event, mentions)
-  
+
 
 @bot.on(admin_cmd(pattern="lovestory$", outgoing=True))
 @bot.on(sudo_cmd(pattern="lovestory$", allow_sudo=True))
@@ -209,26 +210,22 @@ async def _(event):
     await edit_or_reply(event, mentions)
 
 
-CmdHelp("fun2").add_command(
-  "join", None, "Use and see"
+CmdHelp("fun2").add_command("join", None, "Use and see").add_command(
+    "bf", None, "Use and see"
+).add_command("push", None, "Use and see").add_command(
+    "lovestory", None, "Use and see"
 ).add_command(
-  "bf", None, "Use and see"
+    "session", None, "Use and see"
 ).add_command(
-  "push", None, "Use and see"
+    "ohh", None, "Use and see"
 ).add_command(
-  "lovestory", None, "Use and see"
+    "suckit", None, "Use and see"
 ).add_command(
-  "session", None, "Use and see"
+    "work", None, "Use and see"
 ).add_command(
-  "ohh", None, "Use and see"
+    "aag", None, "Use and see"
 ).add_command(
-  "suckit", None, "Use and see"
+    "climb", None, "Use and see"
 ).add_command(
-  "work", None, "Use and see"
-).add_command(
-  "aag", None, "Use and see"
-).add_command(
-  "climb", None, "Use and see"
-).add_command(
-  "pay", None, "Use and see"
+    "pay", None, "Use and see"
 ).add()

@@ -5,11 +5,11 @@ import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import bot
-from userbot.helpers.functions import deEmojify
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
+from userbot.helpers.functions import deEmojify
 
 # RegEx by https://t.me/c/1220993104/50065
 
@@ -115,10 +115,13 @@ async def get_font_file(client, channel_id, search_kw=""):
     # download and return the file path
     return await client.download_media(font_file_message)
 
+
 CmdHelp("stickerfun").add_command(
-  "waifu", "<text> / <reply>", "Sends random waifu sticker with the desired text printed on it"
+    "waifu",
+    "<text> / <reply>",
+    "Sends random waifu sticker with the desired text printed on it",
 ).add_command(
-  "stcr", "<text> / <reply>", "Sends a sticker of the given text"
+    "stcr", "<text> / <reply>", "Sends a sticker of the given text"
 ).add_command(
-  "text", "<text>", "Same as stcr but with different fonts"
+    "text", "<text>", "Same as stcr but with different fonts"
 ).add()

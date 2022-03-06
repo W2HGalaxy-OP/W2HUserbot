@@ -14,9 +14,8 @@ import requests
 from pytz import country_names as c_n
 from pytz import country_timezones as c_tz
 from pytz import timezone as tz
-
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 logging.basicConfig(
@@ -220,9 +219,11 @@ async def _(event):
 
 
 CmdHelp("climate").add_command(
-  'climate', 'Name of state/country', 'Gets the weather of a city. By default it is Delhi, change it by setcity'
-).add_command(
-  'setcity', '<city>/<country>', 'Sets your default city.'
-).add_command(
-  'wttr', '<city>', 'Shows you the climate data of 3 days from today in a image format.'
+    "climate",
+    "Name of state/country",
+    "Gets the weather of a city. By default it is Delhi, change it by setcity",
+).add_command("setcity", "<city>/<country>", "Sets your default city.").add_command(
+    "wttr",
+    "<city>",
+    "Shows you the climate data of 3 days from today in a image format.",
 ).add()

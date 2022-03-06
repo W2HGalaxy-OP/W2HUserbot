@@ -4,16 +4,10 @@ logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
 )
 import asyncio
-import os
 
-from telethon.tl.types import InputMediaUploadedPhoto
-from telethon.tl.functions.messages import DeleteHistoryRequest
-
+from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from telethon.tl.functions.account import UpdateNotifySettingsRequest
-from telethon import functions, types, events
-from W2HBOT import CmdHelp, bot as W2HBOT
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply as eor
+from telethon.tl.types import InputMediaUploadedPhoto
 from W2HBOT.Config import Config
 from W2HBOT.plugins.sql_helper.fban_sql import (
     add_channel,
@@ -21,6 +15,12 @@ from W2HBOT.plugins.sql_helper.fban_sql import (
     in_channels,
     rm_channel,
 )
+from W2HBOT.utils import admin_cmd
+from W2HBOT.utils import edit_or_reply as eor
+from W2HBOT.utils import sudo_cmd
+
+from W2HBOT import CmdHelp
+from W2HBOT import bot as W2HBOT
 
 logs_id = Config.FBAN_LOGGER_GROUP
 bot = "@MissRose_bot"
@@ -142,7 +142,10 @@ async def _(event):
                 try:
                     await borg.send_message(logs_id, f"{error_count} Errors")
                 except BaseException:
-                    await mssg.edit("Set up heroku var `FBAN_LOGGER_GROUP` for checking errors.")# Written by @HeisenbergTheDanger
+                    await mssg.edit(
+                        "Set up heroku var `FBAN_LOGGER_GROUP` for checking errors."
+                    )  # Written by @HeisenbergTheDanger
+
 
 @W2HBOT.on(admin_cmd(pattern="unfban ?(.*)"))
 @W2HBOT.on(sudo_cmd(pattern="unfban ?(.*)", allow_sudo=True))
@@ -256,7 +259,9 @@ async def _(event):
                 try:
                     await borg.send_message(logs_id, f"{error_count} Errors")
                 except BaseException:
-                    await mssg.edit("Set up heroku var `FBAN_LOGGER_GROUP` for checking errors.")
+                    await mssg.edit(
+                        "Set up heroku var `FBAN_LOGGER_GROUP` for checking errors."
+                    )
 
 
 @W2HBOT.on(admin_cmd(pattern=r"fadd ?(.*)"))
@@ -265,8 +270,7 @@ async def add_ch(event):
     if event.fwd_from:
         return
     if (
-        "addcf" in event.raw_text.lower()
-        or "addblacklist" in event.raw_text.lower()
+        "addcf" in event.raw_text.lower() or "addblacklist" in event.raw_text.lower()
     ):  # fix for ".addcf" in lydia and ".addblacklist"
         return
     if event.reply_to_msg_id:
@@ -375,7 +379,9 @@ async def search(event):
         username = "@" + username
     await eor(event, f"Name : {name}\nUsername: {username}")
 
-#----------------------------------------------------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------
+
 
 @W2HBOT.on(admin_cmd(pattern="newfed ?(.*)", outgoing=True))
 @W2HBOT.on(sudo_cmd(pattern="newfed ?(.*)", allow_sudo=True))
@@ -407,21 +413,23 @@ async def _(event):
 @W2HBOT.on(sudo_cmd(pattern="renamefed ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
-        return 
+        return
     W2H_input = event.pattern_match.group(1)
     chat = "@MissRose_Bot"
     await event.edit("`Trying to rename your fed...`")
     async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=609517172))
-              await event.client.send_message(chat, f"/renamefed {W2H_input}")
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("Please Unblock @MissRose_Bot")
-              return
-          else: 
-             await event.delete()
-             await event.client.send_message(event.chat_id, response.message)
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=609517172)
+            )
+            await event.client.send_message(chat, f"/renamefed {W2H_input}")
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("Please Unblock @MissRose_Bot")
+            return
+        else:
+            await event.delete()
+            await event.client.send_message(event.chat_id, response.message)
 
 
 @W2HBOT.on(admin_cmd(pattern="fstat ?(.*)"))
@@ -439,9 +447,7 @@ async def _(event):
         lavde = event.pattern_match.group(1)
         user = lavde
     if lavde == "":
-        await W2H.edit(
-            "`Need username/id to check fstat`"
-        )
+        await W2H.edit("`Need username/id to check fstat`")
         return
     else:
         async with borg.conversation(bot) as conv:
@@ -483,28 +489,38 @@ async def _(event):
             await W2H.edit(massive.text + "\n\n**LEGENDARY_AF_W2HBOT**")
         except YouBlockedUserError:
             await W2H.edit("`Please Unblock` @MissRose_Bot")
-            
+
 
 CmdHelp("fed_bot").add_command(
-  "fban", "<reply to a msg>", "Forwards the replied fban msg to all groups added in your Fed Database", "Click` [here](https://telegra.ph/file/ab848eb3a3b4b94dfc726.jpg) `for an example"
+    "fban",
+    "<reply to a msg>",
+    "Forwards the replied fban msg to all groups added in your Fed Database",
+    "Click` [here](https://telegra.ph/file/ab848eb3a3b4b94dfc726.jpg) `for an example",
 ).add_command(
-  "fsearch", "<grp id>", "Gives out the username and group's name of the given group id.(IF ADDED IN FBAN DATABASE)"
+    "fsearch",
+    "<grp id>",
+    "Gives out the username and group's name of the given group id.(IF ADDED IN FBAN DATABASE)",
 ).add_command(
-  "fgroups", None, "Gives out the list of group ids you have connected to fban database"
+    "fgroups",
+    None,
+    "Gives out the list of group ids you have connected to fban database",
 ).add_command(
-  "fremove", "<group id> or in a group", "Removes the group from your fban database."
+    "fremove", "<group id> or in a group", "Removes the group from your fban database."
 ).add_command(
-  "fremove all", None, "Removes the group from your fban database."
+    "fremove all", None, "Removes the group from your fban database."
 ).add_command(
-  "fadd", None, "Adds the group in your fban database."
+    "fadd", None, "Adds the group in your fban database."
 ).add_command(
-  "unfban", "<reply to msg>", "Forwards the replied` /unfban <id>/<usrname> `to all groups added in your fban database", "reply to a msg (/unfban id/username)"
+    "unfban",
+    "<reply to msg>",
+    "Forwards the replied` /unfban <id>/<usrname> `to all groups added in your fban database",
+    "reply to a msg (/unfban id/username)",
 ).add_command(
-  "newfed", "<newfed name>", "Makes a federation of Rose bot"
+    "newfed", "<newfed name>", "Makes a federation of Rose bot"
 ).add_command(
-  "renamefed", "<new name>", "Renames the fed of Rose Bot"
+    "renamefed", "<new name>", "Renames the fed of Rose Bot"
 ).add_command(
-  "fstat", "<username/id>", "Gets the fban stats of the user from rose bot federation"
+    "fstat", "<username/id>", "Gets the fban stats of the user from rose bot federation"
 ).add_command(
-  "fedinfo", "<fed id>", "Gives details of the given fed id"
+    "fedinfo", "<fed id>", "Gives details of the given fed id"
 ).add()

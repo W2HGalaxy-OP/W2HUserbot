@@ -12,7 +12,8 @@ from telethon.tl.types import (
     UserStatusOnline,
     UserStatusRecently,
 )
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -84,7 +85,9 @@ async def _(event):
             if "y" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -94,7 +97,9 @@ async def _(event):
             if "m" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -104,7 +109,9 @@ async def _(event):
             if "w" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -114,7 +121,9 @@ async def _(event):
             if "o" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -124,7 +133,9 @@ async def _(event):
             if "q" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -134,7 +145,9 @@ async def _(event):
             if "r" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -144,7 +157,9 @@ async def _(event):
             if "b" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                     break
                 else:
@@ -154,7 +169,9 @@ async def _(event):
             if "d" in input_str:
                 status, e = await ban_user(event.chat_id, i, rights)
                 if not status:
-                    await edit_or_reply(event, "I need admin priveleges to perform this action!")
+                    await edit_or_reply(
+                        event, "I need admin priveleges to perform this action!"
+                    )
                     e.append(str(e))
                 else:
                     c = c + 1
@@ -171,9 +188,12 @@ UserStatusOnline: {}
 UserStatusRecently: {}
 Bots: {}
 None: {}"""
-        await edit_or_reply(event, required_string.format(c, p, d, y, m, w, o, q, r, b, n))
+        await edit_or_reply(
+            event, required_string.format(c, p, d, y, m, w, o, q, r, b, n)
+        )
         await asyncio.sleep(5)
-    await edit_or_reply(event, 
+    await edit_or_reply(
+        event,
         """Total: {} users
 Deleted Accounts: {}
 UserStatusEmpty: {}
@@ -185,7 +205,7 @@ UserStatusRecently: {}
 Bots: {}
 None: {}""".format(
             p, d, y, m, w, o, q, r, b, n
-        )
+        ),
     )
 
 
@@ -196,8 +216,9 @@ async def ban_user(chat_id, i, rights):
     except Exception as exc:
         return False, str(exc)
 
+
 CmdHelp("ukinti").add_command(
-  "ikuck", None, "Gives the data of group. Deleted accounts, Last seen, Offline, Online, Recently, Bots, Etc."
-).add_command(
-  "unbanall", None, "Unbans all the user in the chat."
-).add()
+    "ikuck",
+    None,
+    "Gives the data of group. Deleted accounts, Last seen, Offline, Online, Recently, Bots, Etc.",
+).add_command("unbanall", None, "Unbans all the user in the chat.").add()

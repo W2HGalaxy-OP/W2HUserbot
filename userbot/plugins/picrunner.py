@@ -9,9 +9,9 @@ import urllib
 
 import requests
 from telethon.tl import functions
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import admin_cmd
 
+from userbot.cmdhelp import CmdHelp
 
 AUTOPFP_PACK = os.environ.get("AUTOPFP_PACK", None)
 if AUTOPFP_PACK is None:
@@ -86,6 +86,9 @@ async def main(event):
             pass
         await asyncio.sleep(120)  # Edit this to your required needs
 
+
 CmdHelp("picrunner").add_command(
-  "ppr", None, "Auto Profile Pic Runner. Uploads random wallpapers to your profile pic. \nWARNING:- May result in account ban. Use on your own risk"
+    "ppr",
+    None,
+    "Auto Profile Pic Runner. Uploads random wallpapers to your profile pic. \nWARNING:- May result in account ban. Use on your own risk",
 ).add()

@@ -1,17 +1,10 @@
 import random
-from random import choice
-import requests
-import re
-import time
 
-from cowpy import cow
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import MessageEntityMentionName
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
-#✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓#
+# ✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓✓#
 
 RUNSREACTS = [
     "`Runs to Thanos`",
@@ -157,7 +150,7 @@ HIABUSE_STR = [
     "Teri maa ki chut- Your mother’s pussy",
     "Tere gaand mein keede paday- May worms infest your ass-hole",
     "Ullu ke pathe- Idiot",
-  ]
+]
 GEY_STRINGS = [
     "`you gey bsdk`",
     "`you gey`",
@@ -165,7 +158,7 @@ GEY_STRINGS = [
     "`you chakka`",
     "`you gey gey gey gey gey gey gey gey`",
     "`you gey go away`",
-    "`bhago bhenchod gay aaya`"
+    "`bhago bhenchod gay aaya`",
 ]
 RENDISTR = [
     "`I Know Uh ez Rendi Bhay Dont show Your Randi Pesa Here`",
@@ -288,36 +281,36 @@ INSULT_STRINGS = [
 @bot.on(admin_cmd(pattern=f"randi$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"randi$", allow_sudo=True))
 async def rendi(e):
-   txt = random.choice(RENDISTR)
-   await edit_or_reply(e, txt)
-   
-   
+    txt = random.choice(RENDISTR)
+    await edit_or_reply(e, txt)
+
+
 @bot.on(admin_cmd(pattern=f"habuse$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"habuse$", allow_sudo=True))
 async def thenus(e):
-   txt = random.choice(THANOS_STRINGS)
-   await edit_or_reply(e, txt)
-   
-   
+    txt = random.choice(THANOS_STRINGS)
+    await edit_or_reply(e, txt)
+
+
 @bot.on(admin_cmd(pattern=f"fuk$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"fuk$", allow_sudo=True))
 async def tapatap(e):
-   txt = random.choice(FUK_STRINGS)
-   await edit_or_reply(e, txt)
-   
-   
+    txt = random.choice(FUK_STRINGS)
+    await edit_or_reply(e, txt)
+
+
 @bot.on(admin_cmd(pattern=f"chu$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"chu$", allow_sudo=True))
 async def chut(e):
-   txt = random.choice(CHU_STRINGS)
-   await edit_or_reply(e, txt)
-   
-   
+    txt = random.choice(CHU_STRINGS)
+    await edit_or_reply(e, txt)
+
+
 @bot.on(admin_cmd(pattern=f"noob$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"noob$", allow_sudo=True))
 async def nub(e):
-   txt = random.choice(NOOBSTR)
-   await edit_or_reply(e, txt)
+    txt = random.choice(NOOBSTR)
+    await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(pattern=f"run$", outgoing=True))
@@ -368,6 +361,7 @@ async def metoo(e):
     txt = random.choice(INSULT_STRINGS)
     await edit_or_reply(e, txt)
 
+
 @bot.on(admin_cmd(pattern=f"hiabuse$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"hiabuse$", allow_sudo=True))
 async def metoo(e):
@@ -376,29 +370,27 @@ async def metoo(e):
 
 
 CmdHelp("fun").add_command(
-  'insult', None, 'Sends some random insulting lines'
+    "insult", None, "Sends some random insulting lines"
+).add_command("piro", None, 'Sends some random lines for "piro" guys').add_command(
+    "gey", None, "Sends some random lines for geys (°^°)"
 ).add_command(
-  'piro', None, 'Sends some random lines for "piro" guys'
+    "abuse", None, "Abuse the cunts"
 ).add_command(
-  'gey', None, 'Sends some random lines for geys (°^°)'
+    "rape", None, "No offence. Use and see -_-"
 ).add_command(
-  'abuse', None, 'Abuse the cunts'
+    "gali", None, "You know what this cmd is"
 ).add_command(
-  'rape', None, 'No offence. Use and see -_-'
+    "run", None, "Chala jaa bhosdike"
 ).add_command(
-  'gali', None, 'You know what this cmd is'
+    "hiabuse", None, "Abuses in Hindi as well as English OwO"
 ).add_command(
-  'run', None, 'Chala jaa bhosdike'
+    "randi", None, "Are you rendi?"
 ).add_command(
-  'hiabuse', None, 'Abuses in Hindi as well as English OwO'
+    "habuse", None, "Some of the abusive shayris"
 ).add_command(
-  'randi', None, 'Are you rendi?'
+    "fuk", None, "Use and see bruh"
 ).add_command(
-  'habuse', None, 'Some of the abusive shayris'
+    "chu", None, "Use and see"
 ).add_command(
-  'fuk', None, 'Use and see bruh'
-).add_command(
-  'chu', None, 'Use and see'
-).add_command(
-  'noob', None, 'Fuckin Noobs'
+    "noob", None, "Fuckin Noobs"
 ).add()

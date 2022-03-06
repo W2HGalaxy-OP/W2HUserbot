@@ -3,7 +3,8 @@
 
 import asyncio
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -32,10 +33,12 @@ async def _(event):
         await asyncio.sleep(2)
         await edit_or_reply(event, "**SAVING OUTPUT TO W2HBOT LOCAL DATABASE**")
         await asyncio.sleep(3.5)
-        await edit_or_reply(event, 
-            "Your[W2HBOT](https:/t.me/W2H_Userbot) is working Fine...\n       Join @W2HSupport For Any Help......"
+        await edit_or_reply(
+            event,
+            "Your[W2HBOT](https:/t.me/W2H_Userbot) is working Fine...\n       Join @W2HSupport For Any Help......",
         )
 
+
 CmdHelp("test").add_command(
-  "test", None, "Test wether your bot is running or not."
+    "test", None, "Test wether your bot is running or not."
 ).add()

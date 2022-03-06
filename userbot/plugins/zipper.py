@@ -9,9 +9,9 @@ import time as t
 import zipfile
 from datetime import datetime
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
+from userbot.cmdhelp import CmdHelp
 
 extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
@@ -137,10 +137,12 @@ def get_lst_of_files(input_directory, output_lst):
     return output_lst
 
 
-CmdHelp ("zipper").add_command(
-  "zip", "<reply to media>", "Makes a zip file of replied media"
+CmdHelp("zipper").add_command(
+    "zip", "<reply to media>", "Makes a zip file of replied media"
 ).add_command(
-  "unzip", "<reply to a zip file>", "Unzips the replied zip file and sends the files from that zip file"
+    "unzip",
+    "<reply to a zip file>",
+    "Unzips the replied zip file and sends the files from that zip file",
 ).add_command(
-  "compress", "<reply to media>", "Compress the replied media"
+    "compress", "<reply to media>", "Compress the replied media"
 ).add()

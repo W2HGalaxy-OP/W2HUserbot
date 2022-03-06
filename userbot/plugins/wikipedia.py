@@ -5,8 +5,10 @@
 Syntax: .wikipedia Query"""
 
 import wikipedia
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="wikipedia (.*)"))
 @bot.on(sudo_cmd(pattern="wikipedia (.*)", allow_sudo=True))
@@ -21,9 +23,12 @@ async def _(event):
         page = wikipedia.page(s)
         url = page.url
         result += f"> [{s}]({url}) \n"
-    await edit_or_reply(event, "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result)
+    await edit_or_reply(
+        event,
+        "WikiPedia **Search**: {} \n\n **Result**: \n\n{}".format(input_str, result),
     )
-    
+
+
 CmdHelp("wikipedia").add_command(
-  "wikipedia", "<query>", "Searches for the query from Wikipedia"
+    "wikipedia", "<query>", "Searches for the query from Wikipedia"
 ).add()

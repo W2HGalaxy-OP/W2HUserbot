@@ -1,5 +1,5 @@
 from sqlalchemy import Column, String
-from W2HBOT.plugins.sql_helper import SESSION, BASE
+from W2HBOT.plugins.sql_helper import BASE, SESSION
 
 
 class fban(BASE):

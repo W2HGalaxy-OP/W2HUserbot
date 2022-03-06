@@ -13,9 +13,8 @@ import requests
 from requests import exceptions, get
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from userbot import CMD_HELP
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 logging.basicConfig(
@@ -75,18 +74,22 @@ async def _(event):
     ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await edit_or_reply(event, "Pasted to dogbin : [dog]({}) in {} seconds. GoTo Original URL: [link]({})".format(
+        await edit_or_reply(
+            event,
+            "Pasted to dogbin : [dog]({}) in {} seconds. GoTo Original URL: [link]({})".format(
                 url, ms, nurl
-            )
+            ),
         )
     else:
-        await edit_or_reply(event, "Pasted to dogbin : [dog]({}) in {} seconds".format(url, ms))
+        await edit_or_reply(
+            event, "Pasted to dogbin : [dog]({}) in {} seconds".format(url, ms)
+        )
 
 
 @bot.on(admin_cmd(pattern="getpaste(?: |$)(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="getpaste(?: |$)(.*)", allow_sudo=True))
 async def get_dogbin_content(dog_url):
-    """ For .getpaste command, fetches the content of a dogbin URL. """
+    """For .getpaste command, fetches the content of a dogbin URL."""
     textx = await dog_url.get_reply_message()
     message = dog_url.pattern_match.group(1)
     await edit_or_reply(dog_url, "`Getting dogbin content...`")
@@ -112,15 +115,18 @@ async def get_dogbin_content(dog_url):
     try:
         resp.raise_for_status()
     except exceptions.HTTPError as HTTPErr:
-        await edit_or_reply(dog_url, "Request returned an unsuccessful status code.\n\n" + str(HTTPErr)
+        await edit_or_reply(
+            dog_url, "Request returned an unsuccessful status code.\n\n" + str(HTTPErr)
         )
         return
     except exceptions.Timeout as TimeoutErr:
         await edit_or_reply(dog_url, "Request timed out." + str(TimeoutErr))
         return
     except exceptions.TooManyRedirects as RedirectsErr:
-        await edit_or_reply(dog_url, "Request exceeded the configured number of maximum redirections."
-            + str(RedirectsErr)
+        await edit_or_reply(
+            dog_url,
+            "Request exceeded the configured number of maximum redirections."
+            + str(RedirectsErr),
         )
         return
 
@@ -276,7 +282,9 @@ async def _(event):
     chat = "@chotamreaderbot"
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        await edit_or_reply(event, "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl)
+        await edit_or_reply(
+            event,
+            "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl),
         )
     # This module is modded by @David99q #KeepCredit
     else:
@@ -289,7 +297,9 @@ async def _(event):
                 await event.client.send_message(chat, url)
                 response = await response
             except YouBlockedUserError:
-                await edit_or_reply(event, "```Please unblock me (@chotamreaderbot) u Nigga```")
+                await edit_or_reply(
+                    event, "```Please unblock me (@chotamreaderbot) u Nigga```"
+                )
                 return
             await event.delete()
             await event.client.send_message(
@@ -298,13 +308,13 @@ async def _(event):
 
 
 CmdHelp("paste").add_command(
-  "paste", "<text/reply>", "Create a paste or a shortened url using dogbin"
+    "paste", "<text/reply>", "Create a paste or a shortened url using dogbin"
 ).add_command(
-  "getpaste", "dog url", "Gets the content of a paste or shortened url from dogbin"
+    "getpaste", "dog url", "Gets the content of a paste or shortened url from dogbin"
 ).add_command(
-  "neko", "<reply>", "Create a paste or a shortened url using nekobin"
+    "neko", "<reply>", "Create a paste or a shortened url using nekobin"
 ).add_command(
-  "iffuci", "<text/reply>", "Create a paste or a shortened url using iffuci"
+    "iffuci", "<text/reply>", "Create a paste or a shortened url using iffuci"
 ).add_command(
-  "paster", "<text/reply>", "Create a instant view or a paste it in telegraph file"
+    "paster", "<text/reply>", "Create a instant view or a paste it in telegraph file"
 ).add()

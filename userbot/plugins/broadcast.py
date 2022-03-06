@@ -1,14 +1,10 @@
-import os
-
-from telethon import events
-from telethon.tl.functions.channels import EditAdminRequest
-from telethon.tl.types import ChatAdminRights
-
-from . import *
 from userbot import bot
 from userbot.utils import admin_cmd, edit_or_reply
 
+from . import *
+
 eor = edit_or_reply
+
 
 @bot.on(admin_cmd(pattern="gcast(?:\s|$)([\s\S]*)"))
 async def gcast(event):
@@ -71,7 +67,8 @@ async def gcast(event):
     await hol.edit(
         f"Gcast Executed Successfully !! \n\n Sent in : {lol} {omk}\n📍 Failed in : {sed} {omk}\n📍 Total :* {UwU} {omk}"
     )
-    
+
+
 CmdHelp("broadcast").add_command(
-   'gcast', "flag", 'Publish message to all channel and group'
+    "gcast", "flag", "Publish message to all channel and group"
 ).add()

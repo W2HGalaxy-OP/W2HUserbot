@@ -2,9 +2,9 @@ import asyncio
 
 import telethon.utils
 from telethon import events
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd
+
 from userbot.cmdhelp import CmdHelp
-from uniborg.util import re
 
 
 async def get_target_message(event):
@@ -49,14 +49,15 @@ async def delete(event):
         else:
             await borg.delete_messages(chat, target, revoke=True)
 
+
 CmdHelp("purge").add_command(
-  "del", "<reply to a msg>", "Deletes the replied msg."
+    "del", "<reply to a msg>", "Deletes the replied msg."
+).add_command("edit", "<reply to a msg>", "Edits the replied msg").add_command(
+    "purge", "<reply>", "Purges all messages starting from the reply."
 ).add_command(
-  "edit", "<reply to a msg>", "Edits the replied msg"
+    "purgeme", "<count>", "Deletes 'x' amount of your latest messages."
 ).add_command(
-  "purge", "<reply>", "Purges all messages starting from the reply."
-).add_command(
-  "purgeme", "<count>", "Deletes 'x' amount of your latest messages."
-).add_command(
-  "sd", "<time> <message>", "Creates a message that selfdestructs in 'x' seconds. Keep the seconds under 100 since it puts your bot to sleep"
+    "sd",
+    "<time> <message>",
+    "Creates a message that selfdestructs in 'x' seconds. Keep the seconds under 100 since it puts your bot to sleep",
 ).add()

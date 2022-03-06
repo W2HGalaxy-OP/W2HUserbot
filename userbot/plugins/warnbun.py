@@ -1,7 +1,7 @@
 """.admin Plugin for @UniBorg"""
 from telethon.tl.types import ChannelParticipantsAdmins
+from W2HBOT.utils import admin_cmd, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -10,9 +10,7 @@ from userbot.cmdhelp import CmdHelp
 async def _(event):
     if event.fwd_from:
         return
-    mentions = (
-        "⚠️ **You Have** `1/3` **Warnings** ⚠️\n\n__Watch out!__\n⚡ **Reason for warn:** Not given"
-    )
+    mentions = "⚠️ **You Have** `1/3` **Warnings** ⚠️\n\n__Watch out!__\n⚡ **Reason for warn:** Not given"
     chat = await event.get_input_chat()
     async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
@@ -35,9 +33,7 @@ from uniborg.util import admin_cmd
 async def _(event):
     if event.fwd_from:
         return
-    mentions = (
-        "⚠️ **You Have** `2/3` **Warnings** ⚠️\n\n__Watch out!__\n⚡ **Reason for warn:** Not given"
-    )
+    mentions = "⚠️ **You Have** `2/3` **Warnings** ⚠️\n\n__Watch out!__\n⚡ **Reason for warn:** Not given"
     chat = await event.get_input_chat()
     async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
@@ -60,9 +56,7 @@ from uniborg.util import admin_cmd
 async def _(event):
     if event.fwd_from:
         return
-    mentions = (
-        "⚠️ **You Have** `3/3` **Warnings** ⚠️\n\n__Banned!__\n⚡ **Reason for ban:** Not given"
-    )
+    mentions = "⚠️ **You Have** `3/3` **Warnings** ⚠️\n\n__Banned!__\n⚡ **Reason for ban:** Not given"
     chat = await event.get_input_chat()
     async for x in borg.iter_participants(chat, filter=ChannelParticipantsAdmins):
         mentions += f""
@@ -138,14 +132,11 @@ async def _(event):
         await event.reply(mentions)
     await event.delete()
 
-CmdHelp("warn").add_command(
-  "warn1", "<reply to someone>", "Fake warning"
+
+CmdHelp("warn").add_command("warn1", "<reply to someone>", "Fake warning").add_command(
+    "warn2", "<reply>", "Fake warning 2"
+).add_command("warn3", "<reply>", "Fake warning 3").add_command(
+    "ocb", None, "Try it out yourself"
 ).add_command(
-  "warn2", "<reply>", "Fake warning 2"
-).add_command(
-  "warn3", "<reply>", "Fake warning 3"
-).add_command(
-  "ocb", None, "Try it out yourself"
-).add_command(
-  "fw", None, "Gets floodwait for a year"
+    "fw", None, "Gets floodwait for a year"
 ).add()

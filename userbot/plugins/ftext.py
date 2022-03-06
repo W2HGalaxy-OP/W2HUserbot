@@ -1,8 +1,8 @@
-from userbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
-CmdHelp("ftext").add_command(
-    "ftext", None, "Ftext Word"
-).add()
+from userbot.utils import admin_cmd
+
+CmdHelp("ftext").add_command("ftext", None, "Ftext Word").add()
+
 
 @borg.on(admin_cmd(pattern="ftext ?(.*)"))
 async def payf(event):

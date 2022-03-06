@@ -1,22 +1,16 @@
 # imported from userbot credit goes to spechide
 from telethon.tl.types import InputMediaDice
 
+from userbot.cmdhelp import CmdHelp
 from userbot.utils import admin_cmd
 
-from userbot.cmdhelp import CmdHelp
-CmdHelp("earth").add_command(
-   'dart', None, 'animation'
+CmdHelp("earth").add_command("dart", None, "animation").add_command(
+    "jb", None, "animation"
+).add_command("fb", None, "animation").add_command(
+    "dice", None, "animation"
 ).add_command(
-   'jb', None, 'animation'
-).add_command(
-   'fb', None, 'animation'
-).add_command(
-   'dice', None, 'animation'
-).add_command(
-   'bb', None, 'animation'
+    "bb", None, "animation"
 ).add()
-
-
 
 
 # EMOJI CONSTANTS

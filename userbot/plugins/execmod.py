@@ -1,4 +1,3 @@
-
 # This Source Code Form is subject to the terms of the Mozilla Public
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -10,6 +9,7 @@ from asyncio import create_subprocess_exec as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 
 from W2HBOT.utils import admin_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 if not os.path.isdir("./SAVED"):
@@ -211,13 +211,11 @@ async def _(event):
 
 
 CmdHelp("execmod").add_command(
-  'pips', '<query>', 'Gives the result of your query'
+    "pips", "<query>", "Gives the result of your query"
+).add_command("suicide", None, "Suicide").add_command(
+    "date", None, "Shows current date and time"
 ).add_command(
-  'suicide', None, 'Suicide'
+    "env", None, "Shows Environment veriables from Heroku"
 ).add_command(
-  'date', None, 'Shows current date and time'
-).add_command(
-  'env', None, 'Shows Environment veriables from Heroku'
-).add_command(
-  'speed', None, 'Shows server speed of your bot'
+    "speed", None, "Shows server speed of your bot"
 ).add()

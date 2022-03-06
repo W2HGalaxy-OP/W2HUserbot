@@ -1,9 +1,9 @@
 """.admin Plugin for @Its_LegendBoy"""
-import asyncio
-from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
-from userbot.utils import admin_cmd
+
 from userbot.cmdhelp import CmdHelp
+from userbot.utils import admin_cmd
+
 
 @bot.on(admin_cmd(pattern="admins"))
 async def _(event):
@@ -20,6 +20,6 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
-CmdHelp("calladmin").add_command(
-  'admins', None, 'it Help u to call admin'
-).add()
+
+
+CmdHelp("calladmin").add_command("admins", None, "it Help u to call admin").add()

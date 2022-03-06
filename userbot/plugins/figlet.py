@@ -1,8 +1,8 @@
 import pyfiglet
-
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="figlet ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="figlet ?(.*)", allow_sudo=True))
@@ -47,5 +47,7 @@ async def figlet(event):
 
 
 CmdHelp("figlet").add_command(
-  'figlet', 'text or text : type', 'The types are slant, 3D, 5line, alpha, banner, doh, iso, letter, allig, dotm, bubble, bulb, digi'
+    "figlet",
+    "text or text : type",
+    "The types are slant, 3D, 5line, alpha, banner, doh, iso, letter, allig, dotm, bubble, bulb, digi",
 ).add()

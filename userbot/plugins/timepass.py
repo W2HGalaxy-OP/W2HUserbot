@@ -4,9 +4,7 @@ Available Commands:
 
 import asyncio
 
-from telethon import events
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @bot.on(admin_cmd(pattern="tp", outgoing=True))
@@ -16,8 +14,8 @@ async def _(event):
         return
     animation_interval = 0.3
     animation_ttl = range(0, 28)
-   # input_str = event.pattern_match.group(1)
-   # if input_str == "tp":
+    # input_str = event.pattern_match.group(1)
+    # if input_str == "tp":
     await edit_or_reply(event, "Time Pass...")
     animation_chars = [
         "◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️\n◼️◼️◼️◼️◼️",

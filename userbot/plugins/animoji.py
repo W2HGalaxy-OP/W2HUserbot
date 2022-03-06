@@ -1,11 +1,12 @@
 import asyncio
 from collections import deque
 
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
-from .import *
+from . import *
+
 
 @bot.on(admin_cmd(pattern="think$", outgoing=True))
 @bot.on(sudo_cmd(pattern="think$", allow_sudo=True))
@@ -19,6 +20,7 @@ async def _(event):
         await event.edit("".join(deq))
         deq.rotate(1)
 
+
 @bot.on(admin_cmd(pattern="ccry$", outgoing=True))
 @bot.on(sudo_cmd(pattern="ccry$", allow_sudo=True))
 async def cry(e):
@@ -26,6 +28,7 @@ async def cry(e):
         return
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("(;´༎ຶД༎ຶ)")
+
 
 @bot.on(admin_cmd(pattern="fap$", outgoing=True))
 @bot.on(sudo_cmd(pattern="fap$", allow_sudo=True))
@@ -38,6 +41,7 @@ async def _(event):
         await asyncio.sleep(0.1)
         await event.edit("".join(deq))
         deq.rotate(1)
+
 
 @bot.on(admin_cmd(pattern=r"lmao$"))
 @bot.on(sudo_cmd(pattern="lmao$", allow_sudo=True))
@@ -171,6 +175,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 103])
 
+
 @bot.on(admin_cmd(pattern=f"smoon$", outgoing=True))
 @bot.on(sudo_cmd(pattern="smoon$", allow_sudo=True))
 async def _(event):
@@ -279,6 +284,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 10])
 
+
 @bot.on(admin_cmd(pattern=f"fuck$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"fuck$", allow_sudo=True))
 async def _(event):
@@ -306,6 +312,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 4])
 
+
 @bot.on(admin_cmd(pattern=f"kiss", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"kiss", allow_sudo=True))
 async def _(event):
@@ -318,6 +325,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 4])
+
 
 @bot.on(admin_cmd(pattern=f"fnl$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"fnl$", allow_sudo=True))
@@ -435,52 +443,48 @@ async def _(event):
         await event.edit(animation_chars[i % 18])
 
 
-CmdHelp("animoji").add_command(
-  'think', None, 'Use and see'
+CmdHelp("animoji").add_command("think", None, "Use and see").add_command(
+    "lmao", None, "Use and see"
+).add_command("nothappy", None, "Use and see").add_command(
+    "clock", None, "Use and see"
 ).add_command(
-  'lmao', None, 'Use and see'
+    "muah", None, "Use and see"
 ).add_command(
-  'nothappy', None, 'Use and see'
+    "heart", None, "Use and see"
 ).add_command(
-  'clock', None, 'Use and see'
+    "gym", None, "Use and see"
 ).add_command(
-  'muah', None, 'Use and see'
+    "earth", None, "Use and see"
 ).add_command(
-  'heart', None, 'Use and see'
+    "moon", None, "Use and see"
 ).add_command(
-  'gym', None, 'Use and see'
+    "smoon", None, "Use and see"
 ).add_command(
-  'earth', None, 'Use and see'
+    "tmoon", None, "Use and see"
 ).add_command(
-  'moon', None, 'Use and see'
+    "hart", None, "Use and see"
 ).add_command(
-  'smoon', None, 'Use and see'
+    "anim", None, "Use and see"
 ).add_command(
-  'tmoon', None, 'Use and see'
+    "fnl", None, "Use and see"
 ).add_command(
-  'hart', None, 'Use and see'
+    "monkey", None, "Use and see"
 ).add_command(
-  'anim', None, 'Use and see'
+    "hand", None, "Use and see"
 ).add_command(
-  'fnl', None, 'Use and see'
+    "gsg", None, "Use and see"
 ).add_command(
-  'monkey', None, 'Use and see'
+    "theart", None, "Use and see"
 ).add_command(
-  'hand', None, 'Use and see'
+    "ccry", None, "Crying animation🥱"
 ).add_command(
-  'gsg', None, 'Use and see'
+    "fap", None, "Cool fapping animation"
 ).add_command(
-  'theart', None, 'Use and see'
+    "kiss", None, "Lets kiss😘"
 ).add_command(
-  'ccry', None, 'Crying animation🥱'
+    "sux", None, "Wanna do sex wid me?"
 ).add_command(
-  'fap', None, 'Cool fapping animation'
+    "fuck", None, "Tapa tap tapa tap"
 ).add_command(
-  'kiss', None, 'Lets kiss😘'
-).add_command(
-  'sux', None, 'Wanna do sex wid me?'
-).add_command(
-  'fuck', None, 'Tapa tap tapa tap'
-).add_command(
-  'lovestory', None, 'A true love story😃'
+    "lovestory", None, "A true love story😃"
 ).add()

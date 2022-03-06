@@ -7,9 +7,12 @@
 # no offence. Made for fun purpose only
 # Now in W2HBOT
 
-from userbot import CMD_HELP
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from userbot.cmdhelp import CmdHelp
 from userbot.helpers.functions import (
     changemymind,
+    dani,
     deEmojify,
     kannagen,
     miatweet,
@@ -19,10 +22,7 @@ from userbot.helpers.functions import (
     sunnytweet,
     taklatweet,
     trumptweet,
-    dani,
 )
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
 
 
 @bot.on(admin_cmd(pattern=r"tweet(?: |$)(.*)"))
@@ -381,25 +381,23 @@ async def nekobot(borg):
 
 
 CmdHelp("tweet").add_command(
-  "kanna", "<text>/<reply to text>", "Kanna writes for you"
+    "kanna", "<text>/<reply to text>", "Kanna writes for you"
+).add_command("cmm", "<text>/<reply>", "Get a banner of Change My Mind").add_command(
+    "johhny", "<text>/<reply>", "Tweet with Johhny Sins"
 ).add_command(
-  "cmm", "<text>/<reply>", "Get a banner of Change My Mind"
+    "sunny", "<text>/<reply>", "Tweet with Sunny Leone"
 ).add_command(
-  "johhny", "<text>/<reply>", "Tweet with Johhny Sins"
+    "gandhi", "<text>/<reply>", "Tweet with Mahatma Gandhi"
 ).add_command(
-  "sunny", "<text>/<reply>", "Tweet with Sunny Leone"
+    "pappu", "<text>/<reply>", "Tweet with pappu A.K.A Rahul Gandhi"
 ).add_command(
-  "gandhi", "<text>/<reply>", "Tweet with Mahatma Gandhi"
+    "mia", "<text>/<reply>", "Tweet with Mia Khalifa 😍"
 ).add_command(
-  "pappu", "<text>/<reply>", "Tweet with pappu A.K.A Rahul Gandhi"
+    "trump", "<text>/<reply>", "Tweet with Mr. DooLand Trump"
 ).add_command(
-  "mia", "<text>/<reply>", "Tweet with Mia Khalifa 😍"
+    "modi", "<text>/<reply>", "Tweet with Sir Narendra Modi"
 ).add_command(
-  "trump", "<text>/<reply>", "Tweet with Mr. DooLand Trump"
+    "tweet", "<text>/<reply>", "Tweets in your name"
 ).add_command(
-  "modi", "<text>/<reply>", "Tweet with Sir Narendra Modi"
-).add_command(
-  "tweet", "<text>/<reply>", "Tweets in your name"
-).add_command(
-  "dani", "<text>/<reply>", "Tweet with Dani Daniels 😍🥰"
+    "dani", "<text>/<reply>", "Tweet with Dani Daniels 😍🥰"
 ).add()

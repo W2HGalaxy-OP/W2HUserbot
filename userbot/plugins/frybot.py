@@ -1,4 +1,3 @@
-
 import io
 from random import randint, uniform
 
@@ -6,9 +5,8 @@ from PIL import Image, ImageEnhance, ImageOps
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeFilename
-
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -153,7 +151,9 @@ async def check_media(reply_message):
 
 
 CmdHelp("frybot").add_command(
-  'frybot', '<reply to a image/sticker>', 'Fries the given sticker or image'
+    "frybot", "<reply to a image/sticker>", "Fries the given sticker or image"
 ).add_command(
-  'deepfry', '<1-9> <reply to image/sticker>', 'Fries the given sticker or image based on level if you dont give anything then it is default to 2'
+    "deepfry",
+    "<1-9> <reply to image/sticker>",
+    "Fries the given sticker or image based on level if you dont give anything then it is default to 2",
 ).add()

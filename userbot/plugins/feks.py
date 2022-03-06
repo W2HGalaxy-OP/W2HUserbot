@@ -1,13 +1,10 @@
 import asyncio
-from telethon import events
+
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-import random, re
-import asyncio
+from W2HBOT.utils import admin_cmd
+
 from userbot.cmdhelp import CmdHelp
-from userbot import ALIVE_NAME, CUSTOM_PMPERMIT, W2H_ID
-from userbot import CMD_HELP
 
 
 @borg.on(admin_cmd(pattern="ftyping ?(.*)"))
@@ -22,6 +19,7 @@ async def _(event):
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(600)  # type for 10 seconds
 
+
 @borg.on(admin_cmd(pattern="fcontact ?(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -33,6 +31,7 @@ async def _(event):
         action = input_str
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(600)  # type for 10 seconds
+
 
 @borg.on(admin_cmd(pattern="fgame ?(.*)"))
 async def _(event):
@@ -46,6 +45,7 @@ async def _(event):
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(600)  # type for 10 seconds
 
+
 @borg.on(admin_cmd(pattern="flocation ?(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -58,6 +58,7 @@ async def _(event):
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(600)  # type for 10 seconds
 
+
 @borg.on(admin_cmd(pattern="fvoice ?(.*)"))
 async def _(event):
     if event.fwd_from:
@@ -69,6 +70,7 @@ async def _(event):
         action = input_str
     async with borg.action(event.chat_id, action):
         await asyncio.sleep(600)  # type for 10 seconds
+
 
 @borg.on(admin_cmd(pattern="fvideo ?(.*)"))
 async def _(event):
@@ -135,7 +137,7 @@ async def gbun(event):
 
 @bot.on(admin_cmd(pattern="fgban ?(.*)"))
 async def _(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         await event.edit("Preparing to gban this nub nibba....")
         await asyncio.sleep(2)
         await event.edit("Gbanning user.....")
@@ -222,14 +224,17 @@ async def _(event):
         await asyncio.sleep(2)
         await event.edit("Gbanning user... \n 204 chats")
         await asyncio.sleep(1.5)
-        await event.edit("Gbanned this nub nibba successfully in😏: 204 chats.\nBlocked and added to gban watch!")
-    
-     
-        
+        await event.edit(
+            "Gbanned this nub nibba successfully in😏: 204 chats.\nBlocked and added to gban watch!"
+        )
+
+
 @bot.on(admin_cmd(pattern="fungban ?(.*)"))
 async def _(event):
-     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
-        await event.edit("Preparing to Ungban this nub nibba please weit for a while.....")
+    if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
+        await event.edit(
+            "Preparing to Ungban this nub nibba please weit for a while....."
+        )
         await asyncio.sleep(2)
         await event.edit("UnGbanning user.....")
         await asyncio.sleep(2)
@@ -315,7 +320,10 @@ async def _(event):
         await asyncio.sleep(2)
         await event.edit("UnGbanning user... \n 204 chats")
         await asyncio.sleep(1.5)
-        await event.edit("UnGbanned this nub nibba successfully in 204 chats.\nUnBlocked and removed from gban watch")
+        await event.edit(
+            "UnGbanned this nub nibba successfully in 204 chats.\nUnBlocked and removed from gban watch"
+        )
+
 
 @borg.on(admin_cmd("fmute"))
 async def gbun(event):
@@ -417,21 +425,20 @@ async def gbun(event):
     await event.delete()
 
 
-
-
 from userbot.cmdhelp import CmdHelp
+
 CmdHelp("feks").add_command(
-   'gbun', None, 'A kind of fake gban try it yourself'
+    "gbun", None, "A kind of fake gban try it yourself"
+).add_command("fgben", None, "A kind of fake fedgban try it yourself").add_command(
+    "funben", None, "A kind of fake ungban try it yourself"
 ).add_command(
-   'fgben', None, 'A kind of fake fedgban try it yourself'
+    "fgmute", None, "A kind of fake gmute try it yourself"
 ).add_command(
-   'funben', None, 'A kind of fake ungban try it yourself'
+    "fungmute", None, "A kind of fake ungmute try it yourself"
 ).add_command(
-   'fgmute', None, 'A kind of fake gmute try it yourself'
+    "ftyping",
+    None,
+    "A kind of fake typing try it yourself Like this u can Use f-typing,contact,game,location,voice,round,video,photo,document,cancel",
 ).add_command(
-   'fungmute', None, 'A kind of fake ungmute try it yourself'
-).add_command(
-   'ftyping', None, 'A kind of fake typing try it yourself Like this u can Use f-typing,contact,game,location,voice,round,video,photo,document,cancel'
-).add_command(
-   'fcontact', None, 'A kind of fake contact try it yourself'
+    "fcontact", None, "A kind of fake contact try it yourself"
 ).add()

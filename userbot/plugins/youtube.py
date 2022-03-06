@@ -5,19 +5,14 @@ Audio and video downloader using Youtube-dl
 .yta To Download in mp3 format
 .ytv To Download in mp4 format
 """
-import re
-import random
-import json
-from pathlib import Path
 import asyncio
+import json
 import math
 import os
 import time
 
 from telethon.tl.types import DocumentAttributeAudio
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
-from youtube_search import YoutubeSearch
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from youtube_dl import YoutubeDL
 from youtube_dl.utils import (
     ContentTooShortError,
@@ -29,6 +24,9 @@ from youtube_dl.utils import (
     UnavailableVideoError,
     XAttrMetadataError,
 )
+from youtube_search import YoutubeSearch
+
+from userbot.cmdhelp import CmdHelp
 
 
 async def progress(current, total, event, start, type_of_ps, file_name=None):
@@ -64,7 +62,7 @@ def humanbytes(size):
     if not size:
         return ""
     # 2 ** 10 = 1024
-    power = 2 ** 10
+    power = 2**10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -153,8 +151,9 @@ async def download_video(v_url):
         await edit_or_reply(v_url, "`The download content was too short.`")
         return
     except GeoRestrictedError:
-        await edit_or_reply(v_url, 
-            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`"
+        await edit_or_reply(
+            v_url,
+            "`Video is not available from your geographic location due to geographic restrictions imposed by a website.`",
         )
         return
     except MaxDownloadsReached:
@@ -177,10 +176,11 @@ async def download_video(v_url):
         return
     c_time = time.time()
     if song:
-        await edit_or_reply(v_url, 
+        await edit_or_reply(
+            v_url,
             f"`Preparing to upload song:`\
         \n**{ytdl_data['title']}**\
-        \nby *{ytdl_data['uploader']}*"
+        \nby *{ytdl_data['uploader']}*",
         )
         await v_url.client.send_file(
             v_url.chat_id,
@@ -202,10 +202,11 @@ async def download_video(v_url):
         os.remove(f"{ytdl_data['id']}.mp3")
         await v_url.delete()
     elif video:
-        await edit_or_reply(v_url, 
+        await edit_or_reply(
+            v_url,
             f"`Preparing to upload video:`\
         \n**{ytdl_data['title']}**\
-        \nby *{ytdl_data['uploader']}*"
+        \nby *{ytdl_data['uploader']}*",
         )
         await v_url.client.send_file(
             v_url.chat_id,
@@ -235,14 +236,20 @@ async def hmm(ytwala):
         return await edit_or_reply(ytwala, "Unable to find relevant search queries...")
     output = f"**Search Query:**\n`{query}`\n\n**Results:**\n\n"
     for i in results["videos"]:
-        output += (f"--> `{i['title']}`\nhttps://www.youtube.com{i['url_suffix']}\n\n")
+        output += f"--> `{i['title']}`\nhttps://www.youtube.com{i['url_suffix']}\n\n"
     await edit_or_reply(ytwala, output, link_preview=False)
 
 
 CmdHelp("youtube").add_command(
-  "yta", "<yt link>", "Extracts the audio from given youtube link and uploads it to telegram"
+    "yta",
+    "<yt link>",
+    "Extracts the audio from given youtube link and uploads it to telegram",
 ).add_command(
-  "ytv", "<yt link>", "Extracts the video from given youtube link and uploads it to telegram"
+    "ytv",
+    "<yt link>",
+    "Extracts the video from given youtube link and uploads it to telegram",
 ).add_command(
-  "ytlink", "<search keyword>", "Extracts 7 links from youtube based on the given search query"
+    "ytlink",
+    "<search keyword>",
+    "Extracts 7 links from youtube based on the given search query",
 ).add()

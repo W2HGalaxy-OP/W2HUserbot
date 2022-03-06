@@ -1,7 +1,8 @@
 # Added more fonts by @Its_LegendBoy
 # Ported from saitama i guess
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 normiefont = [
@@ -173,6 +174,7 @@ bubbletextfont = [
     "Ⓩ",
 ]
 
+
 @bot.on(admin_cmd(pattern="weeb(?: |$)(.*)", command="weeb"))
 @bot.on(sudo_cmd(pattern="weeb(?: |$)(.*)", command="weeb", allow_sudo=True))
 async def weebify(event):
@@ -272,23 +274,22 @@ async def bubbletxt(event):
             string = string.replace(normiecharacter, bubblecharacter)
     await edit_or_reply(event, string)
 
+
 CmdHelp("fonts").add_command(
-  'weeb', '<text>', 'Modifies your text in weeby font'
+    "weeb", "<text>", "Modifies your text in weeby font"
+).add_command("tanify", "<text>", "Mofifies your text in tany font").add_command(
+    "lintxt", "<text>", "Modifies your text in liny font"
 ).add_command(
-  'tanify', '<text>', 'Mofifies your text in tany font'
+    "boxify", "<text>", "Modifies your text in box font"
 ).add_command(
-  'lintxt', '<text>', 'Modifies your text in liny font'
+    "bubble", "<text>", "Modifies your text in bubble font"
 ).add_command(
-  'boxify', '<text>', 'Modifies your text in box font'
+    "cp", "<text>", "Gives the text a funny look"
 ).add_command(
-  'bubble', '<text>', 'Modifies your text in bubble font'
+    "vapor", "<text>", "Vaporizes Your text"
 ).add_command(
-  'cp', '<text>', 'Gives the text a funny look'
+    "str", "<text>", "Streches the text"
 ).add_command(
-  'vapor', '<text>', 'Vaporizes Your text'
-).add_command(
-  'str', '<text>', 'Streches the text'
-).add_command(
-  'zal', '<text>', 'Zagolifies your text'
+    "zal", "<text>", "Zagolifies your text"
 ).add()
-#W2HBOT_Op
+# W2HBOT_Op

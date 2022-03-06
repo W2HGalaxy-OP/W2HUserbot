@@ -2,7 +2,8 @@
 Syntax: .meaning <word>"""
 
 import requests
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -46,6 +47,7 @@ async def _(event):
         pass
     await edit_or_reply(event, caption_str)
 
+
 CmdHelp("meaning").add_command(
-  "meaning", "<word>", "Gives you the meaning of that word"
+    "meaning", "<word>", "Gives you the meaning of that word"
 ).add()

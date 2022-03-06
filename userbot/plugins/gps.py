@@ -4,9 +4,10 @@
 
 from geopy.geocoders import Nominatim
 from telethon.tl import types
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from W2HBOT import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="gps ?(.*)"))
 @bot.on(sudo_cmd(pattern="gps ?(.*)", allow_sudo=True))
@@ -36,6 +37,7 @@ async def gps(event):
     else:
         await edit_or_reply(event, "I coudn't find it😫")
 
+
 CmdHelp("gps").add_command(
-  "gps", "<place name>", "Gives the location of searched place"
+    "gps", "<place name>", "Gives the location of searched place"
 ).add()

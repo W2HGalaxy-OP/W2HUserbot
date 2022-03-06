@@ -1,6 +1,7 @@
 """Get Poll Info on non supported clients
 Syntax: .get_poll"""
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -9,10 +10,14 @@ from userbot.cmdhelp import CmdHelp
 async def _(event):
     reply_message = await event.get_reply_message()
     if reply_message.media is None:
-        await edit_or_reply(event, "Please reply to a media_type == @gPoll to view the questions and answers"
+        await edit_or_reply(
+            event,
+            "Please reply to a media_type == @gPoll to view the questions and answers",
         )
     elif reply_message.media.poll is None:
-        await edit_or_reply(event, "Please reply to a media_type == @gPoll to view the questions and answers"
+        await edit_or_reply(
+            event,
+            "Please reply to a media_type == @gPoll to view the questions and answers",
         )
     else:
         media = reply_message.media
@@ -39,6 +44,7 @@ Answers: \n""".format(
                 edit_caption += "{}> {}\n".format(answer.option, answer.text)
         await edit_or_reply(event, edit_caption)
 
+
 CmdHelp("polls").add_command(
-  "get_poll", "<reply>", "Gets the details about the replied poll."
+    "get_poll", "<reply>", "Gets the details about the replied poll."
 ).add()

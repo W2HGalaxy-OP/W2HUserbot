@@ -18,8 +18,8 @@ from googleapiclient.discovery import build
 from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
 from telethon import events
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 # Path to token json file, it should be in same directory as script
@@ -124,7 +124,9 @@ async def sch(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await edit_or_reply(event, "This module requires credentials from https://da.gd/so63O. Aborting!"
+        await edit_or_reply(
+            event,
+            "This module requires credentials from https://da.gd/so63O. Aborting!",
         )
         return False
     try:
@@ -200,13 +202,15 @@ async def _(event):
     if event.fwd_from:
         return
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await edit_or_reply(event, 
-            "This module requires credentials from https://da.gd/so63O. Aborting!"
+        await edit_or_reply(
+            event,
+            "This module requires credentials from https://da.gd/so63O. Aborting!",
         )
         return
     if Var.PRIVATE_GROUP_ID is None:
-        await edit_or_reply(event, 
-            "Please set the required environment variable `PRIVATE_GROUP_ID` for this plugin to work"
+        await edit_or_reply(
+            event,
+            "Please set the required environment variable `PRIVATE_GROUP_ID` for this plugin to work",
         )
         return
     input_str = event.pattern_match.group(1)
@@ -237,8 +241,9 @@ async def _(event):
         )
         await DoTeskWithDir(http, input_str, event, dir_id)
         dir_link = "https://drive.google.com/folderview?id={}".format(dir_id)
-        await edit_or_reply(event, 
-            f"__Successfully Uploaded Folder To G-Drive...__\n[{input_str}]({dir_link})"
+        await edit_or_reply(
+            event,
+            f"__Successfully Uploaded Folder To G-Drive...__\n[{input_str}]({dir_link})",
         )
     else:
         await edit_or_reply(event, f"directory {input_str} does not seem to exist")
@@ -382,14 +387,15 @@ async def _(event):
     folder_link = "https://drive.google.com/folderview?id=" + parent_id
     await edit_or_reply(event, "`Here is Your G-Drive Folder link : `\n" + folder_link)
 
+
 CmdHelp("gDrive").add_command(
-  'gfolder', '<reply>', 'Makes a gdive folder for you'
+    "gfolder", "<reply>", "Makes a gdive folder for you"
 ).add_command(
-  'gdrivedir', '<reply>', 'Uplaods the folder to gdive directory'
+    "gdrivedir", "<reply>", "Uplaods the folder to gdive directory"
 ).add_command(
-  'drivesch', 'Keyword', 'Searchs for the file in gdrive'
+    "drivesch", "Keyword", "Searchs for the file in gdrive"
 ).add_command(
-  'ugdrive', 'link/reply', 'Uploads the file to gdrive'
+    "ugdrive", "link/reply", "Uploads the file to gdrive"
 ).add_command(
-  'gdl', '<link>', 'Downloads the file/media from the provided gdrive link'
+    "gdl", "<link>", "Downloads the file/media from the provided gdrive link"
 ).add()

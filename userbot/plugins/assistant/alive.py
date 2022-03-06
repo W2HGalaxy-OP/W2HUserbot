@@ -1,7 +1,8 @@
 from telethon import events
-from . import *
+
 from userbot import *
-from userbot import bot
+
+from . import *
 
 PM_IMG = "https://telegra.ph/file/b89e26622fab4b5b1dfeb.jpg"
 

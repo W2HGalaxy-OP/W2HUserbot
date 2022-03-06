@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from W2HBOT.utils import admin_cmd, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -15,6 +16,7 @@ async def _(event):
         return
     await event.respond(m)
 
+
 CmdHelp("resend").add_command(
-  "resend", "<reply>", "Resends the replied message in current chat"
+    "resend", "<reply>", "Resends the replied message in current chat"
 ).add()

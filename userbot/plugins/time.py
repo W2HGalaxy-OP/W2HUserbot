@@ -6,15 +6,14 @@ import os
 from datetime import datetime
 
 from PIL import Image, ImageDraw, ImageFont
+from W2HBOT.utils import admin_cmd, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
-
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
-@bot.on(admin_cmd(pattern="time ?(.*)", outgoing=True))# pylint:disable=E0602
+@bot.on(admin_cmd(pattern="time ?(.*)", outgoing=True))  # pylint:disable=E0602
 @bot.on(sudo_cmd(pattern="time ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
@@ -63,6 +62,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     logger.info(input_str)  # pylint:disable=E0602
 
+
 CmdHelp("time").add_command(
-  "time", None, "Gives current time in a cool sticker format."
+    "time", None, "Gives current time in a cool sticker format."
 ).add()

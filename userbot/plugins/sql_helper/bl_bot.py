@@ -1,5 +1,4 @@
 from sqlalchemy import Column, String
-
 from W2HBOT.plugins.sql_helper import BASE, SESSION
 
 

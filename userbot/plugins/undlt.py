@@ -1,6 +1,7 @@
 import asyncio
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -17,11 +18,15 @@ async def _(event):
         for i in a:
             await event.reply(i.original.action.message)
     else:
-        await edit_or_reply(event, "You need administrative permissions in order to do this command"
+        await edit_or_reply(
+            event, "You need administrative permissions in order to do this command"
         )
         await asyncio.sleep(3)
         await event.delete()
 
+
 CmdHelp("undlt").add_command(
-  "undlt", None, "Sends 5 recently deleted message from that group. Requires admin position"
+    "undlt",
+    None,
+    "Sends 5 recently deleted message from that group. Requires admin position",
 ).add()

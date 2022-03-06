@@ -1,7 +1,6 @@
 import nekos
-
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import CMD_HELP
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -61,11 +60,9 @@ async def hmm(W2H):
 
 
 CmdHelp("funtxts").add_command(
-  'cat', None, 'Sends you some random cat facial text art'
+    "cat", None, "Sends you some random cat facial text art"
+).add_command("why", None, "Asks some random funny questions").add_command(
+    "fact", None, "Sends you some random facts"
 ).add_command(
-  'why', None, 'Asks some random funny questions'
-).add_command(
-  'fact', None, 'Sends you some random facts'
-).add_command(
-  'ftext', '<text>', 'Writes your text in "F" format'
+    "ftext", "<text>", 'Writes your text in "F" format'
 ).add()

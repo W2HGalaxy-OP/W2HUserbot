@@ -8,11 +8,11 @@ import sys
 from asyncio import sleep
 
 from telethon import events
+from W2HBOT.utils import admin_cmd
 
 from userbot import BOTLOG, BOTLOG_CHATID, bot
-from userbot.Config import Config
-from W2HBOT.utils import admin_cmd, register
 from userbot.cmdhelp import CmdHelp
+from userbot.Config import Config
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.WARN
@@ -26,7 +26,7 @@ BOTLOG_CHATID = Config.PM_LOGGR_BOT_API_ID
 
 @bot.on(admin_cmd(pattern=r"save(?: |$)([\s\S]*)", outgoing=True))
 async def log(log_text):
-    """ For .log command, forwards a message or the command argument to the bot logs group """
+    """For .log command, forwards a message or the command argument to the bot logs group"""
     if BOTLOG:
         if log_text.reply_to_msg_id:
             reply_msg = await log_text.get_reply_message()
@@ -87,10 +87,13 @@ async def set_no_log_p_m(event):
                 await asyncio.sleep(3)
                 await event.delete()
 
+
 CmdHelp("pm_logger").add_command(
-  "save", "<reply>", "Saves the replied message to your pm logger group/channel"
+    "save", "<reply>", "Saves the replied message to your pm logger group/channel"
 ).add_command(
-  "elog", "<chat>", "Enables logging pm messages from the selected chat."
+    "elog", "<chat>", "Enables logging pm messages from the selected chat."
 ).add_command(
-  "nlog", "<chat>", "Disables logging pm messages from the selected chat. Use .elog to enable it again."
+    "nlog",
+    "<chat>",
+    "Disables logging pm messages from the selected chat. Use .elog to enable it again.",
 ).add()

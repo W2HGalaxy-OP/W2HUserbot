@@ -1,6 +1,7 @@
 import asyncio
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -174,14 +175,11 @@ async def _(event):
 
         await event.edit(animation_chars[i % 7])
 
-CmdHelp("os").add_command(
-  "os", None, "Use and see"
+
+CmdHelp("os").add_command("os", None, "Use and see").add_command(
+    "linux", None, "Use and see"
+).add_command("macos", None, "Use and see").add_command(
+    "stock", None, "Use and see"
 ).add_command(
-  "linux", None, "Use and see"
-).add_command(
-  "macos", None, "Use and see"
-).add_command(
-  "stock", None, "Use and see"
-).add_command(
-  "windows", None, "Use and see"
+    "windows", None, "Use and see"
 ).add()

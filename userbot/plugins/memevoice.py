@@ -4,10 +4,9 @@
 # aukaat h bsdk teri...jake baap ka loda chus ke aa....
 
 
-import re
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import bot
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 from userbot.helpers.functions import deEmojify
 
@@ -20,7 +19,9 @@ async def nope(aura):
         if aura.is_reply:
             (await aura.get_reply_message()).message
         else:
-            await edit_or_reply(aura, "`Sir please give some query to search and download it for you..!`"
+            await edit_or_reply(
+                aura,
+                "`Sir please give some query to search and download it for you..!`",
             )
             return
 
@@ -33,8 +34,8 @@ async def nope(aura):
         hide_via=True,
     )
     await aura.delete()
-    
+
 
 CmdHelp("memevoice").add_command(
-  "mev", "<meme txt>", "Searches and uploads the meme in voice format (if any)."
+    "mev", "<meme txt>", "Searches and uploads the meme in voice format (if any)."
 ).add()

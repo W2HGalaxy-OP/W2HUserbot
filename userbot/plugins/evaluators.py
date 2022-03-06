@@ -1,14 +1,15 @@
-
 import asyncio
 import io
-import time
 import os
 import sys
+import time
 import traceback
 
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot import *
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
 @bot.on(sudo_cmd(pattern="exec(?: |$|\n)(.*)", command="exec", allow_sudo=True))
@@ -18,7 +19,7 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await edit_delete(event, "`What should i execute?..`")
-    W2Hevent = await edit_or_reply(event, "`Executing.....`")
+    await edit_or_reply(event, "`Executing.....`")
     process = await asyncio.create_subprocess_sW2H(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
@@ -143,12 +144,12 @@ async def _(event):
             )
             await event.delete()
     await edit_or_reply(event, OUTPUT)
-    
+
 
 CmdHelp("evaluators").add_command(
-  'eval', '<expr>', 'Execute python script'
+    "eval", "<expr>", "Execute python script"
 ).add_command(
-  'exec', '<command>', 'Execute a Terminal command on W2HBOT server and shows details'
+    "exec", "<command>", "Execute a Terminal command on W2HBOT server and shows details"
 ).add_command(
-  'bash', '<query>', 'Bash your codes on linux and gives the output in current chat'
+    "bash", "<query>", "Bash your codes on linux and gives the output in current chat"
 ).add()

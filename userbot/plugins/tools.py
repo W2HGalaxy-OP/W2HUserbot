@@ -12,12 +12,12 @@ from bs4 import BeautifulSoup
 from PIL import Image, ImageColor
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
-#==================W2HBOT==================
+# ==================W2HBOT==================
+
 
 @bot.on(admin_cmd(pattern="scan ?(.*)"))
 @bot.on(sudo_cmd(pattern="scan ?(.*)", allow_sudo=True))
@@ -381,23 +381,37 @@ Year: {}""".format(
 
 
 CmdHelp("tools").add_command(
-  "xkcd", "<query>", "Searches for the query for the relevant XKCD comic"
+    "xkcd", "<query>", "Searches for the query for the relevant XKCD comic"
 ).add_command(
-  "color", "<color code>", "Sends you a plain image of the color", ".color #ff0000"
+    "color", "<color code>", "Sends you a plain image of the color", ".color #ff0000"
 ).add_command(
-  "ifsc", "<IFSC code>", "Helps to get details of the relevant bank or branch", ".ifsc SBIN0016086"
+    "ifsc",
+    "<IFSC code>",
+    "Helps to get details of the relevant bank or branch",
+    ".ifsc SBIN0016086",
 ).add_command(
-  "currencies", None, "Shows you the some list of currencies"
+    "currencies", None, "Shows you the some list of currencies"
 ).add_command(
-  "currency", "<amount> <from> <to>", "Currency converter for W2HBOT", ".currency 10 usd inr"
+    "currency",
+    "<amount> <from> <to>",
+    "Currency converter for W2HBOT",
+    ".currency 10 usd inr",
 ).add_command(
-  "cal", "<year ; month>", "Shows you the calendar of given month and year"
+    "cal", "<year ; month>", "Shows you the calendar of given month and year"
 ).add_command(
-  "decode", "<reply to barcode/qrcode>", "To get decoded content of those codes."
+    "decode", "<reply to barcode/qrcode>", "To get decoded content of those codes."
 ).add_command(
-  "barcode", "<content>", "Make a BarCode from the given content.", ".barcode www.google.com"
+    "barcode",
+    "<content>",
+    "Make a BarCode from the given content.",
+    ".barcode www.google.com",
 ).add_command(
-  "makeqr", "<content>", "Make a Qrcode from the given content.", ".makeqr www.google.com"
+    "makeqr",
+    "<content>",
+    "Make a Qrcode from the given content.",
+    ".makeqr www.google.com",
 ).add_command(
-  "scan", "<reply to media or file>", "It scans the media or file and checks either any virus is in the file or media"
+    "scan",
+    "<reply to media or file>",
+    "It scans the media or file and checks either any virus is in the file or media",
 ).add()

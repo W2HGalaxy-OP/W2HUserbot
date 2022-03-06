@@ -1,4 +1,4 @@
-#Credit - Catuserbot @sandy1709
+# Credit - Catuserbot @sandy1709
 #
 #!/usr/bin/env python
 # In[ ]:
@@ -7,6 +7,7 @@
 ###### Searching and Downloading Google Images to the local disk ######
 
 import argparse
+
 # Import Libraries
 import codecs
 import datetime

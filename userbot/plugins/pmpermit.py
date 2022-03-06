@@ -7,12 +7,12 @@ import time
 
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-
-from userbot.plugins.sql_helper import pmpermit_sql as pmpermit_sql
-from userbot import ALIVE_NAME, CUSTOM_PMPERMIT, W2H_ID
-from userbot.Config import Config
 from W2HBOT.utils import admin_cmd
+
+from userbot import ALIVE_NAME, CUSTOM_PMPERMIT
 from userbot.cmdhelp import CmdHelp
+from userbot.Config import Config
+from userbot.plugins.sql_helper import pmpermit_sql as pmpermit_sql
 
 PM_TRUE_FALSE = Config.PM_DATA
 
@@ -67,22 +67,22 @@ if Var.PRIVATE_GROUP_ID is not None:
         elif event.is_group:
             reply_s = await event.get_reply_message()
             if not reply_s:
-                await event.edit('`Reply To User To Approve Him !`')
+                await event.edit("`Reply To User To Approve Him !`")
                 return
             if not pmpermit_sql.is_approved(reply_s.sender_id):
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
                 pmpermit_sql.approve(reply_s.sender_id, "Approved")
                 await event.edit(
-                        "Approved [{}](tg://user?id={}) to pm.".format(firstname, reply_s.sender_id)
+                    "Approved [{}](tg://user?id={}) to pm.".format(
+                        firstname, reply_s.sender_id
                     )
+                )
                 await asyncio.sleep(3)
                 await event.delete()
             elif pmpermit_sql.is_approved(reply_s.sender_id):
-                await event.edit('`User Already Approved !`')
+                await event.edit("`User Already Approved !`")
                 await event.delete()
-
-                
 
     # Approve outgoing
     @bot.on(events.NewMessage(outgoing=True))
@@ -132,13 +132,15 @@ if Var.PRIVATE_GROUP_ID is not None:
             else:
                 reply_s = await event.get_reply_message()
                 if not reply_s:
-                    await event.edit('`Reply To User To Block Him !`')
+                    await event.edit("`Reply To User To Block Him !`")
                     return
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
                 if pmpermit_sql.is_approved(event.chat_id):
                     pmpermit_sql.disapprove(event.chat_id)
-                await event.edit("Blocked [{}](tg://user?id={})".format(firstname, reply_s.sender_id))
+                await event.edit(
+                    "Blocked [{}](tg://user?id={})".format(firstname, reply_s.sender_id)
+                )
                 await event.client(functions.contacts.BlockRequest(reply_s.sender_id))
                 await asyncio.sleep(3)
                 await event.delete()
@@ -165,21 +167,22 @@ if Var.PRIVATE_GROUP_ID is not None:
         elif event.is_group:
             reply_s = await event.get_reply_message()
             if not reply_s:
-                await event.edit('`Reply To User To DisApprove`')
+                await event.edit("`Reply To User To DisApprove`")
                 return
             if pmpermit_sql.is_approved(reply_s.sender_id):
                 replied_user = await event.client(GetFullUserRequest(reply_s.sender_id))
                 firstname = replied_user.user.first_name
                 pmpermit_sql.disapprove(reply_s.sender_id)
                 await event.edit(
-                    "Disapproved [{}](tg://user?id={}) to PM.".format(firstname, reply_s.sender_id)
+                    "Disapproved [{}](tg://user?id={}) to PM.".format(
+                        firstname, reply_s.sender_id
+                    )
                 )
                 await asyncio.sleep(3)
                 await event.delete()
             elif not pmpermit_sql.is_approved(reply_s.sender_id):
-                await event.edit('`User Not Approved Yet`')
-                await event.delete()    
-                
+                await event.edit("`User Not Approved Yet`")
+                await event.delete()
 
     @borg.on(admin_cmd(pattern="listallowed"))
     async def approve_p_m(event):
@@ -308,14 +311,19 @@ async def hehehe(event):
             )
             await borg.send_message(chat, "**Here comes my Master! Lucky you!!😏**")
 
+
 CmdHelp("pmpermit").add_command(
-  "allow|.a", "<pm use only>", "It allow the user to PM you."
+    "allow|.a", "<pm use only>", "It allow the user to PM you."
 ).add_command(
-  "disallow|.da", "<pm use only>", "It disallows the user to PM. If user crosses the PM limit after disallow he/she will get blocked automatically"
+    "disallow|.da",
+    "<pm use only>",
+    "It disallows the user to PM. If user crosses the PM limit after disallow he/she will get blocked automatically",
 ).add_command(
-  "block", "<pm use only>", "You know what it does.... Blocks the user"
+    "block", "<pm use only>", "You know what it does.... Blocks the user"
 ).add_command(
-  "listallowed|.la", None, "Gives you the list of allowed PM's list"
+    "listallowed|.la", None, "Gives you the list of allowed PM's list"
 ).add_command(
-  "set var PM_DATA", "DISABLE", "Turn off pm protection by your userbot. Your PM will not be protected."
+    "set var PM_DATA",
+    "DISABLE",
+    "Turn off pm protection by your userbot. Your PM will not be protected.",
 ).add()

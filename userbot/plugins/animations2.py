@@ -1,8 +1,9 @@
 import asyncio
 from collections import deque
 
-from userbot import *
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from userbot import *
 from userbot.cmdhelp import CmdHelp
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
@@ -227,7 +228,8 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 12])
-        
+
+
 @bot.on(admin_cmd(pattern=f"hack$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"hack$", allow_sudo=True))
 async def _(event):
@@ -237,25 +239,26 @@ async def _(event):
     animation_ttl = range(15)
     event = await edit_or_reply(event, "`Hacking this kid....`")
     animation_chars = [
-            "Looking for WhatsApp databases in targeted person...",
-            " User online: True\nTelegram access: True\nRead Storage: True ",
-            "Hacking... 0%\n[░░░░░░░░░░░░░░░░░░░░]\n`Looking for WhatsApp...`\nETA: 0m, 20s",
-            "Hacking... 11.07%\n[██░░░░░░░░░░░░░░░░░░]\n`Looking for WhatsApp...`\nETA: 0m, 18s",
-            "Hacking... 20.63%\n[███░░░░░░░░░░░░░░░░░]\n`Found folder C:/WhatsApp`\nETA: 0m, 16s",
-            "Hacking... 34.42%\n[█████░░░░░░░░░░░░░░░]\n`Found folder C:/WhatsApp`\nETA: 0m, 14s",
-            "Hacking... 42.17%\n[███████░░░░░░░░░░░░░]\n`Searching for databases`\nETA: 0m, 12s",
-            "Hacking... 55.30%\n[█████████░░░░░░░░░░░]\n`Found msgstore.db.crypt12`\nETA: 0m, 10s",
-            "Hacking... 64.86%\n[███████████░░░░░░░░░]\n`Found msgstore.db.crypt12`\nETA: 0m, 08s",
-            "Hacking... 74.02%\n[█████████████░░░░░░░]\n`Trying to Decrypt...`\nETA: 0m, 06s",
-            "Hacking... 86.21%\n[███████████████░░░░░]\n`Trying to Decrypt...`\nETA: 0m, 04s",
-            "Hacking... 93.50%\n[█████████████████░░░]\n`Decryption successful!`\nETA: 0m, 02s",
-            "Hacking... 100%\n[████████████████████]\n`Scanning file...`\nETA: 0m, 00s",
-            "Hacking complete!\nUploading file...",
-            "Targeted Account Hacked...!\n\n ✅ File has been successfully uploaded to my server.\nWhatsApp Database:\n`./DOWNLOADS/msgstore.db.crypt12`",
+        "Looking for WhatsApp databases in targeted person...",
+        " User online: True\nTelegram access: True\nRead Storage: True ",
+        "Hacking... 0%\n[░░░░░░░░░░░░░░░░░░░░]\n`Looking for WhatsApp...`\nETA: 0m, 20s",
+        "Hacking... 11.07%\n[██░░░░░░░░░░░░░░░░░░]\n`Looking for WhatsApp...`\nETA: 0m, 18s",
+        "Hacking... 20.63%\n[███░░░░░░░░░░░░░░░░░]\n`Found folder C:/WhatsApp`\nETA: 0m, 16s",
+        "Hacking... 34.42%\n[█████░░░░░░░░░░░░░░░]\n`Found folder C:/WhatsApp`\nETA: 0m, 14s",
+        "Hacking... 42.17%\n[███████░░░░░░░░░░░░░]\n`Searching for databases`\nETA: 0m, 12s",
+        "Hacking... 55.30%\n[█████████░░░░░░░░░░░]\n`Found msgstore.db.crypt12`\nETA: 0m, 10s",
+        "Hacking... 64.86%\n[███████████░░░░░░░░░]\n`Found msgstore.db.crypt12`\nETA: 0m, 08s",
+        "Hacking... 74.02%\n[█████████████░░░░░░░]\n`Trying to Decrypt...`\nETA: 0m, 06s",
+        "Hacking... 86.21%\n[███████████████░░░░░]\n`Trying to Decrypt...`\nETA: 0m, 04s",
+        "Hacking... 93.50%\n[█████████████████░░░]\n`Decryption successful!`\nETA: 0m, 02s",
+        "Hacking... 100%\n[████████████████████]\n`Scanning file...`\nETA: 0m, 00s",
+        "Hacking complete!\nUploading file...",
+        "Targeted Account Hacked...!\n\n ✅ File has been successfully uploaded to my server.\nWhatsApp Database:\n`./DOWNLOADS/msgstore.db.crypt12`",
     ]
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 15])
+
 
 @bot.on(admin_cmd(pattern=r"jio$", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"jio$", allow_sudo=True))
@@ -312,8 +315,8 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 8])
-        
-        
+
+
 @bot.on(admin_cmd(pattern="degi$"))
 @bot.on(sudo_cmd(pattern="degi$", allow_sudo=True))
 async def _(event):
@@ -371,38 +374,34 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 6])
-        
-        
-CmdHelp("animations2").add_command(
-  'boxs', None, 'Use and see'
+
+
+CmdHelp("animations2").add_command("boxs", None, "Use and see").add_command(
+    "rain", None, "Use and see"
+).add_command("deploy", None, "Use and see").add_command(
+    "dump", None, "Use and see"
 ).add_command(
-  'rain', None, 'Use and see'
+    "fleaveme", None, "Use and see"
 ).add_command(
-  'deploy', None, 'Use and see'
+    "loveu", None, "Use and see"
 ).add_command(
-  'dump', None, 'Use and see'
+    "plane", None, "Use and see"
 ).add_command(
-  'fleaveme', None, 'Use and see'
+    "police", None, "Use and see"
 ).add_command(
-  'loveu', None, 'Use and see'
+    "jio", None, "Use and see"
 ).add_command(
-  'plane', None, 'Use and see'
+    "solarsystem", None, "Use and see"
 ).add_command(
-  'police', None, 'Use and see'
+    "degi", None, "Use and see"
 ).add_command(
-  'jio', None, 'Use and see'
+    "nehi", None, "Use and see"
 ).add_command(
-  'solarsystem', None, 'Use and see'
+    "hack", None, "Im a hacker bitch"
 ).add_command(
-  'degi', None, 'Use and see'
+    "hnd", "<your text>", "A handy animation with the text,"
 ).add_command(
-  'nehi', None, 'Use and see'
+    "owner", None, "Use and see"
 ).add_command(
-  'hack', None, 'Im a hacker bitch'
-).add_command(
-  'hnd', '<your text>', 'A handy animation with the text,'
-).add_command(
-  'owner', None, 'Use and see'
-).add_command(
-  'padmin', None, 'Prank promote a user'
+    "padmin", None, "Prank promote a user"
 ).add()

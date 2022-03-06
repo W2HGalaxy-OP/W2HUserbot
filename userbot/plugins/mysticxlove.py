@@ -1,6 +1,8 @@
 import asyncio
 import random
+
 from . import *
+
 NUMBER = ["0", "1"]
 
 MEDHU = [
@@ -62,6 +64,7 @@ async def _(event):
             reply_to=event.message.id,
         )
 
+
 @bot.on(admin_cmd(pattern="mysticxlove(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="mysticxlove(?: |$)(.*)", allow_sudo=True))
 async def _(event):
@@ -120,8 +123,8 @@ async def _(event):
         queue = que.get(e)
         queue.pop(0)
         await event.edit(f"TUJE KHONE KE DAR SE KABI PAYA H NAHI {ALIVE_NAME}")
+
+
 CmdHelp("mysticxlove").add_command(
-'mysticxlove', None, 'Reply to him or her to start mysticxlove'
-).add_command(
-'nofeelings', None, 'Reply To her Ya him To stop mysticxlove'
-).add()
+    "mysticxlove", None, "Reply to him or her to start mysticxlove"
+).add_command("nofeelings", None, "Reply To her Ya him To stop mysticxlove").add()

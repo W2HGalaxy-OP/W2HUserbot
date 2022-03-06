@@ -3,7 +3,8 @@ import os
 import subprocess
 
 import requests
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -22,7 +23,9 @@ async def labstack(event):
             reply.media, Var.TEMP_DOWNLOAD_DIRECTORY
         )
     else:
-        await edit_or_reply(event, "Reply to a media file or provide a directory to upload the file to labstack"
+        await edit_or_reply(
+            event,
+            "Reply to a media file or provide a directory to upload the file to labstack",
         )
         return
     filesize = os.path.getsize(filebase)
@@ -61,9 +64,13 @@ async def labstack(event):
         t_response_arry = "https://up.labstack.com/api/v1/links/{}/receive".format(
             r2json["code"]
         )
-    await edit_or_reply(event, t_response_arry + "\nMax Days:" + str(max_days), link_preview=False
+    await edit_or_reply(
+        event, t_response_arry + "\nMax Days:" + str(max_days), link_preview=False
     )
 
+
 CmdHelp("labstack").add_command(
-  "labstack", "<reply to media>", "Makes a direct download link of the replied media for a limited time"
+    "labstack",
+    "<reply to media>",
+    "Makes a direct download link of the replied media for a limited time",
 ).add()

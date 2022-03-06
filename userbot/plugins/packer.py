@@ -1,9 +1,9 @@
-
-import os
 import asyncio
+import os
+
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import CmdHelp
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot import bot as W2HBOT
 
 
@@ -41,7 +41,12 @@ async def _(event):
 
 
 CmdHelp("packer").add_command(
-  "unpack", "<reply to a file>", "Read contents of file and send as a telegram message."
+    "unpack",
+    "<reply to a file>",
+    "Read contents of file and send as a telegram message.",
 ).add_command(
-  "repack", "<reply to text> <filename . extension>", "Packs the text and sends as a file of given extension", "<reply to text> example.py"
+    "repack",
+    "<reply to text> <filename . extension>",
+    "Packs the text and sends as a file of given extension",
+    "<reply to text> example.py",
 ).add()

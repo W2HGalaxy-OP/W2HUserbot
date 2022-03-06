@@ -2,9 +2,10 @@ import json
 import os
 
 import requests
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
+
 
 def ocr_space_file(
     filename, overlay=False, api_key=Config.OCR_SPACE_API_KEY, language="eng"
@@ -126,20 +127,25 @@ async def parse_ocr_space_api(event):
             int(test_file["ProcessingTimeInMilliseconds"]) // 1000
         )
     except Exception as e:
-        await edit_or_reply(event, "Errors.\n `{}`\nReport This to @W2H_Userbot\n\n`{}`".format(
+        await edit_or_reply(
+            event,
+            "Errors.\n `{}`\nReport This to @W2H_Userbot\n\n`{}`".format(
                 str(e), json.dumps(test_file, sort_keys=True, indent=4)
-            )
+            ),
         )
     else:
-        await edit_or_reply(event, "Read Document in {} seconds. \n{}".format(
+        await edit_or_reply(
+            event,
+            "Read Document in {} seconds. \n{}".format(
                 ProcessingTimeInMilliseconds, ParsedText
-            )
+            ),
         )
     os.remove(downloaded_file_name)
     await edit_or_reply(event, ParsedText)
 
+
 CmdHelp("ocr").add_command(
-  "ocr", "<reply to a img> <lang code>", "Reads and sends you the text written in replied image in selected language"
-).add_command(
-  "ocrlang", None, "Gives the list of supported languages of OCR."
-).add()
+    "ocr",
+    "<reply to a img> <lang code>",
+    "Reads and sends you the text written in replied image in selected language",
+).add_command("ocrlang", None, "Gives the list of supported languages of OCR.").add()

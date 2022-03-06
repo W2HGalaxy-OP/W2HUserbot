@@ -4,8 +4,8 @@ Available Options: image, file, text"""
 from datetime import datetime
 
 import speedtest
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -45,7 +45,8 @@ async def _(event):
         response = s.results.share()
         speedtest_image = response
         if as_text:
-            await edit_or_reply(event, 
+            await edit_or_reply(
+                event,
                 """**SpeedTest** completed in {} seconds
 Download: {}
 Upload: {}
@@ -58,7 +59,7 @@ ISP Rating: {}""".format(
                     ping_time,
                     i_s_p,
                     i_s_p_rating,
-                )
+                ),
             )
         else:
             await borg.send_file(
@@ -71,7 +72,8 @@ ISP Rating: {}""".format(
             )
             await event.delete()
     except Exception as exc:
-        await edit_or_reply(event, 
+        await edit_or_reply(
+            event,
             """**SpeedTest** completed in {} seconds
 Download: {}
 Upload: {}
@@ -83,12 +85,12 @@ __With the Following ERRORs__
                 convert_from_bytes(upload_speed),
                 ping_time,
                 str(exc),
-            )
+            ),
         )
 
 
 def convert_from_bytes(size):
-    power = 2 ** 10
+    power = 2**10
     n = 0
     units = {0: "", 1: "kilobytes", 2: "megabytes", 3: "gigabytes", 4: "terabytes"}
     while size > power:
@@ -96,6 +98,7 @@ def convert_from_bytes(size):
         n += 1
     return f"{round(size, 2)} {units[n]}"
 
+
 CmdHelp("speedtest").add_command(
-  "speedtest", None, "Calculates the Internet Speed of your Bot."
+    "speedtest", None, "Calculates the Internet Speed of your Bot."
 ).add()

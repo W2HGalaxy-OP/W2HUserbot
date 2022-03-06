@@ -1,7 +1,6 @@
-
 import asyncio
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 @bot.on(admin_cmd(pattern="unoob$", outgoing=True))
@@ -34,6 +33,7 @@ async def _(event):
 
         await event.edit(animation_chars[i % 9])
         await asyncio.sleep(animation_interval)
+
 
 @bot.on(admin_cmd(pattern="menoob$", outgoing=True))
 @bot.on(sudo_cmd(pattern="menoob$", allow_sudo=True))

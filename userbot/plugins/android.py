@@ -10,10 +10,10 @@ import re
 
 from bs4 import BeautifulSoup
 from requests import get
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import *
 
 from userbot import *
-from W2HBOT.utils import *
+from userbot.cmdhelp import CmdHelp
 
 GITHUB = "https://github.com"
 DEVICES_DATA = (
@@ -232,14 +232,12 @@ async def twrp(request):
     await edit_or_reply(request, reply)
 
 
-CmdHelp("android").add_command(
-  'magisk', None, 'Get latest magisk release'
+CmdHelp("android").add_command("magisk", None, "Get latest magisk release").add_command(
+    "device", "<codename>", "Get info about android device codename or model"
 ).add_command(
-  'device', '<codename>', 'Get info about android device codename or model'
+    "codename", "<brand> <device>", "Search for android device codename"
 ).add_command(
-  'codename', '<brand> <device>', 'Search for android device codename'
+    "specs", "<brand> <device>", "Get device specifications info."
 ).add_command(
-  'specs', '<brand> <device>', 'Get device specifications info.'
-).add_command(
-  'twrp', '<codename>', 'Get latest twrp download for android device.'
+    "twrp", "<codename>", "Get latest twrp download for android device."
 ).add()

@@ -9,8 +9,9 @@ from telegraph import exceptions, upload_file
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from userbot import CMD_HELP
+from userbot.cmdhelp import CmdHelp
 from userbot.helpers.functions import (
     awooify,
     baguette,
@@ -18,8 +19,6 @@ from userbot.helpers.functions import (
     iphonex,
     lolice,
 )
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot.cmdhelp import CmdHelp
 
 
 @bot.on(admin_cmd(pattern="mask$", outgoing=True))
@@ -42,10 +41,14 @@ async def _(W2HBOT):
             await W2HBOT.client.send_message(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await edit_or_reply(W2HBOT, "`Please unblock` @hazmat_suit_bot `and try again`")
+            await edit_or_reply(
+                W2HBOT, "`Please unblock` @hazmat_suit_bot `and try again`"
+            )
             return
         if response.text.startswith("Forward"):
-            await edit_or_reply(W2HBOT, "```can you kindly disable your forward privacy settings for good?```"
+            await edit_or_reply(
+                W2HBOT,
+                "```can you kindly disable your forward privacy settings for good?```",
             )
         else:
             await W2HBOT.client.send_file(event.chat_id, response.message.media)
@@ -257,13 +260,15 @@ async def W2HBOT(W2Hmemes):
 
 
 CmdHelp("mask").add_command(
-  "mask", "<reply to img/stcr", "Makes an image a different style."
+    "mask", "<reply to img/stcr", "Makes an image a different style."
 ).add_command(
-  "iphx", "<reply to img/stcr", "Covers the replied image or sticker into iphonex wallpaper"
+    "iphx",
+    "<reply to img/stcr",
+    "Covers the replied image or sticker into iphonex wallpaper",
 ).add_command(
-  "bun", "<reply to img/stcr", "Gives the replied img a cool bun eating look"
+    "bun", "<reply to img/stcr", "Gives the replied img a cool bun eating look"
 ).add_command(
-  "lolice", "<reply to img/stcr", "Gives the replied img the face of Lolice Cheif"
+    "lolice", "<reply to img/stcr", "Gives the replied img the face of Lolice Cheif"
 ).add_command(
-  "awooify", "<reply to img/stcr", "Gives the replied img or stcr the face or wooify"
+    "awooify", "<reply to img/stcr", "Gives the replied img or stcr the face or wooify"
 ).add()

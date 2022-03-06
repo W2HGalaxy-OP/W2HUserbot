@@ -5,8 +5,10 @@
 
 import asyncio
 
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+from W2HBOT.utils import admin_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd("hdd"))
 async def _(event):
@@ -1416,8 +1418,8 @@ async def _(event):
 
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 22])
-CmdHelp("diwali").add_command(
-        'hdd', None, 'µรε αɳ∂ รεε'
-).add_command(
-        'diwali', None, 'մsɾ αղժ sҽҽ'
+
+
+CmdHelp("diwali").add_command("hdd", None, "µรε αɳ∂ รεε").add_command(
+    "diwali", None, "մsɾ αղժ sҽҽ"
 ).add()

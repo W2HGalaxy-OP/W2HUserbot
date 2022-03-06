@@ -3,12 +3,12 @@
 """
 
 
-import logging
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 name = "Profile Photos"
+
 
 @bot.on(admin_cmd(pattern="poto ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern="poto ?(.*)", allow_sudo=True))
@@ -29,9 +29,7 @@ async def potocmd(event):
             send_photos = await event.client.download_media(photos[uid - 1])
             await event.client.send_file(event.chat_id, send_photos)
         else:
-            await edit_or_reply(
-                event, "No photo found of this NIBBA. Now u Die!"
-            )
+            await edit_or_reply(event, "No photo found of this NIBBA. Now u Die!")
             await asyncio.sleep(2)
             return
     elif uid.strip() == "all":
@@ -62,14 +60,17 @@ async def potocmd(event):
             send_photos = await event.client.download_media(photos[uid - 1])
             await event.client.send_file(event.chat_id, send_photos)
         else:
-            await edit_or_reply(
-                event, "No photo found of this NIBBA. Now u Die!"
-            )
+            await edit_or_reply(event, "No photo found of this NIBBA. Now u Die!")
             await asyncio.sleep(2)
             return
 
+
 CmdHelp("poto").add_command(
-  "poto", "<all> / <desired pp number>", "Reply to user to get his/her profile pic. Use .poto <number> to get desired profile pic else use .poto all to get all profile pic(s). If you dont reply to a user then it gets group pics."
+    "poto",
+    "<all> / <desired pp number>",
+    "Reply to user to get his/her profile pic. Use .poto <number> to get desired profile pic else use .poto all to get all profile pic(s). If you dont reply to a user then it gets group pics.",
 ).add_command(
-  "ppg", "<reply>", "Gets the user's 1st profile pic. But this time with a caption. Try it yourself..."
+    "ppg",
+    "<reply>",
+    "Gets the user's 1st profile pic. But this time with a caption. Try it yourself...",
 ).add()

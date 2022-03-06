@@ -1,9 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
-
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
-from userbot import CMD_HELP
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="filext (.*)"))
 @bot.on(sudo_cmd(pattern="filext (.*)", allow_sudo=True))
@@ -34,5 +34,7 @@ async def _(event):
 
 
 CmdHelp("fileext").add_command(
-  'filext', '<extension name>', 'Shows you the detailed information of that extension type.'
+    "filext",
+    "<extension name>",
+    "Shows you the detailed information of that extension type.",
 ).add()

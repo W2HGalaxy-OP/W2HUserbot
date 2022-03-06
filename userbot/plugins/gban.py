@@ -1,22 +1,17 @@
-from userbot import bot, CMD_HELP, ALIVE_NAME
-from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
-import html
-from telethon import events
-from telethon.tl.functions.photos import GetUserPhotosRequest
-from telethon.tl.functions.users import GetFullUserRequest
-from telethon.tl.types import MessageEntityMentionName
-from telethon.utils import get_input_location
 from telethon.events import ChatAction
+from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
+from telethon.tl.types import MessageEntityMentionName
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
+from userbot import ALIVE_NAME, bot
+from userbot.cmdhelp import CmdHelp
 
 David99q = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 papa = borg.uid
 
 
-
-async def get_full_user(event):  
-    args = event.pattern_match.group(1).split(':', 1)
+async def get_full_user(event):
+    args = event.pattern_match.group(1).split(":", 1)
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
@@ -29,19 +24,20 @@ async def get_full_user(event):
         if user.isnumeric():
             user = int(user)
         if not user:
-            await edit_or_reply(event, "**Som3thing W3nt Wr0ng**\n`Can you please provide me a user id`")
+            await edit_or_reply(
+                event, "**Som3thing W3nt Wr0ng**\n`Can you please provide me a user id`"
+            )
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await edit_or_reply(event, "**Som3thing W3nt Wr0ng**\n", str(err))           
+            return await edit_or_reply(event, "**Som3thing W3nt Wr0ng**\n", str(err))
     return user_obj, extra
 
 
@@ -54,6 +50,7 @@ async def get_user_from_id(user, event):
         await edit_or_reply(event, str(err))
         return None
     return user_obj
+
 
 @bot.on(admin_cmd(pattern="gban ?(.*)"))
 @bot.on(sudo_cmd(pattern="gban ?(.*)", allow_sudo=True))
@@ -89,9 +86,7 @@ async def gban(userbot):
         return await W2HBOT.edit(f"**Something W3NT Wrong 🤔**")
     if user:
         if user.id == 2033517108:
-            return await W2HBOT.edit(
-                f"`First Grow Some Balls To Gban My Creater🤫🚶`"
-            )
+            return await W2HBOT.edit(f"`First Grow Some Balls To Gban My Creater🤫🚶`")
         try:
             from userbot.modules.sql_helper.gmute_sql import gmute
         except:
@@ -116,12 +111,15 @@ async def gban(userbot):
         await W2HBOT.edit(f"`Either reply to a user or gib me user id/name`")
     try:
         if gmute(user.id) is False:
-            return await W2HBOT.edit(f"**Error! User phle se chuda(Gbanned) pda h 😂 .**")
+            return await W2HBOT.edit(
+                f"**Error! User phle se chuda(Gbanned) pda h 😂 .**"
+            )
     except:
         pass
     return await W2HBOT.edit(
         f"[{user.first_name}](tg://user?id={user.id}) Teri Kali Gand Chodne Wala Tera [{David99q}](tg://user?id={papa}) Baap.\n\n**Gban Successful This Nube 🔥\nAffected Chats😏 : {a} **"
     )
+
 
 @bot.on(admin_cmd(pattern="ungban ?(.*)"))
 @bot.on(sudo_cmd(pattern="ungban ?(.*)", allow_sudo=True))
@@ -157,7 +155,9 @@ async def gunban(userbot):
         return await W2HBOT.edit("**Som3ting W3nt Wr0ng**")
     if user:
         if user.id == 1100735944:
-            return await W2HBOT.edit("**You need to grow some balls to gban / ungban my creator**")
+            return await W2HBOT.edit(
+                "**You need to grow some balls to gban / ungban my creator**"
+            )
         try:
             from userbot.modules.sql_helper.gmute_sql import ungmute
         except:
@@ -175,7 +175,9 @@ async def gunban(userbot):
             try:
                 await userbot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
-                await W2HBOT.edit(f"Ok! Now Ungbaning ho rha h nhi to yhi patak kr chod dete.\nChats:- `{a}`")
+                await W2HBOT.edit(
+                    f"Ok! Now Ungbaning ho rha h nhi to yhi patak kr chod dete.\nChats:- `{a}`"
+                )
             except:
                 b += 1
     else:
@@ -190,41 +192,53 @@ async def gunban(userbot):
     )
 
 
-
-
 @borg.on(ChatAction)
-async def handler(aura): 
-   if aura.user_joined or aura.user_added:      
-       try:       	
-         from userbot.plugins.sql_helper.gmute_sql import is_gmuted
-         guser = await aura.get_user()      
-         gmuted = is_gmuted(guser.id)             
-       except:      
-          return
-       if gmuted:
-        for i in gmuted:
-            if i.sender == str(guser.id):                                                                         
-                chat = await aura.get_chat()
-                admin = chat.admin_rights
-                creator = chat.creator   
-                if admin or creator:
-                 try:
-                    await client.edit_permissions(aura.chat_id, guser.id, view_messages=False)                              
-                    await aura.reply(
-                     f"⚠️⚠️**Warning**⚠️⚠️\n\n`Gbanned User Joined the chat!!`\n"                      
-                     f"**⚜️ Victim Id ⚜️**:\n[{guser.id}](tg://user?id={guser.id})\n"                   
-                     f"**🔥 Action 🔥**  :\n`Banned this piece of shit....` **AGAIN!**")                                                
-                 except:       
-                    aura.reply("`Sheit!! No permission to ban users.\n@admins ban this retard.\nGlobally Banned User And A Potential Spammer`\n**Make your group a safe place by cleaning this shit**")                   
-                    return
-                  
-                  
+async def handler(aura):
+    if aura.user_joined or aura.user_added:
+        try:
+            from userbot.plugins.sql_helper.gmute_sql import is_gmuted
+
+            guser = await aura.get_user()
+            gmuted = is_gmuted(guser.id)
+        except:
+            return
+        if gmuted:
+            for i in gmuted:
+                if i.sender == str(guser.id):
+                    chat = await aura.get_chat()
+                    admin = chat.admin_rights
+                    creator = chat.creator
+                    if admin or creator:
+                        try:
+                            await client.edit_permissions(
+                                aura.chat_id, guser.id, view_messages=False
+                            )
+                            await aura.reply(
+                                f"⚠️⚠️**Warning**⚠️⚠️\n\n`Gbanned User Joined the chat!!`\n"
+                                f"**⚜️ Victim Id ⚜️**:\n[{guser.id}](tg://user?id={guser.id})\n"
+                                f"**🔥 Action 🔥**  :\n`Banned this piece of shit....` **AGAIN!**"
+                            )
+                        except:
+                            aura.reply(
+                                "`Sheit!! No permission to ban users.\n@admins ban this retard.\nGlobally Banned User And A Potential Spammer`\n**Make your group a safe place by cleaning this shit**"
+                            )
+                            return
+
+
 CmdHelp("gban_gmute").add_command(
-  'gban', '<reply> / <userid> / <username>', 'Gbans the targeted user and adds to gban watch list'
+    "gban",
+    "<reply> / <userid> / <username>",
+    "Gbans the targeted user and adds to gban watch list",
 ).add_command(
-  'ungban', '<reply> / <userid> / <username>', 'Unbans the targeted user and removes them from gban watch list. Grants another Chance'
+    "ungban",
+    "<reply> / <userid> / <username>",
+    "Unbans the targeted user and removes them from gban watch list. Grants another Chance",
 ).add_command(
-  'gmute', '<reply>/ <userid>/ <username>', 'Gmutes the targeted user. Works only if you have delete msg permission. (Works on admins too)'
+    "gmute",
+    "<reply>/ <userid>/ <username>",
+    "Gmutes the targeted user. Works only if you have delete msg permission. (Works on admins too)",
 ).add_command(
-  'ungmute', '<reply>/ <userid>/ <username>', 'Ungmutes the user. Now targeted user is free'
+    "ungmute",
+    "<reply>/ <userid>/ <username>",
+    "Ungmutes the user. Now targeted user is free",
 ).add()

@@ -7,19 +7,16 @@
 
 from asyncio import sleep
 
-from telethon.errors import rpcbaseerrors
+from W2HBOT.utils import admin_cmd, errors_handler, sudo_cmd
 
-from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from W2HBOT.utils import admin_cmd, errors_handler, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
-
+from userbot import BOTLOG, BOTLOG_CHATID
 
 
 @bot.on(admin_cmd(pattern=r"purge", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"purge", allow_sudo=True))
 @errors_handler
 async def fastpurger(purg):
-    """ For .purge command, purge all messages starting from the reply. """
+    """For .purge command, purge all messages starting from the reply."""
     chat = await purg.get_input_chat()
     msgs = []
     count = 0
@@ -52,7 +49,7 @@ async def fastpurger(purg):
 @bot.on(sudo_cmd(pattern=r"purgeme", allow_sudo=True))
 @errors_handler
 async def purgeme(delme):
-    """ For .purgeme, delete x count of your latest message."""
+    """For .purgeme, delete x count of your latest message."""
     message = delme.text
     count = int(message[9:])
     i = 1
@@ -80,7 +77,7 @@ async def purgeme(delme):
 @bot.on(sudo_cmd(pattern=r"sd", allow_sudo=True))
 @errors_handler
 async def selfdestruct(destroy):
-    """ For .sd command, make seflf-destructable messages. """
+    """For .sd command, make seflf-destructable messages."""
     message = destroy.text
     counter = int(message[4:6])
     text = str(destroy.text[6:])

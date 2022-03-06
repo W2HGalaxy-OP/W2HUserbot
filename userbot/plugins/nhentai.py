@@ -2,9 +2,9 @@
 
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import bot
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -34,5 +34,7 @@ async def _(event):
 
 
 CmdHelp("nhentai").add_command(
-  "nhentai", "<link>", "Send one link like https://nhentai.net/g/234638 and this will turn it into a Telegra.ph Instant View articles!"
+    "nhentai",
+    "<link>",
+    "Send one link like https://nhentai.net/g/234638 and this will turn it into a Telegra.ph Instant View articles!",
 ).add()

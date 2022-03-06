@@ -2,9 +2,9 @@ import os
 import urllib
 
 from telethon.tl import functions
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import admin_cmd, edit_or_reply
 
+from userbot.cmdhelp import CmdHelp
 
 OFFLINE_TAG = "[•OFFLINE•]"
 ONLINE_TAG = "[•ONLINE•]"
@@ -95,8 +95,11 @@ async def _(event):
     except Exception as e:  # pylint:disable=C0103,W0703
         await edit_or_reply(event, str(e))
 
+
 CmdHelp("mystatus").add_command(
-  "online", None, "Remove Offline Tag from your name and change profile pic to vars PROFILE_IMAGE."
+    "online",
+    None,
+    "Remove Offline Tag from your name and change profile pic to vars PROFILE_IMAGE.",
 ).add_command(
-  "offline", None, "Add an offline tag in your name and change profile pic to black."
+    "offline", None, "Add an offline tag in your name and change profile pic to black."
 ).add()

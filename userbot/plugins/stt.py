@@ -2,8 +2,8 @@ import os
 from datetime import datetime
 
 import requests
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -72,6 +72,7 @@ async def _(event):
     else:
         await W2Hevent.edit("Reply to a voice message, to get the relevant transcript.")
 
+
 CmdHelp("stt").add_command(
-  "stt", "<reply to voice>", "Gets the relevant transcript of replied voice message."
+    "stt", "<reply to voice>", "Gets the relevant transcript of replied voice message."
 ).add()

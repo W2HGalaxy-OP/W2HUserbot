@@ -12,7 +12,8 @@ from datetime import datetime
 import aiohttp
 import magic
 import requests
-from W2HBOT.utils import admin_cmd, progress, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -141,6 +142,7 @@ def get_sha_one_hash(input_file, chunk_size):
             sha1.update(data)
     return sha1.hexdigest()
 
+
 CmdHelp("verystream").add_command(
-  "verystream", "<reply to file>", "Uploads the replied file to Verysteam."
+    "verystream", "<reply to file>", "Uploads the replied file to Verysteam."
 ).add()

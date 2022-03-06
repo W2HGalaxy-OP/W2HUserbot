@@ -2,12 +2,13 @@ import asyncio
 from collections import deque
 
 from telethon.tl.functions.users import GetFullUserRequest
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import *
-from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
+
 
 @bot.on(admin_cmd(pattern=f"indflag$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"indflag$", allow_sudo=True))
@@ -25,6 +26,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])
 
+
 @bot.on(admin_cmd(pattern="^Yo$"))
 @bot.on(sudo_cmd(pattern="^Yo$", allow_sudo=True))
 async def Ooo(e):
@@ -34,7 +36,8 @@ async def Ooo(e):
     for j in range(15):
         t = t[:-1] + "oo"
         await e.edit(t)
-        
+
+
 @bot.on(admin_cmd(pattern="stupid$"))
 @bot.on(sudo_cmd(pattern="stupid$", allow_sudo=True))
 async def _(event):
@@ -62,7 +65,8 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 14])
-        
+
+
 @bot.on(admin_cmd(pattern=f"evil$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"evil$", allow_sudo=True))
 async def _(event):
@@ -82,13 +86,16 @@ async def _(event):
         await event.edit(
             "**😈YOU KNOW THAT I'M A GOOD PERSON. BUT DON'T GIVE ME REASON TO SHOW MY EVIL SIDE😈**"
         )
-        
+
+
 @bot.on(admin_cmd(pattern="gnt$", outgoing=True))
 @bot.on(sudo_cmd(pattern="gnt$", allow_sudo=True))
 async def gn(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･\n╱╱╱╱╱╱╱╭╮╱╱╱╭╮╱╭╮╭╮\n╭━┳━┳━┳╯┃╭━┳╋╋━┫╰┫╰╮\n┃╋┃╋┃╋┃╋┃┃┃┃┃┃╋┃┃┃╭┫\n┣╮┣━┻━┻━╯╰┻━┻╋╮┣┻┻━╯\n╰━╯╱╱╱╱╱╱╱╱╱╱╰━╯\n｡♥｡･ﾟ♡ﾟ･｡♥° ♥｡･ﾟ♡ﾟ･"
+    await edit_or_reply(
+        event,
+        "｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･\n╱╱╱╱╱╱╱╭╮╱╱╱╭╮╱╭╮╭╮\n╭━┳━┳━┳╯┃╭━┳╋╋━┫╰┫╰╮\n┃╋┃╋┃╋┃╋┃┃┃┃┃┃╋┃┃┃╭┫\n┣╮┣━┻━┻━╯╰┻━┻╋╮┣┻┻━╯\n╰━╯╱╱╱╱╱╱╱╱╱╱╰━╯\n｡♥｡･ﾟ♡ﾟ･｡♥° ♥｡･ﾟ♡ﾟ･",
     )
 
 
@@ -97,8 +104,11 @@ async def gn(event):
 async def gm(event):
     if event.fwd_from:
         return
-    await edit_or_reply(event, "｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･｡♥｡･ﾟ♡ﾟ･\n╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╭╮\n╭━┳━┳━┳╯┃╭━━┳━┳┳┳━┳╋╋━┳┳━╮\n┃╋┃╋┃╋┃╋┃┃┃┃┃╋┃╭┫┃┃┃┃┃┃┃╋┃\n┣╮┣━┻━┻━╯╰┻┻┻━┻╯╰┻━┻┻┻━╋╮┃\n╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━╯\n｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･｡♥｡･ﾟ♡ﾟ･"
+    await edit_or_reply(
+        event,
+        "｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･｡♥｡･ﾟ♡ﾟ･\n╱╱╱╱╱╱╱╭╮╱╱╱╱╱╱╱╱╱╱╭╮\n╭━┳━┳━┳╯┃╭━━┳━┳┳┳━┳╋╋━┳┳━╮\n┃╋┃╋┃╋┃╋┃┃┃┃┃╋┃╭┫┃┃┃┃┃┃┃╋┃\n┣╮┣━┻━┻━╯╰┻┻┻━┻╯╰┻━┻┻┻━╋╮┃\n╰━╯╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╱╰━╯\n｡♥｡･ﾟ♡ﾟ･｡♥｡･｡･｡･｡♥｡･｡♥｡･ﾟ♡ﾟ･",
     )
+
 
 @bot.on(admin_cmd(pattern=f"bombs$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"bombs$", allow_sudo=True))
@@ -222,8 +232,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 5], link_preview=True)
-        
-        
+
 
 @bot.on(admin_cmd(pattern="ding$"))
 @bot.on(sudo_cmd(pattern="ding$", allow_sudo=True))
@@ -305,7 +314,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 15])
-        
+
 
 @bot.on(admin_cmd(pattern=r"candy$"))
 @bot.on(sudo_cmd(pattern=r"candy$", allow_sudo=True))
@@ -342,6 +351,7 @@ async def _(event):
     await asyncio.sleep(0.3)
     await event.edit("EVERyBOdy iZ GangSTur UNtIL I ArRivE 🔥🔥🔥")
 
+
 @bot.on(admin_cmd(pattern=f"bigoof$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"bigoof$", allow_sudo=True))
 async def _(event):
@@ -349,7 +359,9 @@ async def _(event):
         return
     animation_interval = 0.1
     animation_ttl = range(0, 36)
-    event = await edit_or_reply(event, "┏━━━┓╋╋╋╋┏━━━┓ \n┃┏━┓┃╋╋╋╋┃┏━┓┃ \n┃┃╋┃┣┓┏┓┏┫┃╋┃┃ \n┃┃╋┃┃┗┛┗┛┃┃╋┃┃ \n┃┗━┛┣┓┏┓┏┫┗━┛┃ \n┗━━━┛┗┛┗┛┗━━━┛"
+    event = await edit_or_reply(
+        event,
+        "┏━━━┓╋╋╋╋┏━━━┓ \n┃┏━┓┃╋╋╋╋┃┏━┓┃ \n┃┃╋┃┣┓┏┓┏┫┃╋┃┃ \n┃┃╋┃┃┗┛┗┛┃┃╋┃┃ \n┃┗━┛┣┓┏┓┏┫┗━┛┃ \n┗━━━┛┗┛┗┛┗━━━┛",
     )
     animation_chars = [
         "╭━━━╮╱╱╱╭━╮ \n┃╭━╮┃╱╱╱┃╭╯ \n┃┃╱┃┣━━┳╯╰╮ \n┃┃╱┃┃╭╮┣╮╭╯ \n┃╰━╯┃╰╯┃┃┃ \n╰━━━┻━━╯╰╯ ",
@@ -390,38 +402,34 @@ async def timer_blankx(e):
     )
 
 
-CmdHelp("animations1").add_command(
-  'indflag', None, '🇮🇳🇮🇳🇮🇳'
+CmdHelp("animations1").add_command("indflag", None, "🇮🇳🇮🇳🇮🇳").add_command(
+    "stupid", None, "Use and see"
+).add_command("bombs", None, "Use and see").add_command(
+    "call", None, "Use and see"
 ).add_command(
-  'stupid', None, 'Use and see'
+    "kill", None, "Use and see"
 ).add_command(
-  'bombs', None, 'Use and see'
+    "wtf", None, "Use and see"
 ).add_command(
-  'call', None, 'Use and see'
+    "ding", None, "Use and see"
 ).add_command(
-  'kill', None, 'Use and see'
+    "hypno", None, "Use and see"
 ).add_command(
-  'wtf', None, 'Use and see'
+    "candy", None, "Use and see"
 ).add_command(
-  'ding', None, 'Use and see'
+    "gangasta", None, "Use and see"
 ).add_command(
-  'hypno', None, 'Use and see'
+    "bigoof", None, "Big off animation"
 ).add_command(
-  'candy', None, 'Use and see'
+    "charging", None, "Use and see"
 ).add_command(
-  'gangasta', None, 'Use and see'
+    "yo", None, "Shitty Yooooo animations. Like who wants it.. duhh"
 ).add_command(
-  'bigoof', None, 'Big off animation'
+    "evil", None, "Wanna show your evilness?"
 ).add_command(
-  'charging', None, 'Use and see'
+    "gmg", None, "Cool Good Morning Animation"
 ).add_command(
-  'yo', None, 'Shitty Yooooo animations. Like who wants it.. duhh'
+    "gnt", None, "Cool Good Night Animation"
 ).add_command(
-  'evil', None, 'Wanna show your evilness?'
-).add_command(
-  'gmg', None, 'Cool Good Morning Animation'
-).add_command(
-  'gnt', None, 'Cool Good Night Animation'
-).add_command(
-  'muth', None, 'Fapping✊'
+    "muth", None, "Fapping✊"
 ).add()

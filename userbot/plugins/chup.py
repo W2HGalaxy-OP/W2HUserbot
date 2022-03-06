@@ -1,8 +1,9 @@
-import asyncio
-from telethon import events
 from telethon.tl.types import ChannelParticipantsAdmins
+
 from userbot.utils import admin_cmd
+
 from . import *
+
 
 @bot.on(admin_cmd("chup"))
 async def _(event):
@@ -19,6 +20,6 @@ async def _(event):
     else:
         await event.reply(mentions)
     await event.delete()
-CmdHelp("chup").add_command(
-    'chup', None, 'Use amd See'
-).add()
+
+
+CmdHelp("chup").add_command("chup", None, "Use amd See").add()

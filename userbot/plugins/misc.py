@@ -10,29 +10,32 @@
 from random import randint
 from time import sleep
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
 @bot.on(admin_cmd(pattern="random", outgoing=True))
 @bot.on(sudo_cmd(pattern="random", allow_sudo=True))
 async def randomise(items):
-    """ For .random command, get a random item from the list of items. """
+    """For .random command, get a random item from the list of items."""
     if not items.text[0].isalpha() and items.text[0] not in ("/", "#", "@", "!"):
         itemo = (items.text[8:]).split()
         index = randint(1, len(itemo) - 1)
-        await edit_or_reply(items, 
+        await edit_or_reply(
+            items,
             "**Query: **\n`"
             + items.text[8:]
             + "`\n**Output: **\n`"
             + itemo[index]
-            + "`"
+            + "`",
         )
+
 
 @bot.on(admin_cmd(pattern="sleep([0-9]+)?$", outgoing=True))
 @bot.on(sudo_cmd(pattern="sleep([0-9]+)?$", allow_sudo=True))
 async def sleepybot(time):
-    """ For .sleep command, let the userbot snooze for a few second. """
+    """For .sleep command, let the userbot snooze for a few second."""
     message = time.text
     if not message[0].isalpha() and message[0] not in ("/", "#", "@", "!"):
         if " " not in time.pattern_match.group(1):
@@ -48,8 +51,9 @@ async def sleepybot(time):
                 )
             sleep(counter)
 
+
 CmdHelp("misc").add_command(
-  "sleep", "<value>", "Lets the userbot sleep for some seconds...."
+    "sleep", "<value>", "Lets the userbot sleep for some seconds...."
 ).add_command(
-  "random", "<reply>", "Chooses a random thing from the given list of things"
+    "random", "<reply>", "Chooses a random thing from the given list of things"
 ).add()

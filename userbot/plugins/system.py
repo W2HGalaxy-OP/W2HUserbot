@@ -1,8 +1,9 @@
 import asyncio
 
-from userbot import CMD_HELP
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern=f"quickheal$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"quickheal$", allow_sudo=True))
@@ -207,20 +208,37 @@ async def _(event):
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 7])
 
+
 CmdHelp("system").add_command(
-  "quickheal", None, "Different kinds of animation commands check yourself for their animation"
+    "quickheal",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "os", None, "Different kinds of animation commands check yourself for their animation"
+    "os",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "stock", None, "Different kinds of animation commands check yourself for their animation"
+    "stock",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "linux", None, "Different kinds of animation commands check yourself for their animation"
+    "linux",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "windows", None, "Different kinds of animation commands check yourself for their animation"
+    "windows",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "macos", None, "Different kinds of animation commands check yourself for their animation"
+    "macos",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "vquickheal", None, "Different kinds of animation commands check yourself for their animation"
+    "vquickheal",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add_command(
-  "sqh", None, "Different kinds of animation commands check yourself for their animation"
+    "sqh",
+    None,
+    "Different kinds of animation commands check yourself for their animation",
 ).add()

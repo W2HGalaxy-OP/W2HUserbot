@@ -1,9 +1,11 @@
 import asyncio
 import random
+
 from userbot.cmdhelp import CmdHelp
+from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from . import *
 
-from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
 NUMBER = ["0", "1"]
 
 OS = [
@@ -32,6 +34,7 @@ async def _(event):
             message="""{}""".format(random.choice(OS)),
             reply_to=event.message.id,
         )
+
 
 @bot.on(admin_cmd(pattern="rstarts(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="rstarts(?: |$)(.*)", allow_sudo=True))
@@ -91,10 +94,8 @@ async def _(event):
         queue = que.get(e)
         queue.pop(0)
         await event.edit(f"W2H STOPED RAID {ALIVE_NAME}")
-        
-        
+
+
 CmdHelp("rpersonal").add_command(
-    'rstarts', None, 'Reply to him or her to start ravan personal file'
-).add_command(
-    'rstops', None, 'Reply To her Ya him To stop ravan personal file'
-).add()
+    "rstarts", None, "Reply to him or her to start ravan personal file"
+).add_command("rstops", None, "Reply To her Ya him To stop ravan personal file").add()

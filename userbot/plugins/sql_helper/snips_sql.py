@@ -65,6 +65,7 @@ def add_snip(keyword, reply, f_mesg_id):
     SESSION.commit()
     return False
 
+
 def remove_snip(keyword):
     note = SESSION.query(Snips).filter(Snips.snip == keyword)
     if note:

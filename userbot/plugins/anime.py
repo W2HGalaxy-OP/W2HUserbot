@@ -1,7 +1,10 @@
 import json
 import re
+
 import requests
+
 from . import *
+
 
 async def callAPI(search_str):
     query = """
@@ -87,7 +90,8 @@ async def nope(lege):
         if lege.is_reply:
             (await lege_.get_reply_message()).message
         else:
-            await eor(lege, "Sir please give some query to search and download it for you..!"
+            await eor(
+                lege, "Sir please give some query to search and download it for you..!"
             )
             return
 
@@ -100,8 +104,8 @@ async def nope(lege):
         hide_via=True,
     )
     await lege.delete()
-    
-    
+
+
 @bot.on(admin_cmd(pattern="manga(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="manga(?: |$)(.*)", allow_sudo=True))
 async def nope(lege_):
@@ -110,7 +114,8 @@ async def nope(lege_):
         if lege_.is_reply:
             (await lege_.get_reply_message()).message
         else:
-            await eod(lege_, "Sir please give some query to search and download it for you..!"
+            await eod(
+                lege_, "Sir please give some query to search and download it for you..!"
             )
             return
 
@@ -123,7 +128,7 @@ async def nope(lege_):
         hide_via=True,
     )
     await lege_.delete()
-    
+
 
 @bot.on(admin_cmd(pattern="character(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="character(?: |$)(.*)", allow_sudo=True))
@@ -133,7 +138,8 @@ async def nope(lege_):
         if lege_.is_reply:
             (await lege_.get_reply_message()).message
         else:
-            await eod(lege_, "Sir please give some query to search and download it for you..!"
+            await eod(
+                lege_, "Sir please give some query to search and download it for you..!"
             )
             return
 
@@ -146,18 +152,32 @@ async def nope(lege_):
         hide_via=True,
     )
     await lege_.delete()
-#ℓєgєи∂
+
+
+# ℓєgєи∂
 
 CmdHelp("anime").add_command(
-  "anime", "<anime name>", "Searches for the given anime and sends the details.", "anime violet evergarden"
+    "anime",
+    "<anime name>",
+    "Searches for the given anime and sends the details.",
+    "anime violet evergarden",
 ).add_command(
-  "manga", "<manga name>", "Searches for the given manga and sends the details.", "manga Jujutsu kaisen"
+    "manga",
+    "<manga name>",
+    "Searches for the given manga and sends the details.",
+    "manga Jujutsu kaisen",
 ).add_command(
-  "character", "<character name>", "Searches for the given anime character and sends the details.", "character Mai Sakurajima"
+    "character",
+    "<character name>",
+    "Searches for the given anime character and sends the details.",
+    "character Mai Sakurajima",
 ).add_command(
-  "anilist", "<anime name>", "Searches Details of the anime directly from anilist", "anilist attack on titan"
+    "anilist",
+    "<anime name>",
+    "Searches Details of the anime directly from anilist",
+    "anilist attack on titan",
 ).add_info(
-  "Anime Search"
+    "Anime Search"
 ).add_warning(
-  "✅ Harmless Module."
+    "✅ Harmless Module."
 ).add()

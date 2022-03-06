@@ -12,9 +12,9 @@ from telethon.tl.functions.account import UpdateUsernameRequest
 from telethon.tl.functions.channels import GetAdminedPublicChannelsRequest
 from telethon.tl.functions.photos import DeletePhotosRequest, GetUserPhotosRequest
 from telethon.tl.types import Channel, Chat, InputPhoto, User
-
-from userbot import CMD_HELP, bot
 from W2HBOT.utils import admin_cmd
+
+from userbot import bot
 from userbot.cmdhelp import CmdHelp
 
 # ====================== CONSTANT ===============================
@@ -100,7 +100,7 @@ async def _(event):
 
 @bot.on(admin_cmd(outgoing=True, pattern="username (.*)"))
 async def update_username(username):
-    """ For .username command, set a new username in Telegram. """
+    """For .username command, set a new username in Telegram."""
     newusername = username.pattern_match.group(1)
     try:
         await username.client(UpdateUsernameRequest(newusername))
@@ -111,7 +111,7 @@ async def update_username(username):
 
 @bot.on(admin_cmd(outgoing=True, pattern="count$"))
 async def count(event):
-    """ For .count command, get profile stats. """
+    """For .count command, get profile stats."""
     u = 0
     g = 0
     c = 0
@@ -148,7 +148,7 @@ async def count(event):
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"delpfp"))
 async def remove_profilepic(delpfp):
-    """ For .delpfp command, delete your current profile picture in Telegram. """
+    """For .delpfp command, delete your current profile picture in Telegram."""
     group = delpfp.text[8:]
     if group == "all":
         lim = 0
@@ -185,19 +185,25 @@ async def _(event):
 
 
 CmdHelp("profile").add_command(
-  "count", None, "Counts your groups, chats, bots etc..."
+    "count", None, "Counts your groups, chats, bots etc..."
 ).add_command(
-  "myusernames", None, "Shows usernames reserved by you. That is public groups or channels created by you"
+    "myusernames",
+    None,
+    "Shows usernames reserved by you. That is public groups or channels created by you",
 ).add_command(
-  "delpfp", "<count>", "Deletes your Telegram profile picture(s)."
+    "delpfp", "<count>", "Deletes your Telegram profile picture(s)."
 ).add_command(
-  "pbio", "<text>", "Changes your Telegram bio", ".pbio Hello there, This iz my bio"
+    "pbio", "<text>", "Changes your Telegram bio", ".pbio Hello there, This iz my bio"
 ).add_command(
-  "ppic", "<reply to image>", "Changes your Telegram profie picture with the one you replied to"
+    "ppic",
+    "<reply to image>",
+    "Changes your Telegram profie picture with the one you replied to",
 ).add_command(
-  "pname", "<firstname> or <firstname | lastname>", "Changes Your Telegram account name"
+    "pname",
+    "<firstname> or <firstname | lastname>",
+    "Changes Your Telegram account name",
 ).add_command(
-  "username", "<new username>", "Changes your Telegram Account Username"
+    "username", "<new username>", "Changes your Telegram Account Username"
 ).add_command(
-  "kickme", None, "Gets out of the grp..."
+    "kickme", None, "Gets out of the grp..."
 ).add()

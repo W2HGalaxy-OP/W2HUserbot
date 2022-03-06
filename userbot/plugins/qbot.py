@@ -1,9 +1,10 @@
 import asyncio
+
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 from userbot import bot
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -38,11 +39,14 @@ async def _(event):
             await event.reply("```Please unblock @QuotLyBot and try again```")
             return
         if response.text.startswith("Hi!"):
-            await edit_or_reply(event, "```Can you kindly disable your forward privacy settings for good?```"
+            await edit_or_reply(
+                event,
+                "```Can you kindly disable your forward privacy settings for good?```",
             )
         else:
             await event.delete()
             await bot.forward_messages(event.chat_id, response.message)
+
 
 @bot.on(admin_cmd(pattern=r"css ?(.*)", outgoing=True))
 @bot.on(sudo_cmd(pattern=r"css ?(.*)", allow_sudo=True))
@@ -76,7 +80,9 @@ async def _(event):
             await event.reply("```Please unblock @QuotLyBot and try again```")
             return
         if response.text.startswith("Hi!"):
-            await edit_or_reply(event, "```Can you kindly disable your forward privacy settings for good?```"
+            await edit_or_reply(
+                event,
+                "```Can you kindly disable your forward privacy settings for good?```",
             )
         else:
             await event.delete()
@@ -84,7 +90,9 @@ async def _(event):
 
 
 CmdHelp("qbot").add_command(
-  "ss", "<reply to a text msg>", "Makes the sticker of the replied text message."
+    "ss", "<reply to a text msg>", "Makes the sticker of the replied text message."
 ).add_command(
-  "css", "<reply to a text msg> <colour name>", "Makes the sticker of the replied text message in desired color"
+    "css",
+    "<reply to a text msg> <colour name>",
+    "Makes the sticker of the replied text message in desired color",
 ).add()

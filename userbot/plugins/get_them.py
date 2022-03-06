@@ -5,9 +5,10 @@ from telethon.tl.types import (
     ChannelParticipantsBots,
 )
 from telethon.utils import pack_bot_file_id
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
+
 
 @bot.on(admin_cmd(pattern="get_admins ?(.*)"))
 @bot.on(sudo_cmd(pattern="get_admins ?(.*)", allow_sudo=True))
@@ -60,7 +61,8 @@ async def _(event):
     else:
         await event.client.send_message(event.chat_id, mentions)
     await event.delete()
-    
+
+
 @bot.on(admin_cmd(pattern="get_bot ?(.*)"))
 @bot.on(sudo_cmd(pattern="get_bot ?(.*)", allow_sudo=True))
 async def _(event):
@@ -92,8 +94,8 @@ async def _(event):
     except Exception as e:
         mentions += " " + str(e) + "\n"
     await event.edit(mentions)
-    
-    
+
+
 @bot.on(admin_cmd(pattern="get_id"))
 @bot.on(sudo_cmd(pattern="get_id", allow_sudo=True))
 async def _(event):
@@ -120,11 +122,9 @@ async def _(event):
 
 
 CmdHelp("get_them").add_command(
-  'get_admins', None, 'Gets the list of admins in current chat along with the crator'
+    "get_admins", None, "Gets the list of admins in current chat along with the crator"
+).add_command("get_id", "<reply>", "Gets the user id of the replied user.").add_command(
+    "get_bot", None, "Gets the list of all the bots in the chat."
 ).add_command(
-  'get_id', '<reply>', 'Gets the user id of the replied user.'
-).add_command(
-  'get_bot', None, 'Gets the list of all the bots in the chat.'
-).add_command(
-  'info', '<reply / username>', 'Fetches the information of the user'
+    "info", "<reply / username>", "Fetches the information of the user"
 ).add()

@@ -1,16 +1,21 @@
 from telethon import events, utils
 from telethon.tl import types
-from userbot.plugins.sql_helper.snips_sql import get_snips, add_snip, remove_snip, get_all_snips
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
-from userbot.cmdhelp import CmdHelp
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
+from userbot.cmdhelp import CmdHelp
+from userbot.plugins.sql_helper.snips_sql import (
+    add_snip,
+    get_all_snips,
+    get_snips,
+    remove_snip,
+)
 
 TYPE_TEXT = 0
 TYPE_PHOTO = 1
 TYPE_DOCUMENT = 2
 
 
-@bot.on(events.NewMessage(pattern=r'\#(\S+)', outgoing=True))
+@bot.on(events.NewMessage(pattern=r"\#(\S+)", outgoing=True))
 async def on_snip(event):
     name = event.pattern_match.group(1)
     snip = get_snips(name)
@@ -19,13 +24,13 @@ async def on_snip(event):
             media = types.InputPhoto(
                 int(snip.media_id),
                 int(snip.media_access_hash),
-                snip.media_file_reference
+                snip.media_file_reference,
             )
         elif snip.snip_type == TYPE_DOCUMENT:
             media = types.InputDocument(
                 int(snip.media_id),
                 int(snip.media_access_hash),
-                snip.media_file_reference
+                snip.media_file_reference,
             )
         else:
             media = None
@@ -33,10 +38,7 @@ async def on_snip(event):
         if event.reply_to_msg_id:
             message_id = event.reply_to_msg_id
         await borg.send_message(
-            event.chat_id,
-            snip.reply,
-            reply_to=message_id,
-            file=media
+            event.chat_id, snip.reply, reply_to=message_id, file=media
         )
         await event.delete()
 
@@ -47,23 +49,35 @@ async def on_snip_save(event):
     name = event.pattern_match.group(1)
     msg = await event.get_reply_message()
     if msg:
-        snip = {'type': TYPE_TEXT, 'text': msg.message or ''}
+        snip = {"type": TYPE_TEXT, "text": msg.message or ""}
         if msg.media:
             media = None
             if isinstance(msg.media, types.MessageMediaPhoto):
                 media = utils.get_input_photo(msg.media.photo)
-                snip['type'] = TYPE_PHOTO
+                snip["type"] = TYPE_PHOTO
             elif isinstance(msg.media, types.MessageMediaDocument):
                 media = utils.get_input_document(msg.media.document)
-                snip['type'] = TYPE_DOCUMENT
+                snip["type"] = TYPE_DOCUMENT
             if media:
-                snip['id'] = media.id
-                snip['hash'] = media.access_hash
-                snip['fr'] = media.file_reference
-        add_snip(name, snip['text'], snip['type'], snip.get('id'), snip.get('hash'), snip.get('fr'))
-        await edit_or_reply(event, "snip {name} saved successfully. Get it with #{name}".format(name=name))
+                snip["id"] = media.id
+                snip["hash"] = media.access_hash
+                snip["fr"] = media.file_reference
+        add_snip(
+            name,
+            snip["text"],
+            snip["type"],
+            snip.get("id"),
+            snip.get("hash"),
+            snip.get("fr"),
+        )
+        await edit_or_reply(
+            event,
+            "snip {name} saved successfully. Get it with #{name}".format(name=name),
+        )
     else:
-        await edit_or_reply(event, "Reply to a message with `snips keyword` to save the snip")
+        await edit_or_reply(
+            event, "Reply to a message with `snips keyword` to save the snip"
+        )
 
 
 @bot.on(admin_cmd(pattern="snipl"))
@@ -85,7 +99,7 @@ async def on_snip_list(event):
                 force_document=True,
                 allow_cache=False,
                 caption="Available Snips",
-                reply_to=event
+                reply_to=event,
             )
             await event.delete()
     else:
@@ -98,12 +112,12 @@ async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     remove_snip(name)
     await edit_or_reply(event, "snip #{} deleted successfully".format(name))
-    
+
 
 CmdHelp("snip").add_command(
-  "snips", "<reply to a message> <notename>", "Saves the replied message as a note with the notename. Works on almost all type of messages. To get the saved snip, type #<notename>"
-).add_command(
-  "snipl", None, "Gets all saved notes in a chat"
-).add_command(
-  "snipd", "<notename>", "Deletes the specified note"
+    "snips",
+    "<reply to a message> <notename>",
+    "Saves the replied message as a note with the notename. Works on almost all type of messages. To get the saved snip, type #<notename>",
+).add_command("snipl", None, "Gets all saved notes in a chat").add_command(
+    "snipd", "<notename>", "Deletes the specified note"
 ).add()

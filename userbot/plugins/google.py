@@ -5,8 +5,8 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from google_images_download import google_images_download
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 
@@ -41,12 +41,15 @@ async def _(event):
         output_str += " 👉🏻  [{}]({}) \n\n".format(text, url)
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_or_reply(event, 
+    await edit_or_reply(
+        event,
         "searched Google for {} in {} seconds. \n{}".format(input_str, ms, output_str),
         link_preview=False,
     )
     await asyncio.sleep(5)
-    await edit_or_reply(event, "Google: {}\n{}".format(input_str, output_str), link_preview=False)
+    await edit_or_reply(
+        event, "Google: {}\n{}".format(input_str, output_str), link_preview=False
+    )
 
 
 @bot.on(admin_cmd(pattern="image (.*)", outgoing=True))
@@ -86,7 +89,8 @@ async def _(event):
         os.remove(each_file)
     end = datetime.now()
     ms = (end - start).seconds
-    await edit_or_reply(event, 
+    await edit_or_reply(
+        event,
         "Searched Google for {} in {} seconds.".format(input_str, ms),
         link_preview=False,
     )
@@ -154,12 +158,15 @@ More Info: Open this <a href="{the_location}">Link</a> in {ms} seconds""".format
         )
     await edit_or_reply(event, OUTPUT_STR, parse_mode="HTML", link_preview=False)
 
+
 CmdHelp("google").add_command(
-  "google", "<query>", "Does a google search for the query provided"
+    "google", "<query>", "Does a google search for the query provided"
 ).add_command(
-  "img", "<query>", "Does a image search for the query provided"
+    "img", "<query>", "Does a image search for the query provided"
 ).add_command(
-  "reverse", "<reply to a sticker/pic>", "Does a reverse image search on google and provides the similar images"
+    "reverse",
+    "<reply to a sticker/pic>",
+    "Does a reverse image search on google and provides the similar images",
 ).add_command(
-  "gps", "<place>", "Gives the location of the given place/city/state."
+    "gps", "<place>", "Gives the location of the given place/city/state."
 ).add()

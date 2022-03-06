@@ -12,11 +12,12 @@ from telethon.tl.types import (
     InputStickerSetID,
     MessageMediaPhoto,
 )
-
-#from userbot import CMD_HELP
-from userbot.Config import Config
 from W2HBOT.utils import *
+
 from userbot.cmdhelp import CmdHelp
+
+# from userbot import CMD_HELP
+from userbot.Config import Config
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
@@ -37,7 +38,7 @@ W2HBOT = Config.CUSTOM_STICKER_PACK_NAME
 @bot.on(admin_cmd(outgoing=True, pattern="kang"))
 @bot.on(sudo_cmd(pattern="kang", allow_sudo=True))
 async def kang(args):
-    """ For .kang command, kangs stickers or creates new ones. """
+    """For .kang command, kangs stickers or creates new ones."""
     user = await bot.get_me()
     if not user.username:
         user.username = user.first_name
@@ -264,7 +265,7 @@ async def kang(args):
 
 
 async def resize_photo(photo):
-    """ Resize the given photo to 512x512 """
+    """Resize the given photo to 512x512"""
     image = Image.open(photo)
     maxsize = (512, 512)
     if (image.width and image.height) < 512:
@@ -302,7 +303,9 @@ async def get_pack_info(event):
 
     try:
         stickerset_attr = rep_msg.document.attributes[1]
-        await edit_or_reply(event, "`Fetching details of the sticker pack, please wait..`")
+        await edit_or_reply(
+            event, "`Fetching details of the sticker pack, please wait..`"
+        )
     except BaseException:
         await edit_or_reply(event, "`This is not a sticker. Reply to a sticker.`")
         return
@@ -337,7 +340,9 @@ async def get_pack_info(event):
 
 
 CmdHelp("stickers").add_command(
-  "kang", "<emoji> <number>", "Adds the sticker to desired pack with a custom emoji of your choice. If emoji is not mentioned then default is 😎. And if number is not mentioned then Pack will go on serial wise. \n  ✓(1 pack = 120 non-animated stickers)\n  ✓(1 pack = 50 animated stickers)"
+    "kang",
+    "<emoji> <number>",
+    "Adds the sticker to desired pack with a custom emoji of your choice. If emoji is not mentioned then default is 😎. And if number is not mentioned then Pack will go on serial wise. \n  ✓(1 pack = 120 non-animated stickers)\n  ✓(1 pack = 50 animated stickers)",
 ).add_command(
-  "stkrinfo", "<reply to sticker>", "Gets all the infos of the sticker pack"
+    "stkrinfo", "<reply to sticker>", "Gets all the infos of the sticker pack"
 ).add()

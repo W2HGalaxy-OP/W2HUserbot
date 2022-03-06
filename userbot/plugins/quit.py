@@ -4,7 +4,6 @@
 import time
 
 from telethon.tl.functions.channels import LeaveChannelRequest
-
 from W2HBOT.utils import admin_cmd
 
 

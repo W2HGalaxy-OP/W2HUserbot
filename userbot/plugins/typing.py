@@ -3,7 +3,8 @@
 # (c) Shrimadhav U K
 import asyncio
 
-from W2HBOT.utils import admin_cmd, sudo_cmd, edit_or_reply
+from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
+
 from userbot.cmdhelp import CmdHelp
 
 
@@ -42,5 +43,5 @@ async def _(event):
 
 
 CmdHelp("type").add_command(
-  "type", "<text>", "A typing animation for given text. Try it out yourself"
+    "type", "<text>", "A typing animation for given text. Try it out yourself"
 ).add()
