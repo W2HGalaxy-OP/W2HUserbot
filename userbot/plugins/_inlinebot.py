@@ -31,6 +31,7 @@ aura = bot.uid
 
 mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
+alive_emoji = "❤️"
 
 alive_txt = """
 ᴡ2ʜʙᴏᴛ Is ᴘʀᴇsᴇɴᴛɪɴɢ ʙᴇsᴛᴇsᴛ ʙᴏᴛ
