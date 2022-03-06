@@ -41,7 +41,6 @@ alive_txt = """
 **•{}•Owner :** {}
 **•{}•W2HBOT :** {}
 **•{}•Telethon :** {}
-**┣★ ᴄʜᴀɴɴᴇʟ :** [Join Here](https://t.me/W2H_Userbot)
 **•{}•Sudo      :** {}
 """
 ludosudo = Config.SUDO_USERS
@@ -130,7 +129,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 ],
                 [
                     custom.Button.url(
-                        f"Support", "https://t.me/W2h_support"
+                        f"Support", "https://t.me/W2hsupport"
                     ),
                 ],
                 [
