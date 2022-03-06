@@ -8,7 +8,7 @@ from userbot.cmdhelp import CmdHelp
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
-ludosudo = Config.SUDO_USERS
+ludosudo = os.environ.get("SUDO_USERS", None)
 
 if ludosudo:
     sudou = "True"
