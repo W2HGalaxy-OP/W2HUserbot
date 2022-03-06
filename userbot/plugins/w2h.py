@@ -10,6 +10,8 @@ from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import ALIVE_NAME, StartTime, W2Hversion
 from userbot.Config import Config
 
+from var import Var
+
 
 async def reply_id(event):
     reply_to_id = None
@@ -18,7 +20,7 @@ async def reply_id(event):
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
     return reply_to_id
-
+BOT_USERNAME = os.environ.get("
 
 DEFAULTUSER = ALIVE_NAME or "W2H User"
 W2H_IMG = Config.ALIVE_PIC
@@ -64,7 +66,7 @@ uptime = get_readable_time((time.time() - StartTime))
 @bot.on(sudo_cmd(pattern="w2h$", allow_sudo=True))
 async def amireallyalive(alive):
     try:
-        legend = await bot.inline_query(Config.BOT_USERNAME, "alive")
+        legend = await bot.inline_query(Var.TG_BOT_USER_NAME_BF_HER, "alive")
         await legend[0].click(event.chat_id)
         if event.sender_id == USERID:
             await event.delete()
