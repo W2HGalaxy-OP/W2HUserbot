@@ -5,8 +5,10 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
 
 from . import *
+from userbot import bot
+from userbot.utils import admin_cmd
 
-@bot.on(admin_cmd(pattern="gcast ?(.*)"))
+@bot.on(admin_cmd(pattern="gcast(?:\s|$)([\s\S]*)")
 async def gcast(event):
     reply_msg = await event.get_reply_message()
     type = event.text[7:9]
