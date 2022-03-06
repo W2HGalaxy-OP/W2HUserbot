@@ -29,7 +29,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
 
 aura = bot.uid
 
-mention = f"[{DEFAULTUSER}](tg://user?id={aura})
+mention = f"[{DEFAULTUSER}](tg://user?id={aura})"
 
 
 alive_txt = """
