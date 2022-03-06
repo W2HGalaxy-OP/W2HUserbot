@@ -10,7 +10,7 @@ from userbot.utils import admin_cmd, edit_or_reply
 
 eor = edit_or_reply
 
-@bot.on(admin_cmd(pattern="gcast(?:\s|$)([\s\S]*)")
+@bot.on(admin_cmd(pattern="gcast(?:\s|$)([\s\S]*)"))
 async def gcast(event):
     reply_msg = await event.get_reply_message()
     type = event.text[7:9]
