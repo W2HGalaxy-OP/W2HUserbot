@@ -21,8 +21,8 @@ from W2HBOT.utils import *
 
 from userbot import *
 from userbot.cmdhelp import *
+from W2HBOT.Config import Config
 from userbot.Config import Config
-
 W2H_row = Config.BUTTONS_IN_HELP
 W2H_emoji = Config.EMOJI_IN_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "W2H User"
