@@ -61,15 +61,16 @@ def get_readable_time(seconds: int) -> str:
 uptime = get_readable_time((time.time() - StartTime))
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="w2h$"))
+@bot.on(admin_cmd(outgoing=True, pattern="w2h$ ?(.*)"))
 @bot.on(sudo_cmd(pattern="w2h$", allow_sudo=True))
-async def amireallyalive(alive):
+async def amireallyalive(alive): 
     try:
-        legend = await bot.inline_query(Var.TG_BOT_USER_NAME_BF_HER, "alive")
+        legend = await alive.client.inline_query(Config.TG_BOT_USER_NAME_BF_HER, "alive")
         await legend[0].click(event.chat_id)
-        if event.sender_id == USERID:
-            await event.delete()
-    except (noin, dedbot):
+        await event.delete()
+    except Exception as e:
+        await edit_or_reply(alive, e)
+    """else:
         await edit_or_reply(
             alive,
             f"**{CUSTOM_ALIVE_TEXT}**\n\n"
@@ -80,3 +81,4 @@ async def amireallyalive(alive):
             f"**★ Uptime :** `{uptime}\n`"
             f"**★ Master:** {mention}\n",
         )
+"""
