@@ -125,22 +125,17 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             alv_btn = [
                 [
                     custom.Button.url(
-                        f"Owner", f"https://t.me/W2h_ravan"
+                        f"Owner", "https://t.me/W2h_ravan"
                     ),
                 ],
                 [
                     custom.Button.url(
-                        f"{DEFAULTUSER}", f"tg://openmessage?user_id={aura}"
+                        f"Support", "https://t.me/W2h_support"
                     ),
                 ],
                 [
                     custom.Button.url(
-                        f"Support", f"https://t.me/W2h_support"
-                    ),
-                ],
-                [
-                    custom.Button.url(
-                        f"Chatting", f"https://t.me/ravan102030"
+                        f"Chatting", "https://t.me/ravan102030"
                     ),
                 ],
             ]
