@@ -1,5 +1,9 @@
 import time
+import time
 
+from telethon import version
+from telethon.errors import ChatSendInlineForbiddenError as noin
+from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 from telethon import version
 from W2HBOT.utils import admin_cmd, edit_or_reply, sudo_cmd
 
