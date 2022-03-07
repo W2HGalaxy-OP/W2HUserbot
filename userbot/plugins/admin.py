@@ -74,7 +74,7 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 sweetie = "https://telegra.ph/file/afae2d2fab256d3ba0d0a.jpg"
 krishna = "https://telegra.ph/file/2d3f3eafbd80bdec7aa6e.jpg"
-
+love = "https://telegra.ph/file/2d04480513a7fbacc821f.jpg"
 @bot.on(admin_cmd("setgpic$"))
 @bot.on(sudo_cmd(pattern="setgpic$", allow_sudo=True))
 @errors_handler
@@ -147,7 +147,7 @@ async def promote(promt):
     if not rank:
         rank = "w2h"
     if not user:
-        return
+        return 
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
         await promt.client.send_file(
@@ -155,10 +155,10 @@ async def promote(promt):
             sweetie,
             caption="My Legend master has promoted You In this Group....!! Ab party de🥳🥳"
         )
-    await W2Hevent.delete()
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
+    await W2Hevent.delete()
     if BOTLOG:
         await promt.client.send_message(
             BOTLOG_CHATID,
@@ -243,9 +243,9 @@ async def ban(bon):
         await W2Hevent.edit("I ain't got msg deleting right. But still Banned!")
         return
     if reason:
-        await W2Hevent.edit(f"{str(user.id)} is banned !!\nReason: {reason}")
+        await bon.client.send_file(event.chat_id, love, caption=f"{str(user.id)} is banned !!\nReason: {reason}")
     else:
-        await W2Hevent.edit(f"{str(user.id)} is banned!")
+        await bon.client.send_file(event.chat_id, love, caption=f"{str(user.id)} is banned!")
     if BOTLOG:
         await bon.client.send_message(
             BOTLOG_CHATID,
