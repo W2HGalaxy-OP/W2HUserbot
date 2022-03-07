@@ -203,7 +203,7 @@ async def demote(dmod):
     await bot.send_file(
         dmod.chat_id,
         krishna,
-        caption="Demoted Successfully [{user.first_name}](tg://user?id={user.id}) !Bhut ud rhe the admin bn kr aa gyy zameen pe 😏"
+        caption=f"Demoted Successfully [{user.first_name}](tg://user?id={user.id}) !Bhut ud rhe the admin bn kr aa gyy zameen pe 😏"
     )
     await W2Hevent.delete()
     if BOTLOG:
