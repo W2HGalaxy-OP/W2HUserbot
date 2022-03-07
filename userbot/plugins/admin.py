@@ -72,6 +72,9 @@ UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 # ================================================
 
 
+sweetie = "https://telegra.ph/file/afae2d2fab256d3ba0d0a.jpg"
+krishna = "https://telegra.ph/file/2d3f3eafbd80bdec7aa6e.jpg"
+
 @bot.on(admin_cmd("setgpic$"))
 @bot.on(sudo_cmd(pattern="setgpic$", allow_sudo=True))
 @errors_handler
@@ -147,9 +150,12 @@ async def promote(promt):
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await W2Hevent.edit(
-            "My Legend master has promoted You In this Group....!! Ab party de🥳🥳"
+        await promt.client.send_file(
+            event.chat_id, 
+            sweetie,
+            caption="My Legend master has promoted You In this Group....!! Ab party de🥳🥳"
         )
+    await W2Hevent.delete()
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
@@ -193,9 +199,12 @@ async def demote(dmod):
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
-    await W2Hevent.edit(
-        "Demoted Successfully!Bhut ud rhe the admin bn kr aa gyy zameen pe 😏"
+    await dmod.client.send_file(
+        event.chat_id,
+        krishna,
+        caption="Demoted Successfully!Bhut ud rhe the admin bn kr aa gyy zameen pe 😏"
     )
+    await W2Hevent.delete()
     if BOTLOG:
         await dmod.client.send_message(
             BOTLOG_CHATID,
