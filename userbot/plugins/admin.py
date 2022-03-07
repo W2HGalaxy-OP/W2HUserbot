@@ -150,7 +150,7 @@ async def promote(promt):
         return 
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await promt.client.send_file(
+        await bot.send_file(
             event.chat_id, 
             sweetie,
             caption="My Legend master has promoted You In this Group....!! Ab party de🥳🥳"
@@ -199,7 +199,7 @@ async def demote(dmod):
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
         return
-    await dmod.client.send_file(
+    await bot.send_file(
         event.chat_id,
         krishna,
         caption="Demoted Successfully!Bhut ud rhe the admin bn kr aa gyy zameen pe 😏"
@@ -243,7 +243,7 @@ async def ban(bon):
         await W2Hevent.edit("I ain't got msg deleting right. But still Banned!")
         return
     if reason:
-        await bon.client.send_file(event.chat_id, love, caption=f"{str(user.id)} is banned !!\nReason: {reason}")
+        await bot.send_file(event.chat_id, love, caption=f"{str(user.id)} is banned !!\nReason: {reason}")
     else:
         await bon.client.send_file(event.chat_id, love, caption=f"{str(user.id)} is banned!")
     if BOTLOG:
