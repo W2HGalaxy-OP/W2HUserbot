@@ -154,7 +154,7 @@ async def promote(promt):
         await bot.send_file(
             promt.chat_id, 
             sweetie,
-            caption="My Legend master has promoted You In this Group....!! Ab party de🥳🥳"
+            caption="Admin bna diya hu ab gand na marana🥳🥳"
         )
     except BadRequestError:
         await W2Hevent.edit(NO_PERM)
@@ -203,7 +203,7 @@ async def demote(dmod):
     await bot.send_file(
         dmod.chat_id,
         krishna,
-        caption=f"Demoted Successfully [{user.first_name}](tg://user?id={user.id}) !Bhut ud rhe the admin bn kr aa gyy zameen pe 😏"
+        caption=f"Demoted Successfully [{user.first_name}](tg://user?id={user.id}) !Chal bhosdi ke nikal bahut hogyi hawabazi ab aram kr 😏"
     )
     await W2Hevent.delete()
     if BOTLOG:
